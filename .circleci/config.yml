@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/vote-plan
+    docker:
+      - image: circleci/node:10.16-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-vote-plan-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - v1-vote-plan-{{ .Branch }}-
+            - v1-vote-plan-
+      - run: npm install
+
+      # ensure all the required webdrivers are installed
+      - run: node node_modules/protractor/bin/webdriver-manager update --versions.chrome=76.0.3809.68
+
+      - save_cache:
+          key: v1-vote-plan-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+            - "node_modules"
+
+      - run: ng build vote-plan --output-path docs --base-href /vote-plan/ --aot --optimization --prod --progress --extract-licenses --vendor-chunk
+      - run: cp docs/index.html docs/404.html
+      - run: npm run test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI
+      - run: npm run test -- --no-watch --no-progress --code-coverage --browsers=FirefoxHeadlessCI
+      - run: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+      - store_artifacts:
+          path: coverage
