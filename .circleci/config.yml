@@ -13,18 +13,18 @@ jobs:
             - v1-vote-plan-
       - run: npm install
 
-      # ensure all the required webdrivers are installed
-      - run: node node_modules/protractor/bin/webdriver-manager update --versions.chrome=76.0.3809.68
+      # ensure the required chrome web driver is installed
+      - run: npm run test-ch-driver
 
       - save_cache:
           key: v1-vote-plan-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
             - "node_modules"
 
-      - run: npm build -- vote-plan --output-path docs --base-href /vote-plan/ --aot --optimization --prod --progress --extract-licenses --vendor-chunk
-      - run: cp docs/index.html docs/404.html
-      - run: npm run test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI
-      - run: npm run test -- --no-watch --no-progress --code-coverage --browsers=FirefoxHeadlessCI
-      - run: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+      - run: npm run build-prod
+      - run: npm run build-gh-pages
+      - run: npm run test-ff
+      - run: npm run test-ch
+      - run: npm run e2e-ci
       - store_artifacts:
           path: coverage
