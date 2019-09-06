@@ -13,6 +13,10 @@ jobs:
             - v1-vote-plan-
       - run: npm install
 
+      - run: google-chrome --version
+      - run: google-chrome-stable --version
+      - run: firefox --version
+
       # ensure the required chrome web driver is installed
       - run: npm run test-ch-driver
 
@@ -26,5 +30,13 @@ jobs:
       - run: npm run test-ff
       - run: npm run test-ch
       - run: npm run e2e-ci
+
       - store_artifacts:
-          path: coverage
+          path: coverage/vote-plan
+          destination: coverage
+
+      - store_test_results:
+          path: ./junit
+      - store_artifacts:
+          path: ./junit
+          destination: tests
