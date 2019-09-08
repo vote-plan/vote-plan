@@ -12,6 +12,7 @@
     "src/**/*.ts"
   ],
   "exclude": [
+    "scr/testing/**",
     "src/test.ts",
     "src/**/*.spec.ts"
   ]

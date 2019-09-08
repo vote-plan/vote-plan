@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-voteplan fixed-top">
+  <a class="navbar-brand" routerLink="/">
+    Vote Plan
+    <fa-icon [icon]="faEdit"></fa-icon>
+    <span class="sr-only" [style.display]="navCurrentIsHome() ? '' : 'none'"
+          [hidden]="!navCurrentIsHome()">(current)</span>
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="collapsed = !collapsed"
+          aria-controls="navbarVotePlan" [attr.aria-expanded]="!collapsed" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class=" navbar-collapse" [class.collapse]="collapsed" id="navbarVotePlan">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about" routerLinkActive="active">
+          About <span class="sr-only" [style.display]="navCurrentIsAbout() ? '' : 'none'"
+                      [hidden]="!navCurrentIsAbout()">(current)</span>
+        </a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" ngbDropdown>
+        <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown2" role="button">
+          <fa-icon [icon]="faGlobe"></fa-icon>
+          Select language and date format
+        </a>
+        <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="#" (click)="$event.preventDefault()">English (Australia)</a>
+          <a class="dropdown-item" href="#" (click)="$event.preventDefault()">English (UK)</a>
+          <a class="dropdown-item" href="#" (click)="$event.preventDefault()">English (US)</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

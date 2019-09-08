@@ -25,3 +25,44 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Generate commands
+
+    $ ng g component page-not-found
+    $ ng g component about
+    $ ng g component home
+
+    $ ng g module elections/elections --module app --flat --routing
+    $ ng g component elections/elections
+    $ ng g component elections/election-list
+    $ ng g component elections/election
+    $ ng g component elections/assembly-list
+    $ ng g component elections/assembly
+    $ ng g component elections/electorate
+    $ ng g component elections/electorate-list
+    $ ng g component elections/party-list
+    $ ng g component elections/party
+    $ ng g component elections/candidate
+    $ ng g component elections/candidate-list
+    
+    $ ng g class model/Election
+    $ ng g class model/Assembly
+    $ ng g class model/electorate
+    $ ng g class model/party
+    $ ng g class model/candidate
+    
+    $ ng g service model/model
+    
+    $ ng g component shared/app-navbar
+    $ ng g component shared/app-breadcrumb
+    
+    $ ng g service shared/message
+
+
+## Testing with FontAwesome
+
+- https://github.com/FortAwesome/angular-fontawesome/issues/134#issuecomment-479964336
+  "When testing components that use the <fa-icon/> component, you either have to re-import the 
+  font awesome library for each component that utilizes it (painful) or use the CUSTOM_ELEMENTS_SCHEMA, 
+  which is bad practice."
+

@@ -1,35 +1,41 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { Component } from '@angular/core';
+import { RouterLinkDirectiveStub } from '../testing/router-link-directive-stub';
+
+@Component({selector: 'app-app-navbar', template: ''})
+class AppNavbarComponent {}
+
+@Component({selector: 'router-outlet', template: ''})
+class RouterOutletStubComponent {}
 
 describe('AppComponent', () => {
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
-      ],
+        AppComponent,
+        RouterLinkDirectiveStub,
+        AppNavbarComponent,
+        RouterOutletStubComponent
+      ]
     }).compileComponents();
   }));
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    expect(app).toBeTruthy('app was not created');
   });
 
-  it(`should have as title 'vote-plan'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('vote-plan');
-  });
-
-  it('should render title', () => {
+  it('should render main content container', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('vote-plan app is running!');
+    expect(compiled.querySelector('main.container').textContent).toBeFalsy('main content does not match');
   });
 });

@@ -8,9 +8,9 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display message on home page', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('vote-plan app is running!');
+    expect(page.getHomeTitleText()).toEqual('Home');
   });
 
   afterEach(async () => {
