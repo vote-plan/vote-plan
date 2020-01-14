@@ -1,0 +1,39 @@
+{
+  "assemblies": [
+    {
+      "codes": {
+        "assembly": "au-qld-2020-10-l",
+        "election": "au-qld-2020-10",
+        "electorates": []
+      },
+      "description": "",
+      "notes": [],
+      "title": "Legislative Assembly of Queensland"
+    }
+  ],
+  "ballot_entries": [],
+  "candidates": [],
+  "election": {
+    "codes": {
+      "assemblies": [],
+      "election": "au-qld-2020-10",
+      "parties": []
+    },
+    "dates": {
+      "day": 1,
+      "month": 10,
+      "year": 2020
+    },
+    "description": "",
+    "institution": "Queensland Parliament",
+    "location": {
+      "administrative_area_name": "Queensland",
+      "country": "Australia",
+      "locality_name": ""
+    },
+    "notes": [],
+    "title": ""
+  },
+  "electorates": [],
+  "parties": []
+}

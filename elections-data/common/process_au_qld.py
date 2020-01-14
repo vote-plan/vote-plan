@@ -1,7 +1,7 @@
 from typing import Dict, Any, Iterable
 from xml.etree import ElementTree
 
-from . import ProcessBase
+from process_base import ProcessBase
 
 
 class ProcessAuQld(ProcessBase):
@@ -21,32 +21,41 @@ class ProcessAuQld(ProcessBase):
         return result
 
     def _parse(self, election_code: str, raw_data: ElementTree):
+
         result = {
             'election': {
-                'code': election_code,
-                'title': raw_data.attrib['name'],
-                'country': self._election_country,
+                'title': raw_data.attrib['name'] if raw_data else '',
                 'institution': self._election_institution,
                 'description': '',
-                'locality_name': '',
-                'administrative_area_name': self._election_administrative_area_name,
-                'year': self._election_year,
-                'month': self._election_month,
-                'day': self._election_day,
-                'assembly_codes': [],
-                'party_codes': [],
-                'links': {},
+                'location': {
+                    'country': self._election_country,
+                    'locality_name': '',
+                    'administrative_area_name': self._election_administrative_area_name,
+                },
+                'dates': {
+                    'year': self._election_year,
+                    'month': self._election_month,
+                    'day': self._election_day,
+                },
+                'codes': {
+                    'election': election_code,
+                    'assemblies': [],
+                    'parties': [],
+                },
+                'notes': [],
             },
             'assemblies': [{
-                'code': self._create_code(election_code, self._assembly_abbr),
                 'title': self._assembly_title,
-                'election_code': election_code,
-                'electorate_codes': [],
                 'description': '',
-                'links': {},
+                'codes': {
+                    'assembly': self._create_code(election_code, self._assembly_abbr),
+                    'election': election_code,
+                    'electorates': [],
+                },
+                'notes': [],
             }],
             'electorates': [],
-            'ballots': [],
+            'ballot_entries': [],
             'parties': [],
             'candidates': [],
         }
@@ -56,17 +65,22 @@ class ProcessAuQld(ProcessBase):
 
         print('Building data for {}'.format(election_code))
 
+        if not raw_data:
+            return result
+
         for party_item in raw_data.find('parties'):
             party_code = self._create_code(election_code, party_item.get('code'))
             party_name = party_item.get('name').title()
 
             result['parties'].append({
-                'election_code': election_code,
-                'code': party_code,
                 'title': party_name or self._unknown_party,
-                'candidate_codes': [],
                 'description': '',
-                'links': {},
+                'codes': {
+                    'candidates': [],
+                    'party': party_code,
+                    'election': election_code,
+                },
+                'notes': [],
             })
 
         # add items to the respective lists if the items doesn't already exist
@@ -85,59 +99,67 @@ class ProcessAuQld(ProcessBase):
                 ballot_code = self._create_code(electorate_code, ballot_order_number or self._unknown_ballot_entry)
                 candidate_code = self._create_code(ballot_code, name_last, name_first or self._unknown_candidate)
 
-                party = next(i for i in result['parties'] if i['code'] == party_code)
+                party = next(i for i in result['parties'] if i['codes']['party'] == party_code)
 
-                if all(i['code'] != electorate_code for i in result['electorates']):
+                if all(i['codes']['electorate'] != electorate_code for i in result['electorates']):
                     electorate = {
-                        'code': electorate_code,
                         'title': name or self._unknown_electorate,
-                        'election_code': election_code,
                         'description': '',
-                        'assembly_code': assembly_code,
-                        'candidate_codes': [],
-                        'links': {},
+                        'codes': {
+                            'electorate': electorate_code,
+                            'election': election_code,
+                            'assembly': assembly_code,
+                            'candidates': [],
+                        },
+                        'notes': [],
                     }
                     result['electorates'].append(electorate)
                 else:
-                    electorate = next(i for i in result['electorates'] if i['code'] == electorate_code)
+                    electorate = next(i for i in result['electorates'] if i['codes']['electorate'] == electorate_code)
 
-                if all(i['code'] != ballot_code for i in result['ballots']):
-                    result['ballots'].append({
-                        'code': ballot_code,
-                        'election_code': election_code,
-                        'assembly_code': assembly_code,
-                        'electorate_code': electorate_code,
-                        'candidate_code': candidate_code,
-                        'party_code': party_code,
-                        'position': ballot_order_number
+                if all(i['codes']['ballot_entry'] != ballot_code for i in result['ballot_entries']):
+                    result['ballot_entries'].append({
+                        'position': ballot_order_number,
+                        'codes': {
+                            'ballot_entry': ballot_code,
+                            'election': election_code,
+                            'assembly': assembly_code,
+                            'electorate': electorate_code,
+                            'candidate': candidate_code,
+                            'party': party_code,
+                        }
                     })
 
-                if all(i['code'] != candidate_code for i in result['candidates']):
+                if all(i['codes']['candidate'] != candidate_code for i in result['candidates']):
                     result['candidates'].append({
-                        'code': candidate_code,
-                        'election_code': election_code,
-                        'assembly_code': assembly_code,
-                        'electorate_code': electorate_code,
-                        'ballot_code': ballot_code,
-                        'party_code': party_code,
-                        'name_last': (name_last or '').title() or self._unknown_candidate,
-                        'name_first': (name_first or '').title(),
                         'description': '',
-                        'links': {},
+                        'occupation': '',
+                        'name': {
+                            'last': (name_last or '').title() or self._unknown_candidate,
+                            'first': (name_first or '').title(),
+                        },
+                        'codes': {
+                            'candidate': candidate_code,
+                            'election': election_code,
+                            'assembly': assembly_code,
+                            'electorate': electorate_code,
+                            'ballot_entry': ballot_code,
+                            'party': party_code,
+                        },
+                        'contacts': {
+                            'phone_work': '',
+                            'phone_home': '',
+                            'phone_mobile': '',
+                            'fax': '',
+                            'email': '',
+                            'address': '',
+                            'post': '',
+                        },
+                        'notes': []
                     })
 
                 # add the codes to the respective lists
-                if assembly_code not in election['assembly_codes']:
-                    election['assembly_codes'].append(assembly_code)
+                self._add_codes(election, assembly, assembly_code, party, party_code,
+                                electorate, electorate_code, candidate_code)
 
-                if party_code not in election['party_codes']:
-                    election['party_codes'].append(party_code)
-
-                if electorate_code not in assembly['electorate_codes']:
-                    assembly['electorate_codes'].append(electorate_code)
-
-                if candidate_code not in electorate['candidate_codes']:
-                    electorate['candidate_codes'].append(candidate_code)
-
-                if candidate_code not in party['candidate_codes']:
-                    party['candidate_codes'].append(candidate_code)
+        return result

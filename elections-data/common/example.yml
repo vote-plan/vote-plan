@@ -33,7 +33,6 @@ candidates:
     name:
       first:  ''
       last:  ''
-    address: '<street address>'
     codes:
       candidate: ''
       assembly: ''
@@ -48,6 +47,7 @@ candidates:
       phone_mobile:  ''
       phone_work:  ''
       post: '<post address>'
+      address: '<street address>'
     notes:
       - display: 'title'
         type: 'e.g. url, text'
@@ -65,7 +65,7 @@ election:
     assemblies:
       - 'item1'
     election: ''
-    party:
+    parties:
       - 'item1'
   date:
     day: 2
@@ -85,10 +85,10 @@ electorates:
         - 'item1'
       electorate: ''
       election: ''
-  notes:
-    - display: 'title'
-      type: 'e.g. url, text'
-      content: 'e.g. url'
+    notes:
+      - display: 'title'
+        type: 'e.g. url, text'
+        content: 'e.g. url'
 
 parties:
   - description: ''

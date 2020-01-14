@@ -18,32 +18,29 @@ class ProcessBase:
 
     def __init__(self, election_code: str,
                  year: int, month: int, day: int,
-                 raw_file: str, input_file: str, output_file: str):
+                 raw_path: str, input_file: str, output_file: str):
         self._election_year = year
         self._election_month = month
         self._election_day = day
         self._election_code = election_code
         self._this_dir = os.path.dirname(os.path.abspath(__file__))
-        self._raw_file = os.path.join(self._this_dir, 'raw', raw_file)
-        self._input_file = os.path.join(self._this_dir, input_file)
-        self._output_file = os.path.join(self._this_dir, output_file)
+        self._raw_path = os.path.join(self._this_dir, '..', self._election_code, 'raw', raw_path)
+        self._input_file = os.path.join(self._this_dir, '..', self._election_code, input_file)
+        self._output_file = os.path.join(self._this_dir, '..', self._election_code, output_file)
 
     def run(self) -> None:
-        print(f"Reading raw data file '{self._raw_file}'.")
-        raw_data = self._load_raw(self._raw_file)
-
-        print("Parsing raw data.")
+        print(f"Loading raw data in '{self._raw_path}'.")
+        raw_data = self._load_raw(self._raw_path)
         result = self._parse(self._election_code, raw_data)
 
-        print(f"Reading input data file '{self._input_file}'.")
+        print(f"Loading input data file '{self._input_file}'.")
         input_data = self._load_input(self._input_file)
-
-        print("Applying input data.")
         result = self._augment(result, input_data)
 
         print(f"Writing output file '{self._output_file}'.")
         with open(self._output_file, 'wt') as f:
             json.dump(result, f, sort_keys=True, indent=2)
+        print(f"Done.")
 
     def _load_raw(self, file_path: str):
         raise Exception("Must implement '_load_raw'.")
@@ -62,26 +59,50 @@ class ProcessBase:
             "election": {},
             "assemblies": [],
             "electorates": [],
-            "ballots": [],
+            "ballot_entries": [],
             "parties": [],
             "candidates": []
         }
 
     def _read_json(self, path: str) -> Dict[str, Any]:
-        with open(path) as f:
-            return json.load(f)
+        if os.path.isfile(path):
+            with open(path) as f:
+                return json.load(f)
+        return {}
 
     def _read_xml(self, path: str):
-        tree = elTree.parse(path)
-        root = tree.getroot()
-        return root
+        if os.path.isfile(path):
+            tree = elTree.parse(path)
+            root = tree.getroot()
+            return root
+        return None
 
     def _read_csv(self, path: str) -> List[Dict[str, Any]]:
-        with open(path) as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                yield row
+        if os.path.isfile(path):
+            with open(path) as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    yield row
+        return []
 
     def _create_code(self, *args) -> str:
         result = slugify('-'.join([i for i in args if i]), delim='-', ascii=True)
+        result = result.decode('utf-8')
         return result
+
+    def _add_codes(self, election, assembly, assembly_code, party, party_code,
+                   electorate, electorate_code, candidate_code):
+        if assembly_code not in election['codes']['assemblies']:
+            election['codes']['assemblies'].append(assembly_code)
+
+        if party_code not in election['codes']['parties']:
+            election['codes']['parties'].append(party_code)
+
+        if electorate_code not in assembly['codes']['electorates']:
+            assembly['codes']['electorates'].append(electorate_code)
+
+        if candidate_code not in electorate['codes']['candidates']:
+            electorate['codes']['candidates'].append(candidate_code)
+
+        if candidate_code not in party['codes']['candidates']:
+            party['codes']['candidates'].append(candidate_code)
