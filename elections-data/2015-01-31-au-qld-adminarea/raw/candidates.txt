@@ -1,0 +1,787 @@
+Albert
+Top
+ 	BOOTHMAN, Mark	LNP
+ 	BEST, Amanda	Family First Party
+ 	MCMAHON, Melissa	Australian Labor Party
+ 	CAJDLER, Jane	The Greens
+ 	BREWSTER, Blair	Palmer United Party
+
+
+Algester
+Top
+ 	SHORTEN, Anthony	LNP
+ 	WOLF, Susan	The Greens
+ 	FORSHAW, Kevin
+ 	ENOCH, Leeanne	Australian Labor Party
+
+
+Ashgrove
+Top
+ 	CICCHINI, Connie
+ 	NEWMAN, Campbell	LNP
+ 	JEREMIJENKO, Peter
+ 	HOGG, Robert	The Greens
+ 	JONES, Kate	Australian Labor Party
+
+
+Aspley
+Top
+ 	CLOTHIER, Noel	The Greens
+ 	DAVIS, Tracy	LNP
+ 	DALLASTON, Gayle	Australian Labor Party
+
+
+Barron River
+Top
+ 	CASTLEY-WRIGHT, Noel	The Greens
+ 	SCHEBELLA, Andrew	Palmer United Party
+ 	CRAWFORD, Craig	Australian Labor Party
+ 	TROUT, Michael	LNP
+
+
+Beaudesert
+Top
+ 	HOHENHAUS, Kay	Australian Labor Party
+ 	ISHAAC, Adele	Palmer United Party
+ 	AGNOLETTO, Pietro	The Greens
+ 	KRAUSE, Jon	LNP
+ 	FREDERICKS, Jeremy	Family First Party
+ 	BOWYER, Robert	One Nation
+
+
+Brisbane Central
+Top
+ 	JONES, Kai
+ 	GRACE, Grace	Australian Labor Party
+ 	LOVEJOY, Kirsten	The Greens
+ 	CAVALLUCCI, Robert	LNP
+
+
+Broadwater
+Top
+ 	KWON, Daniel	The Greens
+ 	JAVANMARD, Amin-Reza
+ 	POLLOCK, Phil	One Nation
+ 	TOLAND, Penny	Australian Labor Party
+ 	SOKOLOV, Gueorgui	Palmer United Party
+ 	BARTON, Verity	LNP
+ 	BALLANTYNE, Stuart	Family First Party
+
+
+Buderim
+Top
+ 	HUGHES, Elaine	Australian Labor Party
+ 	ETHERIDGE, Susan	The Greens
+ 	LAZARUS, Tess	Palmer United Party
+ 	DICKSON, Steve	LNP
+
+
+Bulimba
+Top
+ 	DILLAWAY, Aaron	LNP
+ 	FARMER, Di	Australian Labor Party
+ 	HALE, David	The Greens
+
+
+Bundaberg
+Top
+ 	ANDERSON, Meg	The Greens
+ 	FREUDENBERG, Richard
+ 	DEMPSEY, Jack	LNP
+ 	BROWN, Robert	Palmer United Party
+ 	DONALDSON, Leanne	Australian Labor Party
+
+
+Bundamba
+Top
+ 	MILLER, Jo-Ann	Australian Labor Party
+ 	GREENWOOD, Ava	The Greens
+ 	FENTON, Stephen	LNP
+ 	HARRIS, Luke	Family First Party
+
+
+Burdekin
+Top
+ 	DAVISON, BJ
+ 	ISLES, Steven	Katter's Australian Party
+ 	ZYLA, Angela	Australian Labor Party
+ 	JOHNSON, Belinda	One Nation
+ 	LAST, Dale	LNP
+ 	WARLAND, Jacinta	Palmer United Party
+ 	COLLINS, Lindy	The Greens
+
+
+Burleigh
+Top
+ 	HART, Michael	LNP
+ 	POWER, Jane	The Greens
+ 	BAYNES, Susan	Family First Party
+ 	MAC ANALLY, James	Palmer United Party
+ 	HISLOP, Gail	Australian Labor Party
+
+
+Burnett
+Top
+ 	MUSTILL, Bryan	Australian Labor Party
+ 	SHEPPARD, Colin	The Greens
+ 	BENNETT, Stephen	LNP
+ 	LOVE, Richard	Palmer United Party
+ 	WYATT, Peter
+
+
+Cairns
+Top
+ 	SACKLEY, Jeanette	Palmer United Party
+ 	PYNE, Rob	Australian Labor Party
+ 	KELLY, Bernice
+ 	GOLD, Myra	The Greens
+ 	KING, Gavin	LNP
+
+
+Callide
+Top
+ 	HIGGINSON, Michael
+ 	BJELKE-PETERSEN, John	Palmer United Party
+ 	SCOTT, Duncan
+ 	ENSBY, Steve
+ 	SEENEY, Jeff	LNP
+ 	MARTIN, Graeme	Australian Labor Party
+ 	SCHULZ, Erich	The Greens
+
+
+Caloundra
+Top
+ 	ANDERSON, Fiona	The Greens
+ 	HUNT, Jason	Australian Labor Party
+ 	MCARDLE, Mark	LNP
+ 	JONES, Barry
+ 	COLLINS, Phillip	Palmer United Party
+
+
+Capalaba
+Top
+ 	PAYNE, Erin	The Greens
+ 	DAVIES, Steve	LNP
+ 	BROWN, Don	Australian Labor Party
+
+
+Chatsworth
+Top
+ 	REILLY, Jarred	The Greens
+ 	KEENE, Paul	Australian Labor Party
+ 	DEECKE, Aaron	Family First Party
+ 	MINNIKIN, Steve	LNP
+
+
+Clayfield
+Top
+ 	NICHOLLS, Tim	LNP
+ 	MARTIN, John	Australian Labor Party
+ 	PINK, Anthony	The Greens
+ 	MACDONALD, Katrina
+
+
+Cleveland
+Top
+ 	HUGES, Tracey	Australian Labor Party
+ 	WHITE, Amanda	The Greens
+ 	ROBINSON, Mark	LNP
+
+
+Condamine
+Top
+ 	HUYBREGTS, Brendon	Australian Labor Party
+ 	TODD, Alexandra	Family First Party
+ 	WHITE, Shane
+ 	WEEKES, Pamela Fay	The Greens
+ 	HOPPER, Ben	Katter's Australian Party
+ 	WEIR, Pat	LNP
+
+
+Cook
+Top
+ 	DESJARDIN, Daryl	The Greens
+ 	KEMPTON, David	LNP
+ 	BOOTH, Jason	Palmer United Party
+ 	NEWIE, Michaelangelo
+ 	MARRIOTT, Lee	Katter's Australian Party
+ 	GORDON, Billy	Australian Labor Party
+
+
+Coomera
+Top
+ 	MCCREADIE, Brett	Australian Labor Party
+ 	MORGAN, Shirley	Palmer United Party
+ 	WISBEY, Chris	The Greens
+ 	CRANDON, Michael	LNP
+ 	O'BRIEN, Cathy	Family First Party
+
+
+Currumbin
+Top
+ 	WAIN, Ashley	Australian Labor Party
+ 	REES, Kristian	Palmer United Party
+ 	DONOVAN, Ben	Family First Party
+ 	GRAVENALL, Deborah	One Nation
+ 	STUCKEY, Jann	LNP
+ 	WYATT, David	The Greens
+
+
+Dalrymple
+Top
+ 	KNUTH, Shane	Katter's Australian Party
+ 	SCHMIDT, Liz	LNP
+ 	KETTLETON, Leanne	Australian Labor Party
+ 	WEIER, Valerie	The Greens
+
+
+Everton
+Top
+ 	NORRIE, Aidan	The Greens
+ 	FREW, Jeff	Australian Labor Party
+ 	MANDER, Tim	LNP
+
+
+Ferny Grove
+Top
+ 	BERKMAN, Michael	The Greens
+ 	GITTINS, Di
+ 	SHUTTLEWORTH, Dale	LNP
+ 	TAVERNER, Mark	Palmer United Party
+ 	FURNER, Mark	Australian Labor Party
+
+
+Gaven
+Top
+ 	CRAMP, Sid	LNP
+ 	MARCINKOWSKI, Adam	Palmer United Party
+ 	O'BRIEN, Ben	Family First Party
+ 	RIORDAN, Michael	Australian Labor Party
+ 	DOUGLAS, Alex
+ 	IVORY, Chris
+ 	MCPHERSON, Toni	The Greens
+
+
+Gladstone
+Top
+ 	TOMSETT, Craig	The Greens
+ 	BUTLER, Craig
+ 	DUGGAN, Michael	LNP
+ 	BUTCHER, Glenn	Australian Labor Party
+
+
+Glass House
+Top
+ 	HAMPSTEAD, Brent	Australian Labor Party
+ 	HIGGINS, Scott	Palmer United Party
+ 	KNOBEL, David	The Greens
+ 	POWELL, Andrew	LNP
+
+
+Greenslopes
+Top
+ 	KAYE, Ian	LNP
+ 	DARRAGH, Matthew	Family First Party
+ 	KELLY, Joseph	Australian Labor Party
+ 	ELLIS, Darren	The Greens
+
+
+Gregory
+Top
+ 	CURRIE, Bruce
+ 	STOCKHAM, Ross	Katter's Australian Party
+ 	MILLAR, Lachlan	LNP
+ 	WESTON, Norm	The Greens
+ 	LINTON-HELLIAR, Michael	Palmer United Party
+ 	THOMPSON, Cheryl	Australian Labor Party
+
+
+Gympie
+Top
+ 	MEREDITH, Stephen	Australian Labor Party
+ 	MACDONALD, Shena	The Greens
+ 	FROST, Mitchell	Palmer United Party
+ 	PAULGER, Shane	Katter's Australian Party
+ 	PERRETT, Tony	LNP
+
+
+Hervey Bay
+Top
+ 	GUBBINS, Tony	Australian Labor Party
+ 	DEAN, Jannean
+ 	PEARSALL, Lynette	Palmer United Party
+ 	BEARD, Axel	Family First Party
+ 	LYONS, Kristen	The Greens
+ 	SORENSEN, Ted	LNP
+
+
+Hinchinbrook
+Top
+ 	BREWSTER, Martin	Palmer United Party
+ 	BARNES, Barry	Katter's Australian Party
+ 	CRIPPS, Andrew	LNP
+ 	TRECCO-ALEXANDER, Jesse	Australian Labor Party
+ 	STIRLING, Jenny	The Greens
+ 	HANKIN, William	One Nation
+
+
+Inala
+Top
+ 	PALASZCZUK, Annastacia	Australian Labor Party
+ 	VOLKMANN, Silke	The Greens
+ 	HANNANT, Adam	LNP
+
+
+Indooroopilly
+Top
+ 	DIAMOND, Anita
+ 	FRENEY, Ben
+ 	HORACEK, Christopher	Australian Labor Party
+ 	EMERSON, Scott	LNP
+ 	SWAN, Paul
+ 	SCHOERMER, Jake	The Greens
+
+
+Ipswich
+Top
+ 	STIELER, Tim	Family First Party
+ 	BERRY, Ian	LNP
+ 	PETERSEN, Patricia
+ 	HOWARD, Jennifer	Australian Labor Party
+ 	WALSH, Pat	The Greens
+
+
+Ipswich West
+Top
+ 	MADDEN, Jim	Australian Labor Party
+ 	CHOAT, Sean	LNP
+ 	REYNOLDS, Christopher	One Nation
+ 	TALTY, Leo
+ 	SIMONS, Ian	The Greens
+
+
+Kallangur
+Top
+ 	KING, Shane	Australian Labor Party
+ 	KENNEDY, Jason	The Greens
+ 	RUTHENBERG, Trevor	LNP
+
+
+Kawana
+Top
+ 	DAVEY, Jeremy	Palmer United Party
+ 	BLEIJIE, Jarrod	LNP
+ 	JESSOP, Michael
+ 	FINCH, Marcus	The Greens
+ 	DELLER, Jason
+ 	MOSS, Mark	Australian Labor Party
+
+
+Keppel
+Top
+ 	LAUGA, Brittany	Australian Labor Party
+ 	YOUNG, Bruce	LNP
+ 	JONES, Brandon	The Greens
+ 	DIAMOND, Bruce
+ 	PURNELL, Warren	Palmer United Party
+
+
+Lockyer
+Top
+ 	LEESE, Steve	Australian Labor Party
+ 	RICKUSS, Ian	LNP
+ 	RUDKIN, Clare	The Greens
+ 	NEUENDORF, David	Katter's Australian Party
+ 	HANSON, Pauline	One Nation
+ 	GUNNIS, Craig	Palmer United Party
+
+
+Logan
+Top
+ 	SOUTHWOOD, Kim	The Greens
+ 	PELLOWE, David	Family First Party
+ 	MURPHY, Daniel
+ 	POWER, Linus	Australian Labor Party
+ 	PUCCI, Michael	LNP
+ 	ERVIK, Peter
+
+
+Lytton
+Top
+ 	PEASE, Joan	Australian Labor Party
+ 	SYMES, Neil	LNP
+ 	MICHEL, Tamera
+ 	EVANS, Jamie
+ 	NELSON, Dave	The Greens
+
+
+Mackay
+Top
+ 	DYKYJ, Jonathon	The Greens
+ 	BOYD, Julie
+ 	TEMPLE, Lindsay	Family First Party
+ 	ATTARD, Deon	LNP
+ 	GILBERT, Julieanne	Australian Labor Party
+
+
+Mansfield
+Top
+ 	WIRTH, Jarrod
+ 	OBEID, Adam	Australian Labor Party
+ 	WALKER, Ian	LNP
+ 	JELICIC, Nick	The Greens
+
+
+Maroochydore
+Top
+ 	BYRNES, Trudy	The Greens
+ 	MCDONALD, James	Palmer United Party
+ 	SIMPSON, Fiona	LNP
+ 	GISSANE, Bill	Australian Labor Party
+
+
+Maryborough
+Top
+ 	HUXHAM, Damian	One Nation
+ 	MADDERN, Anne	LNP
+ 	WEBB, Katherine	The Greens
+ 	ANDERSON, Stephen	Palmer United Party
+ 	FOLEY, Christopher
+ 	WATTIE, Russell
+ 	SAUNDERS, Bruce	Australian Labor Party
+
+
+Mermaid Beach
+Top
+ 	GREEN, Simon	Family First Party
+ 	PEAD, Gary	Australian Labor Party
+ 	CARACO, Alex	Palmer United Party
+ 	STEVENS, Ray	LNP
+ 	WAINWRIGHT, Helen	The Greens
+
+
+Mirani
+Top
+ 	KERSLAKE, John	LNP
+ 	PEARCE, Jimmy	Australian Labor Party
+ 	HALL, Michael	Palmer United Party
+ 	BRINDLEY, Trisha	The Greens
+
+
+Moggill
+Top
+ 	WORRINGHAM, Charles	The Greens
+ 	PINK, Louisa	Australian Labor Party
+ 	ROWAN, Christian	LNP
+ 	VAN ZYL, Dion	Palmer United Party
+ 	SEARLE, Barry Anthony
+
+
+Morayfield
+Top
+ 	BECK, Stephen
+ 	RYAN, Mark	Australian Labor Party
+ 	ROGAN, William	Palmer United Party
+ 	TYRRELL, Andrew Charles
+ 	GRIMWADE, Darren	LNP
+ 	COSTIN, Paul	The Greens
+ 	EATON, Jon	Family First Party
+
+
+Mount Coot-tha
+Top
+ 	RICE, Saxon	LNP
+ 	AMEER, Omar	The Greens
+ 	MILES, Steven	Australian Labor Party
+ 	McALISTER, Charles
+
+
+Mount Isa
+Top
+ 	KATTER, Rob	Katter's Australian Party
+ 	FOTH, Marcus	The Greens
+ 	WHARTON, John	LNP
+ 	TAYLER, Simon	Australian Labor Party
+ 	SHEARD, Scott	One Nation
+
+
+Mount Ommaney
+Top
+ 	SMITH, Tarnya	LNP
+ 	MULKEARNS, Jenny	The Greens
+ 	HEWLETT, Kathleen	Palmer United Party
+ 	PUGH, Jessica	Australian Labor Party
+
+
+Mudgeeraba
+Top
+ 	FIGUEROA, Benedict	Palmer United Party
+ 	BATES, Ros	LNP
+ 	SHERWOOD, Bill
+ 	PETERSEN, Chris	Family First Party
+ 	LEADER, Georgi	Australian Labor Party
+ 	BRISBANE, Roger	The Greens
+
+
+Mulgrave
+Top
+ 	BOER, Henry	The Greens
+ 	PITT, Curtis	Australian Labor Party
+ 	QUICK, Robyn	LNP
+ 	BYRNES, Damian
+ 	WOLFF, Christian	Palmer United Party
+
+
+Mundingburra
+Top
+ 	CRISAFULLI, David	LNP
+ 	BROWN, Jenny	The Greens
+ 	MENSINK, Clive	Palmer United Party
+ 	O'ROURKE, Coralee	Australian Labor Party
+
+
+Murrumba
+Top
+ 	DEJUN, Simone	The Greens
+ 	WHITING, Chris	Australian Labor Party
+ 	GULLEY, Reg	LNP
+ 	HUTCHINSON, Ray	Family First Party
+
+
+Nanango
+Top
+ 	LOVE, Dean
+ 	FRECKLINGTON, Deb	LNP
+ 	FORD, Jason	Palmer United Party
+ 	NEWSON, Grant	The Greens
+ 	HOLLENS-RILEY, Liz	Australian Labor Party
+ 	HOPPER, Ray	Katter's Australian Party
+
+
+Nicklin
+Top
+ 	RAETHEL, Justin	Australian Labor Party
+ 	DOOLAN, Julie	The Greens
+ 	WELLINGTON, Peter William
+ 	TRACE, Matt	LNP
+
+
+Noosa
+Top
+ 	WOODS, Ian	Palmer United Party
+ 	DENHAM, Mark	Australian Labor Party
+ 	ELMES, Glen	LNP
+ 	SHLEGERIS, Joe	The Greens
+
+
+Nudgee
+Top
+ 	MONAEI, Edward
+ 	DUFFICY, Peter	Palmer United Party
+ 	OGDEN, Claire	The Greens
+ 	WOODFORTH, Jason	LNP
+ 	LINARD, Leanne	Australian Labor Party
+
+
+Pine Rivers
+Top
+ 	MARSHALL, John	The Greens
+ 	BOYD, Nikki	Australian Labor Party
+ 	HOLSWICH, Seath	LNP
+ 	PROHASKA, Thor
+
+
+Pumicestone
+Top
+ 	WILLIAMS, Rick	Australian Labor Party
+ 	COLLINGWOOD, Bevan
+ 	O'CONNELL, Daniel	The Greens
+ 	JOHNSON, Denis
+ 	FRANCE, Lisa	LNP
+ 	VERRIER, Blair	Palmer United Party
+
+
+Redcliffe
+Top
+ 	WHITE, Mark A	Family First Party
+ 	JOHNSON, Peter	The Greens
+ 	GRIFFITH, Steven	Palmer United Party
+ 	D'ATH, Yvette	Australian Labor Party
+ 	JARVIS, Shayne
+ 	DOOLEY, Kerri-Anne	LNP
+
+
+Redlands
+Top
+ 	MCEACHAN, Matt	LNP
+ 	HEWLETT, Sheena
+ 	FERRANDO, Carolyn	Family First Party
+ 	KELLIE, Deborah	Australian Labor Party
+ 	BYLETT, Susan	Palmer United Party
+ 	KEOGH, David	The Greens
+
+
+Rockhampton
+Top
+ 	TAYLOR, Michelle	The Greens
+ 	BYRNE, William	Australian Labor Party
+ 	VINCENT, Sally-Anne	Family First Party
+ 	O'CONNOR, Anne Margaret
+ 	LUVA, Bridie	LNP
+
+
+Sandgate
+Top
+ 	MILLARD, Kerry	LNP
+ 	HARBISON, John	The Greens
+ 	HINCHLIFFE, Stirling	Australian Labor Party
+ 	GRAY, Hamish
+
+
+South Brisbane
+Top
+ 	BOELE, Karel
+ 	WARD, Fiona	LNP
+ 	SRI, Jonathan	The Greens
+ 	TRAD, Jackie	Australian Labor Party
+
+
+Southern Downs
+Top
+ 	SPELLMAN, John	Family First Party
+ 	RYAN, Louise	Australian Labor Party
+ 	URE, Elizabeth	The Greens
+ 	SPRINGBORG, Lawrence	LNP
+
+
+Southport
+Top
+ 	HOLZBERGER, Rowan	Australian Labor Party
+ 	STANTON, Nicole	Palmer United Party
+ 	MAIZEY, Petrina	The Greens
+ 	MACKECHNIE, Matthew
+ 	MOLHOEK, Rob	LNP
+
+
+Springwood
+Top
+ 	LEO, Janina	The Greens
+ 	LAWRIE, Chris	Family First Party
+ 	CHAMBERLAIN, Peter	Palmer United Party
+ 	GRANT, John	LNP
+ 	DE BRENNI, Mick	Australian Labor Party
+
+
+Stafford
+Top
+ 	LYNHAM, Anthony	Australian Labor Party
+ 	BOCCABELLA, Anne	The Greens
+ 	ANDERSEN, Bob	LNP
+
+
+Stretton
+Top
+ 	OSTAPOVITCH, Freya	LNP
+ 	PEGG, Duncan	Australian Labor Party
+ 	FORDE, David
+ 	SADLER, Brian	The Greens
+
+
+Sunnybank
+Top
+ 	STEWART, Mark	LNP
+ 	KING, Gordon	The Greens
+ 	RUSSO, Peter	Australian Labor Party
+
+
+Surfers Paradise
+Top
+ 	SCOONES, Jonathon	Family First Party
+ 	LANGBROEK, John-Paul	LNP
+ 	HUNT, Helen	The Greens
+ 	GARDNER, Stephen	Palmer United Party
+ 	BLUNDELL-THORNTON, Josh	Australian Labor Party
+
+
+Thuringowa
+Top
+ 	KNUTH, Jeffrey	One Nation
+ 	WATERS, Michael	Family First Party
+ 	COX, Sam	LNP
+ 	THOMPSON, Karen	The Greens
+ 	BELL, Margaret
+ 	FERGUSON, Ian	Palmer United Party
+ 	HARPER, Aaron	Australian Labor Party
+
+
+Toowoomba North
+Top
+ 	SANDS, John	Family First Party
+ 	WATTS, Trevor	LNP
+ 	KEANE, Greg
+ 	SANDHU, Mandeep	Palmer United Party
+ 	SHINE, Kerry	Australian Labor Party
+ 	GOVER, Ken	The Greens
+ 	ELLIOTT, Ken	Katter's Australian Party
+
+
+Toowoomba South
+Top
+ 	MCVEIGH, John	LNP
+ 	STOREY, Graham	Australian Labor Party
+ 	WATERS, Anne	The Greens
+
+
+Townsville
+Top
+ 	BIRRELL, Alan	Palmer United Party
+ 	HATHAWAY, John	LNP
+ 	RISSMAN, Leanne	One Nation
+ 	HAMILTON, Gail	The Greens
+ 	PUNSHON, Michael	Family First Party
+ 	STEWART, Scott	Australian Labor Party
+
+
+Warrego
+Top
+ 	GOLDEN, Ruth
+ 	LEAHY, Ann	LNP
+ 	SARA, Guy	Palmer United Party
+ 	O'BRIEN, Mark	Australian Labor Party
+ 	BAYLEY, Sandra	The Greens
+
+
+Waterford
+Top
+ 	SMITH, Ray	The Greens
+ 	LATTER, Mike	LNP
+ 	HODGES, Jeffrey
+ 	DICKSON, Jason
+ 	FENTIMAN, Shannon	Australian Labor Party
+
+
+Whitsunday
+Top
+ 	COSTIGAN, Jason	LNP
+ 	TAHA, Bronwyn	Australian Labor Party
+ 	STANTON, Kylee	Palmer United Party
+ 	FONTES, Tony	The Greens
+ 	VAN BLARCOM, Dan
+
+
+Woodridge
+Top
+ 	PALMER, Trevor
+ 	DICK, Cameron	Australian Labor Party
+ 	BEARD, Dave
+ 	VILIAMU, Steve	LNP
+ 	THOMSON, Scott	The Greens
+
+
+Yeerongpilly
+Top
+ 	ABUKAR, Leila	LNP
+ 	WALTON, Georgina	Palmer United Party
+ 	JUDGE, Carl
+ 	BAILEY, Mark	Australian Labor Party
+ 	MARSHALL-PIERCE, Gillian	The Greens

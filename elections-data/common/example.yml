@@ -29,7 +29,6 @@ ballot_entries:
 
 candidates:
   - description: ''
-    occupation:  ''
     name:
       first:  ''
       last:  ''
@@ -40,14 +39,6 @@ candidates:
       party: ''
       election: ''
       electorate: ''
-    contacts:
-      phone_home:  ''
-      email:  ''
-      fax:  ''
-      phone_mobile:  ''
-      phone_work:  ''
-      post: '<post address>'
-      address: '<street address>'
     notes:
       - display: 'title'
         type: 'e.g. url, text'

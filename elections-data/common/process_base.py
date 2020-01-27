@@ -16,17 +16,20 @@ class ProcessBase:
     _unknown_party = 'unknown-party'
     _unknown_candidate = 'unknown-candidate'
 
-    def __init__(self, election_code: str,
-                 year: int, month: int, day: int,
-                 raw_path: str, input_file: str, output_file: str):
+    _independents_party = 'independent'
+
+    _input_name = 'input.json'
+    _output_name = 'data.json'
+
+    def __init__(self, election_code: str, year: int, month: int, day: int):
         self._election_year = year
         self._election_month = month
         self._election_day = day
         self._election_code = election_code
         self._this_dir = os.path.dirname(os.path.abspath(__file__))
-        self._raw_path = os.path.join(self._this_dir, '..', self._election_code, 'raw', raw_path)
-        self._input_file = os.path.join(self._this_dir, '..', self._election_code, input_file)
-        self._output_file = os.path.join(self._this_dir, '..', self._election_code, output_file)
+        self._raw_path = os.path.join(self._this_dir, '..', self._election_code, 'raw')
+        self._input_file = os.path.join(self._this_dir, '..', self._election_code, self._input_name)
+        self._output_file = os.path.join(self._this_dir, '..', self._election_code, self._output_name)
 
     def run(self) -> None:
         print(f"Loading raw data in '{self._raw_path}'.")
@@ -56,7 +59,7 @@ class ProcessBase:
 
     def _empty_result(self) -> Dict[str, Any]:
         return {
-            "election": {},
+            "elections": [],
             "assemblies": [],
             "electorates": [],
             "ballot_entries": [],
@@ -86,7 +89,7 @@ class ProcessBase:
         return []
 
     def _create_code(self, *args) -> str:
-        result = slugify('-'.join([i for i in args if i]), delim='-', ascii=True)
+        result = slugify('-'.join([str(i) for i in args if i]), delim='-', ascii=True)
         result = result.decode('utf-8')
         return result
 

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { faEdit, faGlobe } from '@fortawesome/free-solid-svg-icons';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {faEdit} from '@fortawesome/free-solid-svg-icons';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-app-navbar',
@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 export class AppNavbarComponent implements OnInit {
 
   faEdit = faEdit;
-  faGlobe = faGlobe;
   collapsed = true;
 
   constructor(
@@ -25,8 +24,44 @@ export class AppNavbarComponent implements OnInit {
     return this.router.isActive('/about', false);
   }
 
-  navCurrentIsHome() {
-    return this.router.isActive('/elections', false) || this.router.isActive('/', false);
+  navCurrentIsElectionsHome() {
+    return this.router.isActive('/', true);
   }
 
+  navCurrentIsElectionsList() {
+    return this.router.isActive('/elections', true);
+  }
+
+  navCurrentIsElectionDetail() {
+    return this.router.isActive('/election/', false);
+  }
+
+  navCurrentIsAssemblyDetail() {
+    return this.router.isActive('/assembly/', false);
+  }
+
+  navCurrentIsElectorateDetail() {
+    return this.router.isActive('/electorate/', false);
+  }
+
+  navCurrentIsCandidateDetail() {
+    return this.router.isActive('/candidate/', false);
+  }
+
+  navCurrentIsPartyDetail() {
+    return this.router.isActive('/party/', false);
+  }
+
+  navCurrentIsNotFound() {
+    return [
+      this.navCurrentIsAbout(),
+      this.navCurrentIsAssemblyDetail(),
+      this.navCurrentIsCandidateDetail(),
+      this.navCurrentIsElectionDetail(),
+      this.navCurrentIsElectionsHome(),
+      this.navCurrentIsElectionsList(),
+      this.navCurrentIsElectorateDetail(),
+      this.navCurrentIsPartyDetail()
+    ].every(value => value === false);
+  }
 }

@@ -1,12 +1,12 @@
 {
   "name": "vote-plan",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0 --disableHostCheck",
+    "local-server": "ng serve --host 0.0.0.0 --disableHostCheck",
     "build": "ng build",
     "build-prod": "ng build --output-path docs --base-href / --aot --optimization --prod --progress --extract-licenses --vendor-chunk",
-    "build-gh-pages": "cp ./docs/index.html ./docs/404.html && echo -n \"www.voteplan.org\" > ./docs/CNAME",
+    "build-gh-pages": "cp ./docs/index.html ./docs/404.html && echo \"www.voteplan.org\" > ./docs/CNAME",
     "build-domain": "",
     "test": "ng test --code-coverage",
     "test-ff": "ng test --no-watch --no-progress --code-coverage --browsers=FirefoxHeadlessCI",
@@ -59,6 +59,6 @@
     "protractor": "~5.4.2",
     "ts-node": "~8.6.1",
     "tslint": "~5.20.1",
-    "typescript": "~3.7"
+    "typescript": "<3.6.0"
   }
 }

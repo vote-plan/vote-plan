@@ -11,25 +11,45 @@ jobs:
             - v1-vote-plan-{{ .Branch }}-{{ checksum "package-lock.json" }}
             - v1-vote-plan-{{ .Branch }}-
             - v1-vote-plan-
-      - run: npm install
+      - run:
+          name: Install npm packages
+          command: npm install
 
-      - run: google-chrome --version
-      - run: google-chrome-stable --version
-      - run: firefox --version
+      - run:
+          name: Get Chrome version
+          command: google-chrome --version
+      - run:
+          name: Get Chrome Stable version
+          command: google-chrome-stable --version
+      - run:
+          name: Get Firefox version
+          command: firefox --version
 
       # ensure the required chrome web driver is installed
-      - run: npm run test-ch-driver
+      - run:
+          name: Ensure Chrome driver is installed
+          command: npm run test-ch-driver
 
       - save_cache:
           key: v1-vote-plan-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
             - "node_modules"
 
-      - run: npm run build-prod
-      - run: npm run build-gh-pages
-      - run: npm run test-ff
-      - run: npm run test-ch
-      - run: npm run e2e-ci
+      - run:
+          name: Build app in production mode
+          command: npm run build-prod
+      - run:
+          name: Create Github Pages settings
+          command: npm run build-gh-pages
+      - run:
+          name: Run tests in Firefox
+          command: npm run test-ff
+      - run:
+          name: Run tests in Chrome
+          command: npm run test-ch
+      - run:
+          name: Run Angular end-to-end tests
+          command: npm run e2e-ci
 
       - store_artifacts:
           path: coverage/vote-plan
