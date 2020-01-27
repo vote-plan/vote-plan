@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {ElectionsService} from '../elections.service';
+import {switchMap} from 'rxjs/operators';
+import {Electorate} from '../electorate';
 
 @Component({
   selector: 'app-electorate-detail',
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ElectorateDetailComponent implements OnInit {
 
-  constructor() { }
+  electorate: Electorate;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private service: ElectionsService
+  ) {
+  }
 
   ngOnInit() {
+    this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.service.getElectorate(params.get('electorate_code')))
+    ).subscribe(electorate => this.electorate = electorate);
   }
 
 }

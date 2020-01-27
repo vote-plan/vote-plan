@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {ElectionsService} from '../elections.service';
 import {switchMap} from 'rxjs/operators';
 import {Assembly} from '../assembly';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-assembly-detail',
@@ -12,19 +11,20 @@ import {Observable} from 'rxjs';
 })
 export class AssemblyDetailComponent implements OnInit {
 
-  assembly: Observable<string>;
+  assembly: Assembly;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private service: ElectionsService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
-    this.assembly = this.route.paramMap.pipe(
+    this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
         this.service.getAssembly(params.get('assembly_code')))
-    );
+    ).subscribe(assembly => this.assembly = assembly);
   }
 
 }

@@ -11,7 +11,7 @@ import {Candidate} from '../candidate';
 })
 export class CandidateDetailComponent implements OnInit {
 
-  candidate$: Candidate;
+  candidate: Candidate;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,10 +21,10 @@ export class CandidateDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.candidate$ = this.route.paramMap.pipe(
+    this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
         this.service.getCandidate(params.get('candidate_code')))
-    );
+    ).subscribe(candidate => this.candidate = candidate);
   }
 
 }

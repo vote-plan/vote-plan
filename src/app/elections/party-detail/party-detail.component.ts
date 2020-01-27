@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {ElectionsService} from '../elections.service';
+import {switchMap} from 'rxjs/operators';
+import {Party} from '../party';
 
 @Component({
   selector: 'app-party-detail',
@@ -7,9 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PartyDetailComponent implements OnInit {
 
-  constructor() { }
+  party: Party;
 
-  ngOnInit() {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private service: ElectionsService
+  ) {
   }
 
+  ngOnInit() {
+    this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.service.getParty(params.get('party_code')))
+    ).subscribe(party => this.party = party);
+  }
 }

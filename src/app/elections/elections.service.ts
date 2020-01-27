@@ -1,37 +1,40 @@
 import {Injectable} from '@angular/core';
-import mockData from '../../../elections-data/2015-01-31-au-qld-adminarea/data.json';
+import {HttpClient} from '@angular/common/http';
+
+import {Assembly} from './assembly';
+import {Candidate} from './candidate';
+import {Party} from './party';
+import {Electorate} from './electorate';
+import {Election} from './election';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ElectionsService {
 
-  constructor() {
+  constructor(
+    private http: HttpClient
+  ) {
   }
 
-  splitCode(code: string) {
-    return code;
+  getElection(electionCode: string): Observable<Election> {
+    return new Observable<Election>();
   }
 
-  getElection(electionCode: string) {
-    return electionCode;
+  getAssembly(assemblyCode: string): Observable<Assembly> {
+    return new Observable<Assembly>();
   }
 
-  getAssembly(assemblyCode: string) {
-    return mockData.assemblies.find(element =>
-      element.codes.assembly === assemblyCode
-    );
+  getElectorate(electorateCode: string): Observable<Electorate> {
+    return new Observable<Electorate>();
   }
 
-  getElectorate(electorateCode: string) {
-    return electorateCode;
+  getCandidate(candidateCode: string): Observable<Candidate> {
+    return new Observable<Candidate>();
   }
 
-  getCandidate(candidateCode: string) {
-    return candidateCode;
-  }
-
-  getParty(partyCode: string) {
-    return partyCode;
+  getParty(partyCode: string): Observable<Party> {
+    return new Observable<Party>();
   }
 }

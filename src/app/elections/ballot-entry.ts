@@ -1,21 +1,20 @@
 import {Assembly} from './assembly';
+import {Candidate} from './candidate';
 import {Election} from './election';
 import {Electorate} from './electorate';
-import {Note} from './note';
 import {Party} from './party';
-import {BallotEntry} from './ballot-entry';
+import {Note} from './note';
 
-export class Candidate {
-  nameFirst: string;
-  nameLast: string;
-  description: string;
+export class BallotEntry {
+  title: string;
+  position: number;
 
   code: string;
   assembly: Assembly;
-  ballotEntry: BallotEntry;
-  party: Party;
+  candidate: Candidate;
   election: Election;
   electorate: Electorate;
+  party: Party;
 
   notes: Note[];
 }
