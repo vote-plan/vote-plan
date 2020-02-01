@@ -19,7 +19,6 @@ class ProcessBase:
     _independents_party = 'independent'
 
     _input_name = 'input.json'
-    _output_name = 'data.json'
 
     def __init__(self, election_code: str, year: int, month: int, day: int):
         self._election_year = year
@@ -27,13 +26,12 @@ class ProcessBase:
         self._election_day = day
         self._election_code = election_code
         self._this_dir = os.path.dirname(os.path.abspath(__file__))
-        self._raw_path = os.path.join(self._this_dir, '..', self._election_code, 'raw')
         self._input_file = os.path.join(self._this_dir, '..', self._election_code, self._input_name)
-        self._output_file = os.path.join(self._this_dir, '..', self._election_code, self._output_name)
+        self._output_file = os.path.join(self._this_dir, '..', '..', 'src', 'assets', election_code + '.json')
 
     def run(self) -> None:
-        print(f"Loading raw data in '{self._raw_path}'.")
-        raw_data = self._load_raw(self._raw_path)
+        print(f"Loading raw data in '{self._this_dir}'.")
+        raw_data = self._load_raw(self._this_dir)
         result = self._parse(self._election_code, raw_data)
 
         print(f"Loading input data file '{self._input_file}'.")

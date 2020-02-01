@@ -38,129 +38,122 @@ class ProcessAuNatCountry(ProcessBase):
                 ballot_code, row['surname'], row['ballot_given_nm'] or self._unknown_candidate)
 
             # add items to the respective lists if the items doesn't already exist
-            if not result['elections'] or 'codes' not in result['elections'][0] or 'election' not in result['elections'][0]['codes']:
+            # election
+            if not result['elections'] or 'code' not in result['elections'][0]:
                 result['elections'].append({
                     'title': row['txn_nm'],
                     'institution': self._election_institution,
                     'description': '',
-                    'date': {
-                        'year': self._election_year,
-                        'month': self._election_month,
-                        'day': self._election_day,
-                    },
-                    'location': {
-                        'administrative_area_name': self._election_administrative_area,
-                        'locality_name': self._election_locality,
-                        'country': self._election_country,
-                    },
-                    'codes': {
-                        'election': election_code,
-                        'assemblies': [],
-                        'parties': [],
-                    },
+                    'locationAdministrativeAreaName': self._election_administrative_area,
+                    'locationLocalityName': self._election_locality,
+                    'locationCountry': self._election_country,
+                    'dateYear': self._election_year,
+                    'dateMonth': self._election_month,
+                    'dateDay': self._election_day,
+                    'code': election_code,
+                    'assemblies': [],
+                    'parties': [],
                     'notes': []
                 })
             election = result['elections'][0]
 
-            if all(i['codes']['assembly'] != assembly_code for i in result['assemblies']):
+            # assembly
+            if all(i['code'] != assembly_code for i in result['assemblies']):
                 assembly = {
                     'title': (self._assembly_house_of_reps if assembly_code.endswith('h') else self._assembly_senate),
                     'description': '',
-                    'codes': {
-                        'election': election_code,
-                        'electorates': [],
-                        'assembly': assembly_code,
-                    },
+                    'code': assembly_code,
+                    'election': election_code,
+                    'electorates': [],
                     'notes': [],
                 }
                 result['assemblies'].append(assembly)
             else:
-                assembly = next(i for i in result['assemblies'] if i['codes']['assembly'] == assembly_code)
+                assembly = next(i for i in result['assemblies'] if i['code'] == assembly_code)
 
-            if all(i['codes']['electorate'] != electorate_code for i in result['electorates']):
+            # electorate
+            if all(i['code'] != electorate_code for i in result['electorates']):
                 electorate = {
                     'title': row['div_nm'] or row['state_ab'] or self._unknown_electorate,
                     'description': '',
-                    'codes': {
-                        'electorate': electorate_code,
-                        'election': election_code,
-                        'assembly': assembly_code,
-                        'candidates': [],
-                    },
+                    'code': electorate_code,
+                    'election': election_code,
+                    'assembly': assembly_code,
+                    'candidates': [],
                     'notes': [],
                 }
                 result['electorates'].append(electorate)
             else:
-                electorate = next(i for i in result['electorates'] if i['codes']['electorate'] == electorate_code)
+                electorate = next(i for i in result['electorates'] if i['code'] == electorate_code)
 
-            if all(i['codes']['ballot_entry'] != ballot_code for i in result['ballot_entries']):
+            # ballot entry
+            if all(i['code'] != ballot_code for i in result['ballot_entries']):
                 result['ballot_entries'].append({
                     'position': row['ballot_position'],
                     'name': row['div_nm'] or row['ticket'] or self._unknown_ballot_entry,
-                    'codes': {
-                        'ballot_entry': ballot_code,
-                        'election': election_code,
-                        'assembly': assembly_code,
-                        'electorate': electorate_code,
-                        'candidate': candidate_code,
-                        'party': party_code,
-                    },
+                    'code': ballot_code,
+                    'election': election_code,
+                    'assembly': assembly_code,
+                    'electorate': electorate_code,
+                    'candidate': candidate_code,
+                    'party': party_code,
                     'notes': []
                 })
 
-            if all(i['codes']['party'] != party_code for i in result['parties']):
+            # party
+            if all(i['code'] != party_code for i in result['parties']):
                 party = {
                     'title': row['party_ballot_nm'] or self._unknown_party,
                     'description': '',
-                    'codes': {
-                        'election': election_code,
-                        'party': party_code,
-                        'candidates': [],
-                    },
+                    'code': party_code,
+                    'election': election_code,
+                    'candidates': [],
                     'notes': []
                 }
                 result['parties'].append(party)
             else:
-                party = next(i for i in result['parties'] if i['codes']['party'] == party_code)
+                party = next(i for i in result['parties'] if i['code'] == party_code)
 
-            if all(i['codes']['candidate'] != candidate_code for i in result['candidates']):
+            # candidate
+            if all(i['code'] != candidate_code for i in result['candidates']):
                 result['candidates'].append({
                     'description': '',
-                    'occupation': row['occupation'],
-                    'name': {
-                        'last': (row['surname'] or '').title() or self._unknown_candidate,
-                        'first': (row['ballot_given_nm'] or '').title(),
-                    },
-                    'codes': {
-                        'candidate': candidate_code,
-                        'election': election_code,
-                        'assembly': assembly_code,
-                        'electorate': electorate_code,
-                        'ballot_entry': ballot_code,
-                        'party': party_code,
-                    },
-                    'contacts': {
-                        'phone_work': (row['contact_work_ph'] or '').lower(),
-                        'phone_home': (row['contact_home_ph'] or '').lower(),
-                        'phone_mobile': (row['contact_mobile_no'] or '').lower(),
-                        'fax': (row['contact_fax'] or '').lower(),
-                        'email': (row['contact_email'] or '').lower(),
-                        'address': ', '.join([i for i in [
+                    'nameLast': (row['surname'] or '').title() or self._unknown_candidate,
+                    'nameFirst': (row['ballot_given_nm'] or '').title(),
+                    'code': candidate_code,
+                    'election': election_code,
+                    'assembly': assembly_code,
+                    'electorate': electorate_code,
+                    'ballot_entry': ballot_code,
+                    'party': party_code,
+                    'notes': [
+                        {'displayText': 'occupation', 'contentText': row['occupation'], 'noteType': 'extra'},
+
+                        {'displayText': 'phone work', 'contentText': (row['contact_work_ph'] or '').lower(),
+                         'noteType': 'contact'},
+                        {'displayText': 'phone home', 'contentText': (row['contact_home_ph'] or '').lower(),
+                         'noteType': 'contact'},
+                        {'displayText': 'phone mobile', 'contentText': (row['contact_mobile_no'] or '').lower(),
+                         'noteType': 'contact'},
+                        {'displayText': 'fax', 'contentText': (row['contact_fax'] or '').lower(),
+                         'noteType': 'contact'},
+                        {'displayText': 'email', 'contentText': (row['contact_email'] or '').lower(),
+                         'noteType': 'contact'},
+                        {'displayText': 'address', 'contentText': ', '.join([i for i in [
                             row['address_1'],
                             row['address_2'],
                             (row['suburb'] or '').title(),
                             row['address_state_ab'],
                             row['postcode']
-                        ] if i]),
-                        'post': ', '.join([i for i in [
+                        ] if i]), 'noteType': 'contact'},
+                        {'displayText': 'post', 'contentText': ', '.join([i for i in [
                             row['postal_address_1'],
                             row['postal_address_2'],
                             (row['postal_suburb'] or '').title(),
                             row['postal_state_ab'],
                             row['postal_postcode']
-                        ] if i])
-                    },
-                    'notes': [],
+                        ] if i]), 'noteType': 'contact'},
+                    ],
                 })
 
             # add the codes to the respective lists

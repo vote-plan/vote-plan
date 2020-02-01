@@ -89,14 +89,6 @@ This allows searching for and selecting an election, assembly, electorate, candi
 
 Each data class has a code - this can be the full code or the short code.
 
-
-assemblies
-candidates
-election
-electorates
-parties
-
-
 - Home page (shows upcoming and/or recent elections)
     - `/`
 - About (Information about the app, data sources, acknowledgements)
@@ -124,7 +116,6 @@ parties
     - `/parties/<election code>`
 - Party (details of party, plus election, assemblies, candidates, electorates)
     - `/parties/<code>`
-
 
 
 ## Angular app structure
