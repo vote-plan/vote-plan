@@ -7,23 +7,26 @@ from process_base import ProcessBase
 class ProcessAuQldAdminArea(ProcessBase):
     _election_title = 'State General Election'
     _election_country = 'Australia'
-    _election_institution = 'Queensland Parliament'
+    _election_institution = 'Parliament'
     _election_administrative_area = 'Queensland'
     _election_locality = ''
     _assembly_abbr = 'l'
-    _assembly_title = 'Legislative Assembly of Queensland'
+    _assembly_title = 'Legislative Assembly'
 
-    def _load_raw(self, file_path: str) -> Dict[str, Dict[str, Any]]:
+    def _load_raw(self, dir_path: str) -> Dict[str, Dict[str, Any]]:
         result = {
-            'candidates': self._load_raw_candidates(file_path),
-            'parties': self._load_raw_parties(file_path),
+            'candidates': self._load_raw_candidates(dir_path),
+            'parties': self._load_raw_parties(dir_path),
         }
 
         return result
 
-    def _load_raw_candidates(self, file_path: str) -> Dict[str, Any]:
+    def _load_raw_candidates(self, dir_path: str) -> Dict[str, Any]:
         result = {}
-        with open(os.path.join(file_path, 'candidates.txt'), 'rt') as f:
+        file_path = os.path.join(dir_path, 'candidates.txt')
+        if not os.path.exists(file_path):
+            return result
+        with open(file_path, 'rt') as f:
             current_electorate = None
             for line in f:
                 current_line = line.strip()
@@ -48,9 +51,12 @@ class ProcessAuQldAdminArea(ProcessBase):
                     })
         return result
 
-    def _load_raw_parties(self, file_path: str) -> Dict[str, Any]:
+    def _load_raw_parties(self, dir_path: str) -> Dict[str, Any]:
         result = {}
-        with open(os.path.join(file_path, 'parties.txt'), 'rt') as f:
+        file_path = os.path.join(dir_path, 'parties.txt')
+        if not os.path.exists(file_path):
+            return result
+        with open(file_path, 'rt') as f:
             party_name = None
             party_abbr = None
             party_officer = None
@@ -95,9 +101,6 @@ class ProcessAuQldAdminArea(ProcessBase):
 
         return result
 
-    def _load_input(self, file_path: str) -> Dict[str, Any]:
-        return self._read_json(file_path)
-
     def _augment(self, result: Dict[str, Any], input_data: Dict[str, Any]) -> Dict[str, Any]:
         return result
 
@@ -106,41 +109,31 @@ class ProcessAuQldAdminArea(ProcessBase):
 
         result['elections'].append({
             'title': f'{self._election_year} {self._election_title}',
-            'institution': self._election_institution,
             'description': '',
-            'location': {
-                'country': self._election_country,
-                'locality_name': self._election_locality,
-                'administrative_area_name': self._election_administrative_area,
-            },
-            'dates': {
-                'year': self._election_year,
-                'month': self._election_month,
-                'day': self._election_day,
-            },
-            'codes': {
-                'election': election_code,
-                'assemblies': [],
-                'parties': [],
-            },
+            'institution': self._election_institution,
+            'locationCountry': self._election_country,
+            'locationLocalityName': self._election_locality,
+            'locationAdministrativeAreaName': self._election_administrative_area,
+            'dateYear': self._election_year,
+            'dateMonth': self._election_month,
+            'dateDay': self._election_day,
+            'code': election_code,
+            'assemblies': [],
+            'parties': [],
             'notes': [],
         })
 
         result['assemblies'] = [{
             'title': self._assembly_title,
             'description': '',
-            'codes': {
-                'assembly': self._create_code(election_code, self._assembly_abbr),
-                'election': election_code,
-                'electorates': [],
-            },
+            'code': self._create_code(election_code, self._assembly_abbr),
+            'election': election_code,
+            'electorates': [],
             'notes': [],
         }]
 
         election = result['elections'][0]
         assembly = result['assemblies'][0]
-
-        print('Building data for {}'.format(election_code))
 
         if not raw_data:
             return result
@@ -151,11 +144,9 @@ class ProcessAuQldAdminArea(ProcessBase):
         result['parties'].append({
             'title': 'Independents',
             'description': '',
-            'codes': {
-                'candidates': [],
-                'party': self._create_code(election_code, self._independents_party),
-                'election': election_code,
-            },
+            'code': self._create_code(election_code, self._independents_party),
+            'election': election_code,
+            'candidates': [],
             'notes': [],
         })
 
@@ -166,11 +157,9 @@ class ProcessAuQldAdminArea(ProcessBase):
             result['parties'].append({
                 'title': party_name or self._unknown_party,
                 'description': party_item.get('abbr') or '',
-                'codes': {
-                    'candidates': [],
-                    'party': party_code,
-                    'election': election_code,
-                },
+                'candidates': [],
+                'code': party_code,
+                'election': election_code,
                 'notes': [],
             })
 
@@ -189,52 +178,45 @@ class ProcessAuQldAdminArea(ProcessBase):
                 ballot_code = self._create_code(electorate_code, ballot_order_number or self._unknown_ballot_entry)
                 candidate_code = self._create_code(ballot_code, name_last, name_first or '')
 
-                party = next(i for i in result['parties'] if i['codes']['party'] == party_code)
+                party = next(i for i in result['parties'] if i['code'] == party_code)
 
-                if all(i['codes']['electorate'] != electorate_code for i in result['electorates']):
+                if all(i['code'] != electorate_code for i in result['electorates']):
                     electorate = {
                         'title': electorate_name or self._unknown_electorate,
                         'description': '',
-                        'codes': {
-                            'electorate': electorate_code,
-                            'election': election_code,
-                            'assembly': assembly_code,
-                            'candidates': [],
-                        },
+                        'code': electorate_code,
+                        'election': election_code,
+                        'assembly': assembly_code,
+                        'candidates': [],
                         'notes': [],
                     }
                     result['electorates'].append(electorate)
                 else:
-                    electorate = next(i for i in result['electorates'] if i['codes']['electorate'] == electorate_code)
+                    electorate = next(i for i in result['electorates'] if i['code'] == electorate_code)
 
-                if all(i['codes']['ballot_entry'] != ballot_code for i in result['ballot_entries']):
-                    result['ballot_entries'].append({
+                if all(i['code'] != ballot_code for i in result['ballotEntries']):
+                    result['ballotEntries'].append({
                         'position': ballot_order_number,
-                        'codes': {
-                            'ballot_entry': ballot_code,
-                            'election': election_code,
-                            'assembly': assembly_code,
-                            'electorate': electorate_code,
-                            'candidate': candidate_code,
-                            'party': party_code,
-                        }
+                        'name': '',
+                        'code': ballot_code,
+                        'election': election_code,
+                        'assembly': assembly_code,
+                        'electorate': electorate_code,
+                        'candidate': candidate_code,
+                        'party': party_code,
                     })
 
-                if all(i['codes']['candidate'] != candidate_code for i in result['candidates']):
+                if all(i['code'] != candidate_code for i in result['candidates']):
                     result['candidates'].append({
                         'description': '',
-                        'name': {
-                            'last': (name_last or '').title() or self._unknown_candidate,
-                            'first': (name_first or '').title(),
-                        },
-                        'codes': {
-                            'candidate': candidate_code,
-                            'election': election_code,
-                            'assembly': assembly_code,
-                            'electorate': electorate_code,
-                            'ballot_entry': ballot_code,
-                            'party': party_code,
-                        },
+                        'nameLast': (name_last or '').title() or self._unknown_candidate,
+                        'nameFirst': (name_first or '').title(),
+                        'code': candidate_code,
+                        'election': election_code,
+                        'assembly': assembly_code,
+                        'electorate': electorate_code,
+                        'ballotEntry': ballot_code,
+                        'party': party_code,
                         'notes': []
                     })
 

@@ -17,7 +17,7 @@ class ProcessBase:
     _unknown_candidate = 'unknown-candidate'
 
     _independents_party = 'independent'
-
+    _compact_json = True
     _input_name = 'input.json'
 
     def __init__(self, election_code: str, year: int, month: int, day: int):
@@ -26,28 +26,26 @@ class ProcessBase:
         self._election_day = day
         self._election_code = election_code
         self._this_dir = os.path.dirname(os.path.abspath(__file__))
+        self._raw_dir = os.path.join(self._this_dir, '..', self._election_code)
         self._input_file = os.path.join(self._this_dir, '..', self._election_code, self._input_name)
         self._output_file = os.path.join(self._this_dir, '..', '..', 'src', 'assets', election_code + '.json')
 
-    def run(self) -> None:
-        print(f"Loading raw data in '{self._this_dir}'.")
-        raw_data = self._load_raw(self._this_dir)
+    def run(self) -> Dict[str, Any]:
+        print(f"Processing '{os.path.basename(os.path.abspath(self._raw_dir))}'.")
+        raw_data = self._load_raw(self._raw_dir)
         result = self._parse(self._election_code, raw_data)
 
-        print(f"Loading input data file '{self._input_file}'.")
         input_data = self._load_input(self._input_file)
         result = self._augment(result, input_data)
 
-        print(f"Writing output file '{self._output_file}'.")
         with open(self._output_file, 'wt') as f:
-            json.dump(result, f, sort_keys=True, indent=2)
+            json.dump(result, f, sort_keys=True, indent=None if self._compact_json else 2)
+
         print(f"Done.")
+        return result
 
     def _load_raw(self, file_path: str):
         raise Exception("Must implement '_load_raw'.")
-
-    def _load_input(self, file_path: str) -> Dict[str, Any]:
-        raise Exception("Must implement '_load_input'.")
 
     def _parse(self, election_code: str, raw_data) -> Dict[str, Any]:
         raise Exception("Must implement '_parse'.")
@@ -55,12 +53,15 @@ class ProcessBase:
     def _augment(self, result: Dict[str, Any], input_data: Dict[str, Any]) -> Dict[str, Any]:
         raise Exception("Must implement '_augment'.")
 
+    def _load_input(self, file_path: str) -> Dict[str, Any]:
+        return self._read_json(file_path)
+
     def _empty_result(self) -> Dict[str, Any]:
         return {
             "elections": [],
             "assemblies": [],
             "electorates": [],
-            "ballot_entries": [],
+            "ballotEntries": [],
             "parties": [],
             "candidates": []
         }
@@ -93,17 +94,17 @@ class ProcessBase:
 
     def _add_codes(self, election, assembly, assembly_code, party, party_code,
                    electorate, electorate_code, candidate_code):
-        if assembly_code not in election['codes']['assemblies']:
-            election['codes']['assemblies'].append(assembly_code)
+        if assembly_code not in election['assemblies']:
+            election['assemblies'].append(assembly_code)
 
-        if party_code not in election['codes']['parties']:
-            election['codes']['parties'].append(party_code)
+        if party_code not in election['parties']:
+            election['parties'].append(party_code)
 
-        if electorate_code not in assembly['codes']['electorates']:
-            assembly['codes']['electorates'].append(electorate_code)
+        if electorate_code not in assembly['electorates']:
+            assembly['electorates'].append(electorate_code)
 
-        if candidate_code not in electorate['codes']['candidates']:
-            electorate['codes']['candidates'].append(candidate_code)
+        if candidate_code not in electorate['candidates']:
+            electorate['candidates'].append(candidate_code)
 
-        if candidate_code not in party['codes']['candidates']:
-            party['codes']['candidates'].append(candidate_code)
+        if candidate_code not in party['candidates']:
+            party['candidates'].append(candidate_code)

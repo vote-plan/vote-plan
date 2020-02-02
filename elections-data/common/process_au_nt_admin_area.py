@@ -3,11 +3,11 @@ from typing import Dict, Any
 from process_base import ProcessBase
 
 
-class ProcessAuQldLocality(ProcessBase):
-    _election_title = 'Local Government Election'
+class ProcessAuNtAdminArea(ProcessBase):
+    _election_title = 'Territory General Election'
     _election_country = 'Australia'
     _election_institution = 'Legislative Assembly'
-    _election_administrative_area = 'Queensland'
+    _election_administrative_area = 'Northern Territory'
     _election_locality = ''
     _assembly_abbr = 'l'
     _assembly_title = 'Legislative Assembly'
@@ -19,8 +19,6 @@ class ProcessAuQldLocality(ProcessBase):
         return result
 
     def _parse(self, election_code: str, raw_data) -> Dict[str, Any]:
-        # TODO: each local government has a separate election, but they are all held at the same time.
-        # TODO: once more data is available, generate an election per local government, with associated information.
         result = self._empty_result()
 
         result['elections'].append({

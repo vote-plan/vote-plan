@@ -1,8 +1,29 @@
 {
-  "elections": [],
+  "elections": [
+    {
+      "code": "2020-10-17-au-act-adminarea",
+      "notes": [
+        {
+          "displayText": "Wikipedia article",
+          "contentText": "https://en.wikipedia.org/wiki/2020_Australian_Capital_Territory_general_election",
+          "noteType": "url"
+        },
+        {
+          "displayText": "ACT Electoral Commission Timetable for election",
+          "contentText": "https://www.elections.act.gov.au/elections_and_voting/2020_legislative_assembly_election",
+          "noteType": "url"
+        },
+        {
+          "displayText": "ACT Legislative Assembly",
+          "contentText": "https://www.parliament.act.gov.au/",
+          "noteType": "url"
+        }
+      ]
+    }
+  ],
   "assemblies": [],
   "electorates": [],
-  "ballot_entries": [],
+  "ballotEntries": [],
   "parties": [],
   "candidates": []
 }

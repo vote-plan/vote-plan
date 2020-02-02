@@ -1,8 +1,31 @@
 {
-  "elections": [],
+  "elections": [
+    {
+      "code": "",
+      "notes": [
+        {
+          "displayText": "Queensland Government - Local government elections",
+          "contentText": "https://www.dlgrma.qld.gov.au/local-government/local-government-elections.html",
+          "noteType": "url"
+        },
+        {
+          "displayText": "Wikipedia - Local government in Queensland",
+          "contentText": "https://en.wikipedia.org/wiki/Local_government_in_Queensland",
+          "noteType": "url"
+        },
+        {
+          "displayText": "Electoral Commission Queensland - 2020 Local Government Elections",
+          "contentText": "https://www.ecq.qld.gov.au/elections/election-events/2020-local-government-elections",
+          "noteType": "url"
+        }
+      ]
+    }
+  ],
   "assemblies": [],
   "electorates": [],
-  "ballot_entries": [],
+  "ballotEntries": [],
   "parties": [],
   "candidates": []
 }
+
+

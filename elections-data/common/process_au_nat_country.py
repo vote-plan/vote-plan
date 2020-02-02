@@ -5,6 +5,7 @@ from process_base import ProcessBase
 
 
 class ProcessAuNatCountry(ProcessBase):
+    _election_title = 'Federal General Election'
     _election_country = 'Australia'
     _election_institution = 'Parliament of Australia'
     _election_administrative_area = ''
@@ -14,9 +15,6 @@ class ProcessAuNatCountry(ProcessBase):
 
     def _load_raw(self, file_path: str) -> Iterable[Dict[str, Any]]:
         return self._read_csv(os.path.join(file_path, 'raw-input.csv'))
-
-    def _load_input(self, file_path: str) -> Dict[str, Any]:
-        return self._read_json(file_path)
 
     def _augment(self, result: Dict[str, Any], input_data: Dict[str, Any]) -> Dict[str, Any]:
         return result
@@ -41,7 +39,7 @@ class ProcessAuNatCountry(ProcessBase):
             # election
             if not result['elections'] or 'code' not in result['elections'][0]:
                 result['elections'].append({
-                    'title': row['txn_nm'],
+                    'title': f'{self._election_year} {self._election_title}',  # row['txn_nm'],
                     'institution': self._election_institution,
                     'description': '',
                     'locationAdministrativeAreaName': self._election_administrative_area,
@@ -87,8 +85,8 @@ class ProcessAuNatCountry(ProcessBase):
                 electorate = next(i for i in result['electorates'] if i['code'] == electorate_code)
 
             # ballot entry
-            if all(i['code'] != ballot_code for i in result['ballot_entries']):
-                result['ballot_entries'].append({
+            if all(i['code'] != ballot_code for i in result['ballotEntries']):
+                result['ballotEntries'].append({
                     'position': row['ballot_position'],
                     'name': row['div_nm'] or row['ticket'] or self._unknown_ballot_entry,
                     'code': ballot_code,
@@ -124,7 +122,7 @@ class ProcessAuNatCountry(ProcessBase):
                     'election': election_code,
                     'assembly': assembly_code,
                     'electorate': electorate_code,
-                    'ballot_entry': ballot_code,
+                    'ballotEntry': ballot_code,
                     'party': party_code,
                     'notes': [
                         {'displayText': 'occupation', 'contentText': row['occupation'], 'noteType': 'extra'},
