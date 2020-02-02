@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { AppNavbarComponent } from './shared/app-navbar/app-navbar.component';
 import { AppBreadcrumbComponent } from './shared/app-breadcrumb/app-breadcrumb.component';
+import { NewsComponent } from './main/news/news.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AppBreadcrumbComponent } from './shared/app-breadcrumb/app-breadcrumb.c
     AboutComponent,
     AppNavbarComponent,
     AppBreadcrumbComponent,
+    NewsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,23 +1,35 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-voteplan fixed-top">
-  <a class="navbar-brand" routerLink="/">
+  <a class="navbar-brand" routerLink="/home">
     Vote Plan
     <fa-icon [icon]="faEdit"></fa-icon>
     <span class="sr-only" [style.display]="navCurrentIsElectionsHome() ? '' : 'none'"
           [hidden]="!navCurrentIsElectionsHome()">(current)</span>
   </a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="collapsed = !collapsed"
-          aria-controls="navbarVotePlan" [attr.aria-expanded]="!collapsed" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="isMenuCollapsed  = !isMenuCollapsed "
+          aria-controls="navbarVotePlan" [attr.aria-expanded]="!isMenuCollapsed " aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class=" navbar-collapse" [class.collapse]="collapsed" id="navbarVotePlan">
+  <div class="collapse navbar-collapse" [ngbCollapse]="isMenuCollapsed " id="navbarVotePlan">
     <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/home" (click)="isMenuCollapsed = true">
+          Home <span class="sr-only" [style.display]="navCurrentIsElectionsHome() ? '' : 'none'"
+                     [hidden]="!navCurrentIsElectionsHome()">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/news" routerLinkActive="active" (click)="isMenuCollapsed = true">
+          News <span class="sr-only" [style.display]="navCurrentIsNews() ? '' : 'none'"
+                     [hidden]="!navCurrentIsNews()">(current)</span>
+        </a>
+      </li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['about']" routerLinkActive="active">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/about" (click)="isMenuCollapsed = true">
           About <span class="sr-only" [style.display]="navCurrentIsAbout() ? '' : 'none'"
                       [hidden]="!navCurrentIsAbout()">(current)</span>
         </a>

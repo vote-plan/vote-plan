@@ -11,7 +11,7 @@ import {VoteHomeComponent} from './vote-home/vote-home.component';
 
 const routes: Routes = [
   {path: 'vote/:electorate_code', component: VoteHomeComponent},
-  {path: '', component: ElectionsHomeComponent},
+  {path: 'home', component: ElectionsHomeComponent},
   {path: 'election/:election_code', component: ElectionDetailComponent},
   {path: 'assembly/:assembly_code', component: AssemblyDetailComponent},
   {path: 'electorate/:electorate_code', component: ElectorateDetailComponent},

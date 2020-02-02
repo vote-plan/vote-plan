@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 export class AppNavbarComponent implements OnInit {
 
   faEdit = faEdit;
-  collapsed = true;
+  isMenuCollapsed = true;
 
   constructor(
     private router: Router
@@ -22,6 +22,9 @@ export class AppNavbarComponent implements OnInit {
 
   navCurrentIsAbout() {
     return this.router.isActive('/about', false);
+  }
+  navCurrentIsNews() {
+    return this.router.isActive('/news', false);
   }
 
   navCurrentIsElectionsHome() {

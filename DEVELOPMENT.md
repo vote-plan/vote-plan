@@ -8,6 +8,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Run `npm run local-server` for a dev server. Navigate to `http://localhost:4200/`. 
 The app will automatically reload if you change any of the source files.
 
+If you are using a JetBrains IntelliJ IDE (e.g. WebStorm or PyCharm):
+
+1. Start the Angular CLI Server in `Run` mode. Wait until the application has been compiled and the development server is ready.
+2. Start the Angular Application in `Debug` mode.
+
+Also have a look at the [in-depth instructions](https://www.jetbrains.com/help/idea/angular.html#angular_running_and_debugging). 
+
 
 ## Build
 
@@ -150,6 +157,7 @@ The Angular app is structured like this:
 
     $ ng g component main/page-not-found
     $ ng g component main/about
+    $ ng g component main/news
 
     $ ng g module elections/elections --module app --flat --routing
     $ ng g component elections/elections-home

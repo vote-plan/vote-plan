@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {faSearch} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-elections-home',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ElectionsHomeComponent implements OnInit {
 
-  constructor() { }
+  faSearch = faSearch;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

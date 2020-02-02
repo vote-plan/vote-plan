@@ -73,7 +73,7 @@ export class ElectionsService {
    * Load the list of elections.
    */
   private loadElections(): void {
-    this.http.get('/assets/elections/elections.json')
+    this.http.get('/assets/elections.json')
       .pipe(
         retry(3),
         catchError(this.handleError)
@@ -87,7 +87,7 @@ export class ElectionsService {
    * @param code The election code.
    */
   private loadElection(code: string): void {
-    this.http.get(`/assets/elections/election-${code}.json`)
+    this.http.get(`/assets/${code}.json`)
       .pipe(
         retry(3),
         catchError(this.handleError)

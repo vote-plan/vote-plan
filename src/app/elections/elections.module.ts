@@ -9,6 +9,8 @@ import {ElectorateDetailComponent} from './electorate-detail/electorate-detail.c
 import {CandidateDetailComponent} from './candidate-detail/candidate-detail.component';
 import {PartyDetailComponent} from './party-detail/party-detail.component';
 import { VoteHomeComponent } from './vote-home/vote-home.component';
+import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { VoteHomeComponent } from './vote-home/vote-home.component';
   ],
   imports: [
     CommonModule,
-    ElectionsRoutingModule
+    ElectionsRoutingModule,
+    NgbCarouselModule,
+    FontAwesomeModule
   ]
 })
 export class ElectionsModule {
