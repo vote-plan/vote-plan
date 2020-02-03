@@ -1,9 +1,9 @@
-import {Assembly} from './assembly';
-import {Candidate} from './candidate';
-import {Election} from './election';
-import {Electorate} from './electorate';
-import {Party} from './party';
-import {Note} from './note';
+import { Assembly } from './assembly';
+import { Candidate } from './candidate';
+import { Election } from './election';
+import { Electorate } from './electorate';
+import { Party } from './party';
+import { Note } from './note';
 
 /**
  * A single candidate's entry on a ballot form.
@@ -29,27 +29,27 @@ export class BallotEntry {
   /**
    * The assembly candidates on this ballot are voted into.
    */
-  assembly: Assembly;
+  assembly: string;
 
   /**
    * The candidate on this ballot entry.
    */
-  candidate: Candidate;
+  candidate: string;
 
   /**
    * The election this ballot is part of.
    */
-  election: Election;
+  election: string;
 
   /**
    * The electorate of this ballot.
    */
-  electorate: Electorate;
+  electorate: string;
 
   /**
    * The party of the candidate on this ballot entry.
    */
-  party: Party;
+  party: string;
 
   /**
    * Additional information about this ballot entry.

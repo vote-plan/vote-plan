@@ -8,9 +8,9 @@ describe('ElectionDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ElectionDetailComponent ]
+      declarations: [ElectionDetailComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

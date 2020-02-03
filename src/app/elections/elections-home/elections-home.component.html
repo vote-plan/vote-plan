@@ -28,89 +28,28 @@
   </div>
 
   <div class="row mx-1 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-    <div class="col mb-4">
+
+    <div class="col mb-4" *ngFor="let election of elections$ | async">
       <div class="card h-100">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2">In 3 months on 123 XYZ 2020</h6>
-          <p class="card-text">Election description. This card has supporting text below as a natural lead-in to
-            additional content.</p>
-          <a routerLink="/election/one" class="card-link">Find my candidates</a>
+          <h5 class="card-title">
+            <img src="/assets/1F1E6-1F1FA.svg" alt="AU" height="24" />
+            {{election.title}}
+          </h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            Held
+            {{getElectionDate(election) | amTimeAgo}} on
+            {{getElectionDate(election) | amDateFormat:'ddd, Do MMM YYYY' }}
+          </h6>
+          <p class="card-text">
+            In {{ getElectionLocationText(election) }}.
+            {{election.description}}
+          </p>
+          <a [routerLink]="['/election', election.code]" class="card-link">Find my candidates</a>
           <a href="#" class="card-link">Official website</a>
         </div>
       </div>
     </div>
-    <div class="col mb-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2">In 3 months on 123 XYZ 2020</h6>
-          <p class="card-text">Election description. This card has supporting text below as a natural lead-in to
-            additional content.</p>
-          <a routerLink="/election/one" class="card-link">Find my candidates</a>
-          <a href="#" class="card-link">Official website</a>
-        </div>
-      </div>
-    </div>
-    <div class="col mb-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">3 months ago on 123 XYZ 2020</h6>
-          <p class="card-text">Election description. This card has supporting text below as a natural lead-in to
-            additional content.</p>
-          <a routerLink="/election/one" class="card-link">Find my candidates</a>
-          <a href="#" class="card-link">Official website</a>
-        </div>
-      </div>
-    </div>
-    <div class="col mb-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2">In 3 months on 123 XYZ 2020</h6>
-          <p class="card-text">Election description. This card has supporting text below as a natural lead-in to
-            additional content.</p>
-          <a routerLink="/election/one"  class="card-link">Find my candidates</a>
-          <a href="#" class="card-link">Official website</a>
-        </div>
-      </div>
-    </div>
-    <div class="col mb-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2">In 3 months on 123 XYZ 2020</h6>
-          <p class="card-text">Election description. This card has supporting text below as a natural lead-in to
-            additional content.</p>
-          <a routerLink="/election/one"  class="card-link">Find my candidates</a>
-          <a href="#" class="card-link">Official website</a>
-        </div>
-      </div>
-    </div>
-    <div class="col mb-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2">In 3 months on 123 XYZ 2020</h6>
-          <p class="card-text">Election description. This card has supporting text below as a natural lead-in to
-            additional content.</p>
-          <a routerLink="/election/one"  class="card-link">Find my candidates</a>
-          <a href="#" class="card-link">Official website</a>
-        </div>
-      </div>
-    </div>
-    <div class="col mb-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2">In 3 months on 123 XYZ 2020</h6>
-          <p class="card-text">Election description. This card has supporting text below as a natural lead-in to
-            additional content.</p>
-          <a routerLink="/election/one"  class="card-link">Find my candidates</a>
-          <a href="#" class="card-link">Official website</a>
-        </div>
-      </div>
-    </div>
+
   </div>
 </div>

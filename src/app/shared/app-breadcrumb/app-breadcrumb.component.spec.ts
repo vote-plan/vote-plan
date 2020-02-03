@@ -8,9 +8,9 @@ describe('AppBreadcrumbComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AppBreadcrumbComponent ]
+      declarations: [AppBreadcrumbComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

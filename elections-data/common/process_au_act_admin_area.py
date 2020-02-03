@@ -57,7 +57,7 @@ class ProcessAuActAdminArea(ProcessBase):
         result = self._empty_result()
 
         result['elections'].append({
-            'title': f'{self._election_year} {self._election_title}',
+            'title': self._election_title,
             'description': '',
             'institution': self._election_institution,
             'locationCountry': self._election_country,

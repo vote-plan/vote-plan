@@ -12,6 +12,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppNavbarComponent } from './shared/app-navbar/app-navbar.component';
 import { AppBreadcrumbComponent } from './shared/app-breadcrumb/app-breadcrumb.component';
 import { NewsComponent } from './main/news/news.component';
+import { HttpInterceptorProviders } from './http-interceptors';
+import { HttpErrorHandlerService } from './http-error-handler.service';
+import { MessageService } from './message.service';
+import { HttpRequestCacheMapService, RequestCacheService } from './http-request-cache.service';
+import { AppNotificationComponent } from './shared/app-notification/app-notification.component';
+import { MomentModule } from 'ngx-moment';
 
 @NgModule({
   declarations: [
@@ -21,6 +27,7 @@ import { NewsComponent } from './main/news/news.component';
     AppNavbarComponent,
     AppBreadcrumbComponent,
     NewsComponent,
+    AppNotificationComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,10 +35,15 @@ import { NewsComponent } from './main/news/news.component';
     FontAwesomeModule,
     HttpClientModule,
     ElectionsModule,
+    MomentModule,
     AppRoutingModule,
   ],
   providers: [
     Title,
+    HttpErrorHandlerService,
+    MessageService,
+    {provide: RequestCacheService, useClass: HttpRequestCacheMapService},
+    HttpInterceptorProviders,
   ],
   bootstrap: [
     AppComponent,

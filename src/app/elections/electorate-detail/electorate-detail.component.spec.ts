@@ -8,9 +8,9 @@ describe('ElectorateDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ElectorateDetailComponent ]
+      declarations: [ElectorateDetailComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

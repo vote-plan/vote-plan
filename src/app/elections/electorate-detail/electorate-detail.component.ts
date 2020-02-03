@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {ElectionsService} from '../elections.service';
-import {switchMap} from 'rxjs/operators';
-import {Electorate} from '../electorate';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ElectionsService } from '../elections.service';
+import { switchMap } from 'rxjs/operators';
+import { Electorate } from '../electorate';
 
 @Component({
   selector: 'app-electorate-detail',

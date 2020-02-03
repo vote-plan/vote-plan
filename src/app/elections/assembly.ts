@@ -1,6 +1,6 @@
-import {Note} from './note';
-import {Election} from './election';
-import {Electorate} from './electorate';
+import { Note } from './note';
+import { Election } from './election';
+import { Electorate } from './electorate';
 
 /**
  * A chamber or house of a political institution.
@@ -27,12 +27,12 @@ export class Assembly {
   /**
    * The election that includes this assembly.
    */
-  election: Election;
+  election: string;
 
   /**
    * The electorates that contribute members to this assembly.
    */
-  electorates: Electorate[];
+  electorates: string[];
 
   /**
    * Additional information for an assembly.

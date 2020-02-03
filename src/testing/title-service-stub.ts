@@ -5,7 +5,11 @@ export class TitleServiceStub {
     this.title = title;
   }
 
-  getTitle(): string { return this.title; }
+  getTitle(): string {
+    return this.title;
+  }
 
-  setTitle(value: string): void { this.title = value; }
+  setTitle(value: string): void {
+    this.title = value;
+  }
 }

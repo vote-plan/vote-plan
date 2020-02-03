@@ -8,9 +8,9 @@ describe('PartyDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PartyDetailComponent ]
+      declarations: [PartyDetailComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -11,7 +11,8 @@ export class AboutComponent implements OnInit {
 
   constructor(
     private titleService: Title
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.titleService.setTitle(`About | ${environment.titleSuffix}`);

@@ -1,9 +1,9 @@
-import {Assembly} from './assembly';
-import {Election} from './election';
-import {Electorate} from './electorate';
-import {Note} from './note';
-import {Party} from './party';
-import {BallotEntry} from './ballot-entry';
+import { Assembly } from './assembly';
+import { Election } from './election';
+import { Electorate } from './electorate';
+import { Note } from './note';
+import { Party } from './party';
+import { BallotEntry } from './ballot-entry';
 
 /**
  * One of the people running for a position in an assembly.
@@ -35,27 +35,27 @@ export class Candidate {
   /**
    * This candidate is aiming to be elected to this assembly.
    */
-  assembly: Assembly;
+  assembly: string;
 
   /**
    * The candidate is on this ballot entry.
    */
-  ballotEntry: BallotEntry;
+  ballotEntry: string;
 
   /**
    * The candidate's party for this election.
    */
-  party: Party;
+  party: string;
 
   /**
    * This candidate is running in this election.
    */
-  election: Election;
+  election: string;
 
   /**
    * This candidate is running in this electorate.
    */
-  electorate: Electorate;
+  electorate: string;
 
   /**
    * Additional information about the candidate.

@@ -1,6 +1,4 @@
-import {Assembly} from './assembly';
-import {Party} from './party';
-import {Note} from './note';
+import { Note } from './note';
 
 /**
  * An event held to electe one person for each seat in each assembly.
@@ -75,16 +73,23 @@ export class Election {
   /**
    * The assemblies that are part of this election.
    */
-  assemblies: Assembly[];
+  assemblies: string[];
 
   /**
    * The parties putting forward candidates in this election.
    * Includes independent candidates in a catch-all party.
    */
-  parties: Party[];
+  parties: string[];
 
   /**
    * Additional information about the election.
    */
   notes: Note[];
+
+  /**
+   * Get the election day as a date.
+   */
+  getDate() {
+    return new Date(this.dateYear, this.dateMonth, this.dateDay ? this.dateDay : null);
+  }
 }

@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppBreadcrumbComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

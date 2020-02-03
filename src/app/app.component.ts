@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { MessageService } from './message.service';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +8,15 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public constructor(private titleService: Title) {
+  public constructor(
+    private titleService: Title,
+    private messageService: MessageService
+  ) {
   }
 
-  public setTitle(newTitle: string) {
+  setTitle(newTitle: string) {
     this.titleService.setTitle(newTitle);
   }
+
+
 }

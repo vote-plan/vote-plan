@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {ElectionsService} from '../elections.service';
-import {switchMap} from 'rxjs/operators';
-import {Party} from '../party';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ElectionsService } from '../elections.service';
+import { switchMap } from 'rxjs/operators';
+import { Party } from '../party';
 
 @Component({
   selector: 'app-party-detail',

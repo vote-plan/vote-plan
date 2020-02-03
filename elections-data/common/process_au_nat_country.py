@@ -39,7 +39,7 @@ class ProcessAuNatCountry(ProcessBase):
             # election
             if not result['elections'] or 'code' not in result['elections'][0]:
                 result['elections'].append({
-                    'title': f'{self._election_year} {self._election_title}',  # row['txn_nm'],
+                    'title': self._election_title,  # row['txn_nm'],
                     'institution': self._election_institution,
                     'description': '',
                     'locationAdministrativeAreaName': self._election_administrative_area,

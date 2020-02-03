@@ -1,6 +1,6 @@
-import {Candidate} from './candidate';
-import {Election} from './election';
-import {Note} from './note';
+import { Candidate } from './candidate';
+import { Election } from './election';
+import { Note } from './note';
 
 /**
  * A group of candidates in an election.
@@ -26,12 +26,12 @@ export class Party {
   /**
    * The candidates in the party for the election.
    */
-  candidates: Candidate[];
+  candidates: string[];
 
   /**
    * The party is running candidates in this election.
    */
-  election: Election;
+  election: string;
 
   /**
    * Additional information about the party.

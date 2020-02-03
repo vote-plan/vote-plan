@@ -1,2 +1,19 @@
 <h2>Election</h2>
 <p>detail of election, with assemblies, candidates, electorates, parties</p>
+
+<div *ngIf="election$ | async as election; else loading">
+  <p>{{election.title}}</p>
+  <p>{{election.description}}</p>
+  <p>{{election.institution}}</p>
+  <p>{{election.locationCountry}}</p>
+  <p>{{election.locationAdministrativeAreaName}}</p>
+  <p>{{election.locationLocalityName}}</p>
+  <p>{{election.dateYear}}</p>
+  <p>{{election.dateMonth}}</p>
+  <p>{{election.dateDay}}</p>
+  <p>{{election.code}}</p>
+  <p>{{election.assemblies}}</p>
+  <p>{{election.parties}}</p>
+  <p>{{election.notes}}</p>
+</div>
+<ng-template #loading let-election>Waiting... (election is {{election|json}})</ng-template>

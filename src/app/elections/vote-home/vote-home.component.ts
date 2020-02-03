@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Electorate} from '../electorate';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {ElectionsService} from '../elections.service';
-import {switchMap} from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { Electorate } from '../electorate';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ElectionsService } from '../elections.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-vote-home',
@@ -22,8 +22,12 @@ export class VoteHomeComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.service.getElectorate(params.get('electorate_code')))
-    ).subscribe(electorate => this.electorate = electorate);
+      switchMap((params: ParamMap) => {
+        const electorateCode = params.get('electorate_code');
+        return this.service.getElectorate(electorateCode);
+      })
+    ).subscribe(electorate => {
+      this.electorate = electorate;
+    });
   }
 }

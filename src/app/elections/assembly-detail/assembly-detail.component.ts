@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {ElectionsService} from '../elections.service';
-import {switchMap} from 'rxjs/operators';
-import {Assembly} from '../assembly';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ElectionsService } from '../elections.service';
+import { switchMap } from 'rxjs/operators';
+import { Assembly } from '../assembly';
 
 @Component({
   selector: 'app-assembly-detail',

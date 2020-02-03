@@ -1,7 +1,7 @@
-import {Candidate} from './candidate';
-import {Assembly} from './assembly';
-import {Election} from './election';
-import {Note} from './note';
+import { Candidate } from './candidate';
+import { Assembly } from './assembly';
+import { Election } from './election';
+import { Note } from './note';
 
 /**
  * An electoral district, also known as an election district, legislative district, voting district, constituency,
@@ -28,18 +28,18 @@ export class Electorate {
   /**
    * This electorate electes members to this assembly.
    */
-  assembly: Assembly;
+  assembly: string;
 
   /**
    * These are the candidates running in this electorate.
    */
-  candidates: Candidate[];
+  candidates: string[];
 
   /**
    * The electorate is part of this election.
    * Note that electorates can change between elections.
    */
-  election: Election;
+  election: string;
 
   /**
    * Additional information about this electorate.

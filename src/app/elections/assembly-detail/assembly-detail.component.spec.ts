@@ -8,9 +8,9 @@ describe('AssemblyDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AssemblyDetailComponent ]
+      declarations: [AssemblyDetailComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

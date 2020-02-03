@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {ElectionsService} from '../elections.service';
-import {switchMap} from 'rxjs/operators';
-import {Election} from '../election';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ElectionsService } from '../elections.service';
+import { switchMap } from 'rxjs/operators';
+import { Election } from '../election';
+import { Observable } from 'rxjs';
+import { MessageService } from '../../message.service';
 
 @Component({
   selector: 'app-election-detail',
@@ -11,20 +13,24 @@ import {Election} from '../election';
 })
 export class ElectionDetailComponent implements OnInit {
 
-  election: Election;
+  election$: Observable<Election>;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: ElectionsService
+    private service: ElectionsService,
+    private messageService: MessageService
   ) {
   }
 
   ngOnInit() {
-    this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.service.getElection(params.get('election_code')))
-    ).subscribe(election => this.election = election);
+    this.election$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => {
+        const result = this.service.getElection(params.get('election_code'));
+        this.messageService.debug('ngOnInit', 'election$', result);
+        return result;
+      })
+    );
   }
 
 }
