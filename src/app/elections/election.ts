@@ -1,7 +1,7 @@
 import { Note } from './note';
 
 /**
- * An event held to electe one person for each seat in each assembly.
+ * An event held to elect one person for each seat in each assembly.
  */
 export class Election {
   /**
@@ -46,6 +46,11 @@ export class Election {
   locationLocalityName: string;
 
   /**
+   * The coverage of this election.
+   */
+  coverageType: string;
+
+  /**
    * The year of the election.
    * (required, freetext search)
    */
@@ -85,11 +90,10 @@ export class Election {
    * Additional information about the election.
    */
   notes: Note[];
+}
 
-  /**
-   * Get the election day as a date.
-   */
-  getDate() {
-    return new Date(this.dateYear, this.dateMonth, this.dateDay ? this.dateDay : null);
-  }
+// When an interface type extends a class type it inherits the members of the class but not their implementations.
+// It is as if the interface had declared all of the members of the class without providing an implementation.
+export interface ElectionInterface extends Election {
+
 }

@@ -4,8 +4,8 @@ from process_base import ProcessBase
 
 
 class ProcessAuQldLocality(ProcessBase):
-    _election_title = 'Local Government Election'
     _election_country = 'Australia'
+    _election_coverage_type = 'Local Government'
     _election_institution = 'Legislative Assembly'
     _election_administrative_area = 'Queensland'
     _election_locality = ''
@@ -23,13 +23,16 @@ class ProcessAuQldLocality(ProcessBase):
         # TODO: once more data is available, generate an election per local government, with associated information.
         result = self._empty_result()
 
+        qld_local_govt_name = '?'
+
         result['elections'].append({
-            'title': self._election_title,
+            'title': f'{self._election_year} {self._election_administrative_area} {qld_local_govt_name} {self._election_coverage_type}',
             'description': '',
             'institution': self._election_institution,
             'locationCountry': self._election_country,
             'locationLocalityName': self._election_locality,
             'locationAdministrativeAreaName': self._election_administrative_area,
+            'coverageType': self._election_coverage_type,
             'dateYear': self._election_year,
             'dateMonth': self._election_month,
             'dateDay': self._election_day,

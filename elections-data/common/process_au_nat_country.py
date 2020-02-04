@@ -5,9 +5,9 @@ from process_base import ProcessBase
 
 
 class ProcessAuNatCountry(ProcessBase):
-    _election_title = 'Federal General Election'
     _election_country = 'Australia'
-    _election_institution = 'Parliament of Australia'
+    _election_coverage_type = 'Federal'
+    _election_institution = 'Parliament'
     _election_administrative_area = ''
     _election_locality = ''
     _assembly_house_of_reps = 'House of Representatives'
@@ -39,12 +39,13 @@ class ProcessAuNatCountry(ProcessBase):
             # election
             if not result['elections'] or 'code' not in result['elections'][0]:
                 result['elections'].append({
-                    'title': self._election_title,  # row['txn_nm'],
+                    'title': f'{self._election_year} Australian {self._election_coverage_type}',  # row['txn_nm'],
                     'institution': self._election_institution,
                     'description': '',
                     'locationAdministrativeAreaName': self._election_administrative_area,
                     'locationLocalityName': self._election_locality,
                     'locationCountry': self._election_country,
+                    'coverageType': self._election_coverage_type,
                     'dateYear': self._election_year,
                     'dateMonth': self._election_month,
                     'dateDay': self._election_day,

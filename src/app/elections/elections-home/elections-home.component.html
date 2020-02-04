@@ -10,17 +10,19 @@
         </div>
         <div class="col-lg">
           <form class="form-inline">
-            <label class="sr-only" for="inlineFormInputGroupUsername2">Filter elections</label>
+            <label class="sr-only" for="displayFilterText">Filter elections</label>
             <div class="input-group mb-2 mr-sm-2">
               <div class="input-group-prepend">
                 <div class="input-group-text">
                   <fa-icon [icon]="faSearch"></fa-icon>
                 </div>
               </div>
-              <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Filter elections">
+              <input type="text" class="form-control" id="displayFilterText"
+                     placeholder="Filter elections" #electionsFilter
+                     (keyup)="updateFilter(electionsFilter.value)" (blur)="updateFilter(electionsFilter.value)">
             </div>
 
-            <button type="submit" class="btn btn-primary mb-2">Filter</button>
+            <button type="reset" class="btn btn-primary mb-2" (click)="updateFilter('')">Clear</button>
           </form>
         </div>
       </div>
@@ -29,11 +31,11 @@
 
   <div class="row mx-1 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
 
-    <div class="col mb-4" *ngFor="let election of elections$ | async">
+    <div class="col mb-4" *ngFor="let election of electionsDisplayed$ | async">
       <div class="card h-100">
         <div class="card-body">
           <h5 class="card-title">
-            <img src="/assets/1F1E6-1F1FA.svg" alt="AU" height="24" />
+            <img src="/assets/1F1E6-1F1FA.svg" alt="AU" height="24"/>
             {{election.title}}
           </h5>
           <h6 class="card-subtitle mb-2 text-muted">
@@ -42,7 +44,7 @@
             {{getElectionDate(election) | amDateFormat:'ddd, Do MMM YYYY' }}
           </h6>
           <p class="card-text">
-            In {{ getElectionLocationText(election) }}.
+            For {{election.institution}} of {{ getElectionLocationText(election) }}.
             {{election.description}}
           </p>
           <a [routerLink]="['/election', election.code]" class="card-link">Find my candidates</a>
@@ -52,4 +54,5 @@
     </div>
 
   </div>
+
 </div>

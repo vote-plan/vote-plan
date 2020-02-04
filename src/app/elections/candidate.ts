@@ -1,9 +1,4 @@
-import { Assembly } from './assembly';
-import { Election } from './election';
-import { Electorate } from './electorate';
 import { Note } from './note';
-import { Party } from './party';
-import { BallotEntry } from './ballot-entry';
 
 /**
  * One of the people running for a position in an assembly.

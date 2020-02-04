@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ElectionsService } from '../elections.service';
 import { switchMap } from 'rxjs/operators';
 import { Electorate } from '../electorate';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-electorate-detail',
@@ -11,7 +12,7 @@ import { Electorate } from '../electorate';
 })
 export class ElectorateDetailComponent implements OnInit {
 
-  electorate: Electorate;
+  electorate$: Observable<Electorate>;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,10 +22,10 @@ export class ElectorateDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.paramMap.pipe(
+    this.electorate$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.service.getElectorate(params.get('electorate_code')))
-    ).subscribe(electorate => this.electorate = electorate);
+        this.service.electorate(params.get('electorate_code')))
+    );
   }
 
 }

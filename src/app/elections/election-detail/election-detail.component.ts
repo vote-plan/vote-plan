@@ -5,6 +5,11 @@ import { switchMap } from 'rxjs/operators';
 import { Election } from '../election';
 import { Observable } from 'rxjs';
 import { MessageService } from '../../message.service';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Assembly } from '../assembly';
+import { Party } from '../party';
+import { Electorate } from '../electorate';
+import { Candidate } from '../candidate';
 
 @Component({
   selector: 'app-election-detail',
@@ -13,7 +18,14 @@ import { MessageService } from '../../message.service';
 })
 export class ElectionDetailComponent implements OnInit {
 
+  faSearch = faSearch;
   election$: Observable<Election>;
+  electionCode: string;
+  assemblies$: Observable<Assembly[]>;
+  parties$: Observable<Party[]>;
+  electorates$: Observable<Electorate[]>;
+  candidates$: Observable<Candidate[]>;
+  displayFilter = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -26,11 +38,34 @@ export class ElectionDetailComponent implements OnInit {
   ngOnInit() {
     this.election$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
-        const result = this.service.getElection(params.get('election_code'));
+        const electionCode = params.get('election_code');
+        const result = this.service.election(electionCode);
         this.messageService.debug('ngOnInit', 'election$', result);
+        this.electionCode = electionCode;
         return result;
       })
     );
+    this.election$.subscribe(() => this.updateDisplay());
+  }
+
+  getElectionDate(election: Election): Date {
+    return this.service.electionDate(election);
+  }
+
+  getElectionLocationText(election: Election): string {
+    return this.service.electionLocationText(election);
+  }
+
+  updateFilter(searchValue: string) {
+    this.displayFilter = searchValue ? searchValue : '';
+    this.updateDisplay();
+  }
+
+  updateDisplay(): void {
+    this.assemblies$ = this.service.assembliesForElection(this.electionCode, this.displayFilter);
+    this.parties$ = this.service.electionParties(this.electionCode, this.displayFilter);
+    this.electorates$ = this.service.electoratesForElection(this.electionCode, this.displayFilter);
+    this.candidates$ = this.service.electionCandidates(this.electionCode, this.displayFilter);
   }
 
 }

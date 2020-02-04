@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 import { Election } from '../election';
-import { switchMap, take } from 'rxjs/operators';
-import { ParamMap } from '@angular/router';
+import { debounceTime, map } from 'rxjs/operators';
 import { ElectionsService } from '../elections.service';
 import { MessageService } from '../../message.service';
 
@@ -16,7 +15,8 @@ export class ElectionsHomeComponent implements OnInit {
 
   faSearch = faSearch;
   elections$: Observable<Election[]>;
-  electionsFilteredSorted$: Observable<Election[]>;
+  electionsDisplayed$: Observable<Election[]>;
+  electionsFilter = '';
 
   constructor(
     private service: ElectionsService,
@@ -25,23 +25,37 @@ export class ElectionsHomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.elections$ = this.service.getElections();
-    this.electionsFilteredSorted$ = this.elections$.pipe(
-      take(12)
-    );
-    // todo create a filtered and sorted property (sort by smallest future duration from now, then smallest past duration from now)
-    // todo create a property for the filter text box
+    this.elections$ = this.service.elections();
+    this.updateElections();
   }
 
   getElectionDate(election: Election): Date {
-    return new Date(election.dateYear, election.dateMonth, election.dateDay ? election.dateDay : null);
+    return this.service.electionDate(election);
   }
 
   getElectionLocationText(election: Election): string {
-    return [
-      election.locationLocalityName,
-      election.locationAdministrativeAreaName,
-      election.locationCountry
-    ].filter(i => i).join(', ');
+    return this.service.electionLocationText(election);
+  }
+
+  updateFilter(searchValue: string) {
+    this.electionsFilter = searchValue ? searchValue : '';
+    this.updateElections();
+  }
+
+  updateElections(): void {
+    this.electionsDisplayed$ = this.elections$.pipe(
+      // only change display every 0.8 seconds
+      debounceTime(0.8),
+
+      // filter the elections array to contain only elections that match the search
+      // don't filter if the search is empty or null
+      map(elections => elections.filter(election => this.service.electionFilter(election, this.electionsFilter))),
+
+      // display elections in a useful order
+      map(elections => elections.sort((a, b) => this.service.electionsCompare(a, b))),
+
+      // restrict to max 12 elections showing at once
+      map(elections => elections.slice(0, 12))
+    );
   }
 }

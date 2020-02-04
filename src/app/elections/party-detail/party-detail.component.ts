@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ElectionsService } from '../elections.service';
 import { switchMap } from 'rxjs/operators';
 import { Party } from '../party';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-party-detail',
@@ -11,7 +12,7 @@ import { Party } from '../party';
 })
 export class PartyDetailComponent implements OnInit {
 
-  party: Party;
+  party$: Observable<Party>;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,9 +22,9 @@ export class PartyDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.paramMap.pipe(
+    this.party$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.service.getParty(params.get('party_code')))
-    ).subscribe(party => this.party = party);
+        this.service.party(params.get('party_code')))
+    );
   }
 }

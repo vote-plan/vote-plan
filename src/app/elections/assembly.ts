@@ -1,6 +1,4 @@
 import { Note } from './note';
-import { Election } from './election';
-import { Electorate } from './electorate';
 
 /**
  * A chamber or house of a political institution.

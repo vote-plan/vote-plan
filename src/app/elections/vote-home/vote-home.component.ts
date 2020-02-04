@@ -24,7 +24,7 @@ export class VoteHomeComponent implements OnInit {
     this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
         const electorateCode = params.get('electorate_code');
-        return this.service.getElectorate(electorateCode);
+        return this.service.electorate(electorateCode);
       })
     ).subscribe(electorate => {
       this.electorate = electorate;

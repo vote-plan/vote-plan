@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ElectionsService } from '../elections.service';
 import { switchMap } from 'rxjs/operators';
 import { Assembly } from '../assembly';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-assembly-detail',
@@ -11,7 +12,7 @@ import { Assembly } from '../assembly';
 })
 export class AssemblyDetailComponent implements OnInit {
 
-  assembly: Assembly;
+  assembly$: Observable<Assembly>;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,10 +22,10 @@ export class AssemblyDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.paramMap.pipe(
+    this.assembly$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.service.getAssembly(params.get('assembly_code')))
-    ).subscribe(assembly => this.assembly = assembly);
+        this.service.assembly(params.get('assembly_code')))
+    );
   }
 
 }

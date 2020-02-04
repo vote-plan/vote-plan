@@ -1,5 +1,3 @@
-import { Candidate } from './candidate';
-import { Election } from './election';
 import { Note } from './note';
 
 /**

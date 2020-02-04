@@ -24,13 +24,13 @@ import { MomentModule } from 'ngx-moment';
     PartyDetailComponent,
     VoteHomeComponent
   ],
-    imports: [
-        CommonModule,
-        ElectionsRoutingModule,
-        NgbCarouselModule,
-        FontAwesomeModule,
-        MomentModule
-    ]
+  imports: [
+    CommonModule,
+    ElectionsRoutingModule,
+    NgbCarouselModule,
+    FontAwesomeModule,
+    MomentModule
+  ]
 })
 export class ElectionsModule {
 }

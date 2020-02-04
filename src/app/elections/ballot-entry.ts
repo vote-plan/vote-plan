@@ -1,8 +1,3 @@
-import { Assembly } from './assembly';
-import { Candidate } from './candidate';
-import { Election } from './election';
-import { Electorate } from './electorate';
-import { Party } from './party';
 import { Note } from './note';
 
 /**
