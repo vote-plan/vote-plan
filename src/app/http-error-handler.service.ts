@@ -34,13 +34,13 @@ export class HttpErrorHandlerService {
   handleError<T>(serviceName = '', operation = 'operation', result = {} as T) {
 
     return (error: HttpErrorResponse): Observable<T> => {
-      this.messageService.debug(error);
+      this.messageService.debug(`[HttpErrorHandler] Error: ${error}`);
 
       const message = (error.error instanceof ErrorEvent) ?
         error.error.message :
         `server returned code ${error.status} with body "${error.error}"`;
 
-      this.messageService.show(`${serviceName}: ${operation} failed: ${message}`);
+      this.messageService.show({message: `${serviceName}: ${operation} failed: ${message}`, template: null});
 
       // Let the app keep running by returning a safe result.
       return of(result);

@@ -1,4 +1,17 @@
 import { Injectable, TemplateRef } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+export interface Toast {
+  message: string;
+  template: TemplateRef<any>;
+}
+
+export interface MessageToast {
+  toast: Toast;
+  options: any;
+}
+
 
 /**
  * From https://github.com/angular/angular/blob/master/aio/content/examples/http/src/app/message.service.ts
@@ -7,20 +20,26 @@ import { Injectable, TemplateRef } from '@angular/core';
   providedIn: 'root'
 })
 export class MessageService {
-  toasts: any[] = [];
+
+  toasts$: Observable<MessageToast[]>;
 
   constructor() {
   }
 
-  show(textOrTpl: string | TemplateRef<any>, options: any = {}) {
-    this.toasts.push({textOrTpl, ...options});
+  show(toast: Toast, options: any = {}): void {
+    this.toasts$ = this.toasts$.pipe(
+      map(items => items.concat([{toast, options}]))
+    );
   }
 
-  debug(...value: any) {
+  debug(...value: any): void {
     console.log('Debug message:', ...value);
   }
 
-  remove(toast) {
-    this.toasts = this.toasts.filter(t => t !== toast);
+  remove(toast: MessageToast): void {
+    this.toasts$ = this.toasts$.pipe(
+      map(items => items.filter(t =>
+        t.toast !== toast.toast && t.options !== toast.options
+      )));
   }
 }

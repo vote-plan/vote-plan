@@ -4,7 +4,6 @@ import { ElectionsService } from '../elections.service';
 import { switchMap } from 'rxjs/operators';
 import { Election } from '../election';
 import { Observable } from 'rxjs';
-import { MessageService } from '../../message.service';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Assembly } from '../assembly';
 import { Party } from '../party';
@@ -19,41 +18,50 @@ import { Candidate } from '../candidate';
 export class ElectionDetailComponent implements OnInit {
 
   faSearch = faSearch;
+
   election$: Observable<Election>;
   electionCode: string;
+  electionDate: Date;
+  electionLocation: string;
+
   assemblies$: Observable<Assembly[]>;
   parties$: Observable<Party[]>;
   electorates$: Observable<Electorate[]>;
   candidates$: Observable<Candidate[]>;
+
   displayFilter = '';
+  assembliesDisplay$: Observable<Assembly[]>;
+  partiesDisplay$: Observable<Party[]>;
+  electoratesDisplay$: Observable<Electorate[]>;
+  candidatesDisplay$: Observable<Candidate[]>;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: ElectionsService,
-    private messageService: MessageService
+    private service: ElectionsService
   ) {
   }
 
   ngOnInit() {
+    // when the 'election_code' changes, refresh all the data
     this.election$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) => {
-        const electionCode = params.get('election_code');
-        const result = this.service.election(electionCode);
-        this.messageService.debug('ngOnInit', 'election$', result);
-        this.electionCode = electionCode;
-        return result;
-      })
+      switchMap((params: ParamMap) =>
+        this.service.election(params.get('election_code'))
+      )
     );
-    this.election$.subscribe(() => this.updateDisplay());
-  }
 
-  getElectionDate(election: Election): Date {
-    return this.service.electionDate(election);
-  }
+    this.election$.subscribe(election => {
+      this.electionCode = election.code;
+      this.electionDate = this.service.electionDate(election);
+      this.electionLocation = this.service.electionLocationText(election);
 
-  getElectionLocationText(election: Election): string {
-    return this.service.electionLocationText(election);
+      this.assemblies$ = this.service.assembliesForElection(this.electionCode);
+      this.parties$ = this.service.partiesForElection(this.electionCode);
+      this.electorates$ = this.service.electoratesForElection(this.electionCode);
+      this.candidates$ = this.service.candidatesForElection(this.electionCode);
+
+      this.updateDisplay();
+    });
   }
 
   updateFilter(searchValue: string) {
@@ -62,10 +70,10 @@ export class ElectionDetailComponent implements OnInit {
   }
 
   updateDisplay(): void {
-    this.assemblies$ = this.service.assembliesForElection(this.electionCode, this.displayFilter);
-    this.parties$ = this.service.electionParties(this.electionCode, this.displayFilter);
-    this.electorates$ = this.service.electoratesForElection(this.electionCode, this.displayFilter);
-    this.candidates$ = this.service.electionCandidates(this.electionCode, this.displayFilter);
+    this.assembliesDisplay$ = this.service.entitiesTitleDisplay(this.assemblies$, this.displayFilter);
+    this.partiesDisplay$ = this.service.entitiesTitleDisplay(this.parties$, this.displayFilter);
+    this.electoratesDisplay$ = this.service.entitiesTitleDisplay(this.electorates$, this.displayFilter);
+    this.candidatesDisplay$ = this.service.entitiesNameDisplay(this.candidates$, this.displayFilter);
   }
 
 }

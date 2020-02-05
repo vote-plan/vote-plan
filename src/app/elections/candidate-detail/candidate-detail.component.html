@@ -1,3 +1,37 @@
-<h2>Candidate</h2>
-<p>details of candidate, plus election, assembly, electorate, party</p>
-<p>{{ candidate$ | async | json}}</p>
+<div *ngIf="candidate$ | async as candidate; else loading">
+  <div class="container">
+    <h2>
+      {{candidate.nameFirst}} {{ candidate.nameLast }}
+      <small class="text-muted">Candidate</small>
+    </h2>
+    <div class="row">
+      <div class="col-lg" *ngIf="{
+      election: election$ | async,
+      assembly: assembly$ | async,
+      electorate: electorate$ | async,
+      party: party$ | async,
+      ballotEntry: ballotEntry$ | async
+      } as data">
+        <p>{{candidate.description}}</p>
+        <p>Ballot name: {{ data.ballotEntry.name}}.</p>
+        <p>Ballot position: {{ data.ballotEntry.position }}.</p>
+        <p>For <a [routerLink]="['/vote', candidate.electorate]" class="card-link">Vote Plan</a>.</p>
+        <p>For <a [routerLink]="['/election', data.election.code]">{{ data.election.title }} Election</a>.</p>
+        <p>For <a [routerLink]="['/assembly', data.assembly.code]">{{ data.assembly.title }}</a>.</p>
+        <p>For <a [routerLink]="['/electorate', data.electorate.code]">{{ data.electorate.title }}</a>.</p>
+        <p>For <a [routerLink]="['/party', data.party.code]">{{ data.party.title }}</a>.</p>
+        <p>{{candidate.notes}}</p>
+      </div>
+      <div class="col-lg">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #loading let-candidate>
+  <div class="container">
+    <h2>Candidate</h2>
+    <p>Loading...</p>
+  </div>
+</ng-template>

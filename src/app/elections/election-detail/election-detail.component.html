@@ -7,13 +7,12 @@
     <div class="row">
       <div class="col-lg">
         <p class="text-muted">Held
-          {{getElectionDate(election) | amTimeAgo}} on
-          {{getElectionDate(election) | amDateFormat:'ddd, Do MMM YYYY' }}.
+          {{ electionDate | amTimeAgo}} on
+          {{ electionDate | amDateFormat:'ddd, Do MMM YYYY' }}.
         </p>
-        <p>For {{election.coverageType}} {{election.institution}} of {{ getElectionLocationText(election) }}.</p>
+        <p>For {{election.coverageType}} {{election.institution}} of {{ electionLocation }}.</p>
         <p>{{election.description}}</p>
         <p>{{election.notes}}</p>
-        <p>with candidates, electorates, </p>
       </div>
       <div class="col-lg">
         <form class="form-inline">
@@ -33,91 +32,128 @@
         </form>
       </div>
     </div>
-
-    <hr>
-    <h3>Assemblies</h3>
-    <div class="row mx-1 row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-3">
-      <div class="col mb-4" *ngFor="let assembly of assemblies$ | async">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">
-              {{assembly.title}}
-            </h5>
-            <p class="card-text">
-              {{assembly.description}}
-            </p>
-            <a [routerLink]="['/assembly', assembly.code]" class="card-link">Assembly</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr>
   </div>
 
   <div class="container-fluid">
 
-    <h3>Candidates</h3>
-    <div class="row mx-1 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-      <div class="col mb-4" *ngFor="let candidate of candidates$ | async">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">
-              {{candidate.nameFirst}} {{candidate.nameLast}}
-            </h5>
-            <p class="card-text">
-              {{candidate.description}}
-            </p>
-            <p class="card-text">
-              {{candidate.ballotEntry}}
-            </p>
-            <a [routerLink]="['/candidate', candidate.code]" class="card-link">Candidate</a>
-            <a [routerLink]="['/assembly', candidate.assembly]" class="card-link">Assembly</a>
-            <a [routerLink]="['/party', candidate.party]" class="card-link">Party</a>
-            <a [routerLink]="['/electorate', candidate.electorate]" class="card-link">Electorate</a>
+    <section *ngIf="{
+      assembliesDisplay: assembliesDisplay$ | async,
+      assemblies: assemblies$ | async
+      } as data">
+      <h3>
+        Assemblies
+        <small class="text-muted">
+          &ndash; showing {{ data.assembliesDisplay.length }} of {{ data.assemblies.length }}
+        </small>
+      </h3>
+      <div class="row mx-1 row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-3 justify-content-center">
+        <div class="col mb-4" *ngFor="let assembly of data.assembliesDisplay">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{assembly.title}}
+              </h5>
+              <p class="card-text">
+                {{assembly.description}}
+              </p>
+              <a [routerLink]="['/assembly', assembly.code]" class="card-link">Assembly</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <h3>Electorates</h3>
-    <div class="row mx-1 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-      <div class="col mb-4" *ngFor="let electorate of electorates$ | async">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">
-              {{electorate.title}}
-            </h5>
-            <p class="card-text">
-              {{electorate.description}}
-            </p>
-            <a [routerLink]="['/electorate', electorate.code]" class="card-link">Electorate</a>
-            <a [routerLink]="['/assembly', electorate.assembly]" class="card-link">Assembly</a>
+    <section *ngIf="{
+      candidatesDisplay: candidatesDisplay$ | async,
+      candidates: candidates$ | async
+      } as data">
+      <h3>
+        Candidates
+        <small class="text-muted">
+          &ndash; showing {{ data.candidatesDisplay.length }} of {{ data.candidates.length }}
+        </small>
+      </h3>
+      <div class="row mx-1 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+        <div class="col mb-4" *ngFor="let candidate of data.candidatesDisplay">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{candidate.nameFirst}} {{candidate.nameLast}}
+              </h5>
+              <p class="card-text">
+                {{candidate.description}}
+              </p>
+              <p class="card-text">
+                {{candidate.ballotEntry}}
+              </p>
+              <a [routerLink]="['/candidate', candidate.code]" class="card-link">Candidate</a>
+              <a [routerLink]="['/assembly', candidate.assembly]" class="card-link">Assembly</a>
+              <a [routerLink]="['/party', candidate.party]" class="card-link">Party</a>
+              <a [routerLink]="['/electorate', candidate.electorate]" class="card-link">Electorate</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-
-    <h3>Parties</h3>
-    <div class="row mx-1 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-      <div class="col mb-4" *ngFor="let party of parties$ | async">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">
-              {{party.title}}
-            </h5>
-            <p class="card-text">
-              {{party.description}}
-            </p>
-            <a [routerLink]="['/party', party.code]" class="card-link">Party</a>
+    <section *ngIf="{
+      electoratesDisplay: electoratesDisplay$ | async,
+      electorates: electorates$ | async
+      } as data">
+      <h3>
+        Electorates
+        <small class="text-muted">
+          &ndash; showing {{ data.electoratesDisplay.length }} of {{ data.electorates.length }}
+        </small>
+      </h3>
+      <div class="row mx-1 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+        <div class="col mb-4" *ngFor="let electorate of data.electoratesDisplay">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{electorate.title}}
+              </h5>
+              <p class="card-text">
+                {{electorate.description}}
+              </p>
+              <a [routerLink]="['/vote', electorate.code]" class="card-link">Vote Plan</a>
+              <a [routerLink]="['/electorate', electorate.code]" class="card-link">Electorate</a>
+              <a [routerLink]="['/assembly', electorate.assembly]" class="card-link">Assembly</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <section *ngIf="{
+      partiesDisplay: partiesDisplay$ | async,
+      parties: parties$ | async
+      } as data">
+      <h3>
+        Parties
+        <small class="text-muted">
+          &ndash; showing {{ data.partiesDisplay.length }} of {{ data.parties.length }}
+        </small>
+      </h3>
+      <div class="row mx-1 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+        <div class="col mb-4" *ngFor="let party of data.partiesDisplay">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{party.title}}
+              </h5>
+              <p class="card-text">
+                {{party.description}}
+              </p>
+              <a [routerLink]="['/party', party.code]" class="card-link">Party</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
   </div>
 </div>
-
 
 <ng-template #loading let-election>
   <div class="container">

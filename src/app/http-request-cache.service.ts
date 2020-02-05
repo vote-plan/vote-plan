@@ -41,15 +41,18 @@ export class HttpRequestCacheMapService implements RequestCacheService {
     }
 
     const isExpired = cached.lastRead < (Date.now() - maxAge);
-    const expired = isExpired ? 'expired ' : '';
-    this.messenger.debug(
-      `Found ${expired}cached response for "${url}".`);
+    if (isExpired) {
+      this.messenger.debug(`[HttpRequestCacheMapService] Found expired cached response, returning undefined for "${url}".`);
+    } else {
+      this.messenger.debug(`[HttpRequestCacheMapService] Returning cached response for "${url}".`);
+    }
+
     return isExpired ? undefined : cached.response;
   }
 
   put(req: HttpRequest<any>, response: HttpResponse<any>): void {
     const url = req.urlWithParams;
-    this.messenger.debug(`Caching response from "${url}".`);
+    this.messenger.debug(`[HttpRequestCacheMapService] Caching response from "${url}".`);
 
     const entry = {url, response, lastRead: Date.now()};
     this.cache.set(url, entry);
@@ -62,6 +65,6 @@ export class HttpRequestCacheMapService implements RequestCacheService {
       }
     });
 
-    this.messenger.debug(`Request cache size: ${this.cache.size}.`);
+    this.messenger.debug(`[HttpRequestCacheMapService] Request cache size: ${this.cache.size}.`);
   }
 }

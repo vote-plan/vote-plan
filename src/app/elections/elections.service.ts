@@ -163,7 +163,7 @@ export class ElectionsService {
   /**
    * Get the election day as a date.
    */
-  electionDate(election: Election) {
+  electionDate(election: Election): Date {
     return new Date(
       election.dateYear,
       election.dateMonth != null ? election.dateMonth - 1 : 0,
@@ -182,13 +182,25 @@ export class ElectionsService {
     ].filter(i => i).join(', ');
   }
 
-  assembliesForElection(electionCode: string, searchValue: string = null): Observable<Assembly[]> {
-    const items = this.electionLoad(
+  assembliesForElection(electionCode: string): Observable<Assembly[]> {
+    return this.electionLoad(
       electionCode
     ).pipe(
       map(data => data.assemblies.filter(item => item.election === electionCode)),
     );
-    return this.entitiesDisplay(items, searchValue);
+  }
+
+  assembliesForParty(partyCode: string): Observable<Assembly[]> {
+    return this.electionLoad(
+      partyCode
+    ).pipe(
+      map(data => {
+        // get the assemblies that have candidates in the given party
+        const parties = data.parties.filter(item => item.code === partyCode).map(item => item.code);
+        const assemblyCodes = data.candidates.filter(item => parties.includes(item.party)).map(item => item.assembly);
+        return data.assemblies.filter(item => assemblyCodes.includes(item.code));
+      })
+    );
   }
 
   /**
@@ -206,24 +218,34 @@ export class ElectionsService {
     );
   }
 
-  electoratesForAssembly(assemblyCode: string, searchValue: string = null): Observable<Electorate[]> {
-    const electorates = this.electionLoad(
+  electoratesForAssembly(assemblyCode: string): Observable<Electorate[]> {
+    return this.electionLoad(
       assemblyCode
     ).pipe(
       map(data => data.electorates.filter(electorate => electorate.assembly === assemblyCode)),
     );
-    return this.entitiesDisplay(electorates, searchValue);
   }
 
-  electoratesForElection(electionCode: string, searchValue: string = null): Observable<Electorate[]> {
-    const electorates = this.electionLoad(
+  electoratesForElection(electionCode: string): Observable<Electorate[]> {
+    return this.electionLoad(
       electionCode
     ).pipe(
       map(data => data.electorates.filter(electorate => electorate.election === electionCode)),
     );
-    return this.entitiesDisplay(electorates, searchValue);
   }
 
+  electoratesForParty(partyCode: string): Observable<Electorate[]> {
+    return this.electionLoad(
+      partyCode
+    ).pipe(
+      map(data => {
+        // get the electorates that have candidates in the given party
+        const parties = data.parties.filter(item => item.code === partyCode).map(item => item.code);
+        const electorateCodes = data.candidates.filter(item => parties.includes(item.party)).map(item => item.electorate);
+        return data.electorates.filter(item => electorateCodes.includes(item.code));
+      }),
+    );
+  }
 
   /**
    * Retrieve an electorate.
@@ -240,40 +262,36 @@ export class ElectionsService {
     );
   }
 
-  assemblyCandidates(assemblyCode: string, searchValue: string = null): Observable<Candidate[]> {
-    const items = this.electionLoad(
+  candidatesForAssembly(assemblyCode: string): Observable<Candidate[]> {
+    return this.electionLoad(
       assemblyCode
     ).pipe(
       map(data => data.candidates.filter(item => item.assembly === assemblyCode)),
     );
-    return this.entitiesNameDisplay(items, searchValue);
   }
 
-  partyCandidates(partyCode: string, searchValue: string = null): Observable<Candidate[]> {
-    const items = this.electionLoad(
+  candidatesForParty(partyCode: string): Observable<Candidate[]> {
+    return this.electionLoad(
       partyCode
     ).pipe(
       map(data => data.candidates.filter(item => item.party === partyCode)),
     );
-    return this.entitiesNameDisplay(items, searchValue);
   }
 
-  electionCandidates(electionCode: string, searchValue: string = null): Observable<Candidate[]> {
-    const items = this.electionLoad(
+  candidatesForElection(electionCode: string): Observable<Candidate[]> {
+    return this.electionLoad(
       electionCode
     ).pipe(
       map(data => data.candidates.filter(item => item.election === electionCode)),
     );
-    return this.entitiesNameDisplay(items, searchValue);
   }
 
-  electorateCandidates(electorateCode: string, searchValue: string = null): Observable<Candidate[]> {
-    const items = this.electionLoad(
+  candidatesForElectorate(electorateCode: string): Observable<Candidate[]> {
+    return this.electionLoad(
       electorateCode
     ).pipe(
       map(data => data.candidates.filter(item => item.electorate === electorateCode)),
     );
-    return this.entitiesNameDisplay(items, searchValue);
   }
 
   /**
@@ -291,13 +309,38 @@ export class ElectionsService {
     );
   }
 
-  electionParties(electionCode, searchValue: string = null): Observable<Party[]> {
-    const items = this.electionLoad(
+  partiesForElection(electionCode: string): Observable<Party[]> {
+    return this.electionLoad(
       electionCode
     ).pipe(
       map(data => data.parties.filter(item => item.election === electionCode)),
     );
-    return this.entitiesDisplay(items, searchValue);
+  }
+
+  partiesForAssembly(assemblyCode: string): Observable<Party[]> {
+    return this.electionLoad(
+      assemblyCode
+    ).pipe(
+      map(data => {
+        // get the parties that have candidates in the given assembly
+        const candidates = data.candidates.filter(item => item.assembly === assemblyCode);
+        const parties = candidates.map(item => item.party);
+        return data.parties.filter(item => parties.includes(item.code));
+      }),
+    );
+  }
+
+  partiesForElectorate(electorateCode: string): Observable<Party[]> {
+    return this.electionLoad(
+      electorateCode
+    ).pipe(
+      map(data => {
+        // get the parties that have candidates in the given electorate
+        const candidates = data.candidates.filter(item => item.electorate === electorateCode);
+        const parties = candidates.map(item => item.party);
+        return data.parties.filter(item => parties.includes(item.code));
+      }),
+    );
   }
 
   /**
@@ -312,6 +355,49 @@ export class ElectionsService {
       map(data => data.parties),
       concatMap(item => item),
       first(item => item.code === code)
+    );
+  }
+
+  ballotEntry(code: string): Observable<BallotEntry> {
+    return this.electionLoad(
+      code
+    ).pipe(
+      map(data => data.ballotEntries),
+      concatMap(item => item),
+      first(item => item.code === code)
+    );
+  }
+
+  entitiesTitleDisplay<T extends TitleDescriptionFilter>(values: Observable<T[]>, searchValue: string = null): Observable<T[]> {
+    const searchValueUpper = searchValue ? searchValue.toUpperCase() : '';
+    const needles = searchValueUpper.split(' ').filter(i => i);
+    return values.pipe(
+      map(items => items.filter(item => {
+        const haystack = [item.title, item.description].filter(i => i).map(i => i.toUpperCase());
+        return needles.length > 0 ? needles.every(n => haystack.some(h => h.includes(n))) : true;
+      })),
+      map(items => items.sort((a, b) =>
+        (a.title ? a.title.toString().toUpperCase() : '').localeCompare(b.title ? b.title.toString().toUpperCase() : ''))),
+      map(items => items.slice(0, this.maxItems)),
+    );
+  }
+
+  entitiesNameDisplay<T extends NamesBallotFilter>(values: Observable<T[]>, searchValue: string = null): Observable<T[]> {
+    const searchValueUpper = searchValue ? searchValue.toUpperCase() : '';
+    const needles = searchValueUpper.split(' ').filter(i => i);
+    return values.pipe(
+      map(items => items.filter(item => {
+        const haystack = [
+          item.nameFirst,
+          item.nameLast,
+          item.ballotEntry,
+          item.description,
+        ].filter(i => i).map(i => i.toUpperCase());
+        return needles.length > 0 ? needles.every(n => haystack.some(h => h.includes(n))) : true;
+      })),
+      map(items => items.sort((a, b) =>
+        (a.nameLast ? a.nameLast.toString().toUpperCase() : '').localeCompare(b.nameLast ? b.nameLast.toString().toUpperCase() : ''))),
+      map(items => items.slice(0, this.maxItems)),
     );
   }
 
@@ -336,39 +422,6 @@ export class ElectionsService {
       `/assets/${electionCode}.json`
     ).pipe(
       retry(3)
-    );
-  }
-
-  private entitiesDisplay<T extends TitleDescriptionFilter>(electorates: Observable<T[]>, searchValue: string = null): Observable<T[]> {
-    const searchValueUpper = searchValue ? searchValue.toUpperCase() : '';
-    const needles = searchValueUpper.split(' ').filter(i => i);
-    return electorates.pipe(
-      map(items => items.filter(item => {
-        const haystack = [item.title, item.description].filter(i => i).map(i => i.toUpperCase());
-        return needles.length > 0 ? needles.every(n => haystack.some(h => h.includes(n))) : true;
-      })),
-      map(items => items.sort((a, b) =>
-        (a.title ? a.title.toString().toUpperCase() : '').localeCompare(b.title ? b.title.toString().toUpperCase() : ''))),
-      map(items => items.slice(0, this.maxItems)),
-    );
-  }
-
-  private entitiesNameDisplay<T extends NamesBallotFilter>(electorates: Observable<T[]>, searchValue: string = null): Observable<T[]> {
-    const searchValueUpper = searchValue ? searchValue.toUpperCase() : '';
-    const needles = searchValueUpper.split(' ').filter(i => i);
-    return electorates.pipe(
-      map(items => items.filter(item => {
-        const haystack = [
-          item.nameFirst,
-          item.nameLast,
-          item.ballotEntry,
-          item.description,
-        ].filter(i => i).map(i => i.toUpperCase());
-        return needles.length > 0 ? needles.every(n => haystack.some(h => h.includes(n))) : true;
-      })),
-      map(items => items.sort((a, b) =>
-        (a.nameLast ? a.nameLast.toString().toUpperCase() : '').localeCompare(b.nameLast ? b.nameLast.toString().toUpperCase() : ''))),
-      map(items => items.slice(0, this.maxItems)),
     );
   }
 }

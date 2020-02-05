@@ -1,5 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { MessageService } from '../../message.service';
+import { MessageService, MessageToast } from '../../message.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-app-notification',
@@ -8,15 +9,22 @@ import { MessageService } from '../../message.service';
 })
 export class AppNotificationComponent implements OnInit {
 
+  toasts$: Observable<MessageToast[]>;
+
   constructor(
     private messageService: MessageService
   ) {
   }
 
   ngOnInit() {
+    this.toasts$ = this.messageService.toasts$;
   }
 
-  isTemplate(toast) {
-    return toast.textOrTpl instanceof TemplateRef;
+  isTemplate(toast: MessageToast): boolean {
+    return toast.toast.template instanceof TemplateRef;
+  }
+
+  removeToast(toast: MessageToast) {
+    this.messageService.remove(toast);
   }
 }
