@@ -47,9 +47,6 @@ class ProcessAuActAdminArea(ProcessBase):
 
         return result
 
-    def _augment(self, result: Dict[str, Any], input_data: Dict[str, Any]) -> Dict[str, Any]:
-        return result
-
     def _parse(self, election_code: str, raw_data: Dict[str, List[Dict[str, Any]]]) -> Dict[str, Any]:
         candidates = raw_data['candidates']
         electorates = raw_data['electorates']

@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-lg" *ngIf="{election: election$ | async} as data">
         <p>{{party.description}}</p>
-        <p>For <a [routerLink]="['/election', data.election.code]">{{ data.election.title }} Election</a>.</p>
+        <p>Members of this party are candidates in the <a [routerLink]="['/election', data.election.code]">{{ data.election.title }} Election</a>.</p>
         <p>{{party.notes}}</p>
       </div>
       <div class="col-lg">
@@ -76,17 +76,14 @@
           <div class="card h-100">
             <div class="card-body">
               <h5 class="card-title">
-                {{candidate.nameFirst}} {{candidate.nameLast}}
+                {{candidate.nameFirst}} <em>{{candidate.nameLast}}</em>
               </h5>
               <p class="card-text">
                 {{candidate.description}}
               </p>
-              <p class="card-text">
-                {{candidate.ballotEntry}}
-              </p>
+              <a [routerLink]="['/vote', candidate.electorate]" class="card-link">Vote Plan</a>
               <a [routerLink]="['/candidate', candidate.code]" class="card-link">Candidate</a>
               <a [routerLink]="['/assembly', candidate.assembly]" class="card-link">Assembly</a>
-              <a [routerLink]="['/party', candidate.party]" class="card-link">Party</a>
               <a [routerLink]="['/electorate', candidate.electorate]" class="card-link">Electorate</a>
             </div>
           </div>

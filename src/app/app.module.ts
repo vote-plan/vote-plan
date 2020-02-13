@@ -18,6 +18,8 @@ import { MessageService } from './message.service';
 import { HttpRequestCacheMapService, RequestCacheService } from './http-request-cache.service';
 import { AppNotificationComponent } from './shared/app-notification/app-notification.component';
 import { MomentModule } from 'ngx-moment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HelpComponent } from './main/help/help.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { MomentModule } from 'ngx-moment';
     AppBreadcrumbComponent,
     NewsComponent,
     AppNotificationComponent,
+    HelpComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ import { MomentModule } from 'ngx-moment';
     ElectionsModule,
     MomentModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     Title,

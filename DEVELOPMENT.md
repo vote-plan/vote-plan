@@ -158,6 +158,7 @@ The Angular app is structured like this:
     $ ng g component main/page-not-found
     $ ng g component main/about
     $ ng g component main/news
+    $ ng g component main/help
 
     $ ng g module elections/elections --module app --flat --routing
     $ ng g component elections/elections-home

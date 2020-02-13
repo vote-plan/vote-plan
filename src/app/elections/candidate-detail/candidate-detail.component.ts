@@ -9,6 +9,7 @@ import { Election } from '../election';
 import { Assembly } from '../assembly';
 import { Party } from '../party';
 import { BallotEntry } from '../ballot-entry';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-candidate-detail',
@@ -29,7 +30,8 @@ export class CandidateDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: ElectionsService
+    private service: ElectionsService,
+    private modalService: NgbModal
   ) {
   }
 
@@ -50,5 +52,9 @@ export class CandidateDetailComponent implements OnInit {
       this.party$ = this.service.party(item.party);
       this.ballotEntry$ = this.service.ballotEntry(item.ballotEntry);
     });
+  }
+
+  open(content) {
+    this.modalService.open(content, { centered: true });
   }
 }
