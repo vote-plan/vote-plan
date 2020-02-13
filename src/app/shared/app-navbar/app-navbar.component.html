@@ -34,6 +34,12 @@
                       [hidden]="!navCurrentIsAbout()">(current)</span>
         </a>
       </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/help" (click)="isMenuCollapsed = true">
+          Help <span class="sr-only" [style.display]="navCurrentIsHelp() ? '' : 'none'"
+                     [hidden]="!navCurrentIsHelp()">(current)</span>
+        </a>
+      </li>
     </ul>
   </div>
 </nav>

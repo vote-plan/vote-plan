@@ -1,33 +1,72 @@
 <div *ngIf="candidate$ | async as candidate; else loading">
-  <div class="container">
-    <h2>
-      {{candidate.nameFirst}} {{ candidate.nameLast }}
-      <small class="text-muted">Candidate</small>
-    </h2>
-    <div class="row">
-      <div class="col-lg" *ngIf="{
+  <div class="container" *ngIf="{
       election: election$ | async,
       assembly: assembly$ | async,
       electorate: electorate$ | async,
       party: party$ | async,
       ballotEntry: ballotEntry$ | async
       } as data">
-        <p>{{candidate.description}}</p>
-        <p>Ballot name: {{ data.ballotEntry.name}}.</p>
-        <p>Ballot position: {{ data.ballotEntry.position }}.</p>
-        <p>For <a [routerLink]="['/vote', candidate.electorate]" class="card-link">Vote Plan</a>.</p>
-        <p>For <a [routerLink]="['/election', data.election.code]">{{ data.election.title }} Election</a>.</p>
-        <p>For <a [routerLink]="['/assembly', data.assembly.code]">{{ data.assembly.title }}</a>.</p>
-        <p>For <a [routerLink]="['/electorate', data.electorate.code]">{{ data.electorate.title }}</a>.</p>
-        <p>For <a [routerLink]="['/party', data.party.code]">{{ data.party.title }}</a>.</p>
-        <p>{{candidate.notes}}</p>
-      </div>
-      <div class="col-lg">
-      </div>
-    </div>
-  </div>
-</div>
+    <h2>
+      {{candidate.nameFirst}} {{ candidate.nameLast }}
+      <small class="text-muted">Candidate</small>
+    </h2>
+    <p>{{candidate.description}}</p>
+    <p>
+      A candidate for the
+      <a [routerLink]="['/assembly', data.assembly.code]">{{ data.assembly.title }}</a>
+      in the seat of
+      <a [routerLink]="['/electorate', data.electorate.code]">{{ data.electorate.title }}</a>
+      for the
+      <a [routerLink]="['/election', data.election.code]">{{ data.election.title }} Election</a>.
+    </p>
+    <p>
+      A member of the
+      <a [routerLink]="['/party', data.party.code]">{{ data.party.title }}</a>.
+    </p>
+    <p>
+      At ballot position {{ data.ballotEntry.position }}.
+    </p>
+    <p>
+      <a [routerLink]="['/vote', candidate.electorate]">Plan your vote</a>
+      for {{ data.electorate.title }}.
+    </p>
 
+    <p>
+      <a [routerLink]="" (click)="open(moreInformation)">More information</a>
+    </p>
+
+  </div>
+
+  <ng-template #moreInformation let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">More information</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <ul *ngIf="candidate.notes.length > 0; else elseBlock">
+        <ng-template ngFor let-note [ngForOf]="candidate.notes">
+          <li *ngIf="note.contentText">
+            <a *ngIf="note.noteType == 'url'" href="{{ note.contentText }}">
+              {{  note.displayText }}
+            </a>
+            <span *ngIf="note.noteType != 'url'">
+          {{  note.displayText }}: {{ note.contentText }}
+        </span>
+          </li>
+        </ng-template>
+      </ul>
+      <ng-template #elseBlock>
+        <p>No additional information available.</p>
+      </ng-template>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+
+</div>
 
 <ng-template #loading let-candidate>
   <div class="container">
@@ -35,3 +74,5 @@
     <p>Loading...</p>
   </div>
 </ng-template>
+
+

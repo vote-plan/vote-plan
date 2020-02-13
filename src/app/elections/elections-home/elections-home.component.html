@@ -1,4 +1,7 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="{
+      electionsDisplay: electionsDisplayed$ | async,
+      elections: elections$ | async
+      } as data">
 
   <div class="jumbotron jumbotron-fluid" style="background-color: unset;">
     <div class="container">
@@ -7,6 +10,7 @@
         <div class="col-lg">
           <p class="lead">Plan your vote before voting day.</p>
           <p>Find your election by entering something about it in the text box.</p>
+          <p>Showing {{ data.electionsDisplay.length }} of {{ data.elections.length }} elections.</p>
         </div>
         <div class="col-lg">
           <form class="form-inline">
@@ -31,7 +35,7 @@
 
   <div class="row mx-1 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
 
-    <div class="col mb-4" *ngFor="let election of electionsDisplayed$ | async">
+    <div class="col mb-4" *ngFor="let election of data.electionsDisplay">
       <div class="card h-100">
         <div class="card-body">
           <h5 class="card-title">
@@ -44,11 +48,10 @@
             {{getElectionDate(election) | amDateFormat:'ddd, Do MMM YYYY' }}
           </h6>
           <p class="card-text">
-            For {{election.institution}} of {{ getElectionLocationText(election) }}.
+            {{election.institution}} of {{ getElectionLocationText(election) }}
             {{election.description}}
           </p>
           <a [routerLink]="['/election', election.code]" class="card-link">Find my candidates</a>
-          <a href="#" class="card-link">Official website</a>
         </div>
       </div>
     </div>

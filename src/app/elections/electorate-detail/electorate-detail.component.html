@@ -7,10 +7,16 @@
     <div class="row">
       <div class="col-lg" *ngIf="{election: election$ | async, assembly: assembly$ | async} as data">
         <p>{{electorate.description}}</p>
-        <p><a [routerLink]="['/vote', electorate.code]" class="card-link">Vote Plan</a></p>
-        <p>For <a [routerLink]="['/election', data.election.code]">{{ data.election.title }} Election</a>.</p>
-        <p>For <a [routerLink]="['/assembly', data.assembly.code]">{{ data.assembly.title }}</a>.</p>
-        <p>{{electorate.notes}}</p>
+        <p>
+          A seat in the
+          <a [routerLink]="['/assembly', data.assembly.code]">{{ data.assembly.title }}</a>
+          for the
+          <a [routerLink]="['/election', data.election.code]">{{ data.election.title }} Election</a>.
+        </p>
+        <p>
+          <a [routerLink]="['/vote', electorate.code]">Plan your vote</a>
+          for {{ electorate.title }}.
+        </p>
       </div>
       <div class="col-lg">
         <form class="form-inline">
@@ -30,8 +36,6 @@
         </form>
       </div>
     </div>
-
-    <hr>
   </div>
 
   <div class="container-fluid">
@@ -51,18 +55,13 @@
           <div class="card h-100">
             <div class="card-body">
               <h5 class="card-title">
-                {{candidate.nameFirst}} {{candidate.nameLast}}
+                {{candidate.nameFirst}} <em>{{candidate.nameLast}}</em>
               </h5>
               <p class="card-text">
                 {{candidate.description}}
               </p>
-              <p class="card-text">
-                {{candidate.ballotEntry}}
-              </p>
               <a [routerLink]="['/candidate', candidate.code]" class="card-link">Candidate</a>
-              <a [routerLink]="['/assembly', candidate.assembly]" class="card-link">Assembly</a>
               <a [routerLink]="['/party', candidate.party]" class="card-link">Party</a>
-              <a [routerLink]="['/electorate', candidate.electorate]" class="card-link">Electorate</a>
             </div>
           </div>
         </div>
@@ -102,7 +101,7 @@
 
 <ng-template #loading let-electorate>
   <div class="container">
-    <h2>Party</h2>
+    <h2>Electorate</h2>
     <p>Loading...</p>
   </div>
 </ng-template>

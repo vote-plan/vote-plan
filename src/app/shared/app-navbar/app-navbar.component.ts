@@ -28,6 +28,10 @@ export class AppNavbarComponent implements OnInit {
     return this.router.isActive('/news', false);
   }
 
+  navCurrentIsHelp() {
+    return this.router.isActive('/help', false);
+  }
+
   navCurrentIsElectionsHome() {
     return this.router.isActive('/', true);
   }

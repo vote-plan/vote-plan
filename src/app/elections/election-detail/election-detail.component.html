@@ -78,13 +78,10 @@
           <div class="card h-100">
             <div class="card-body">
               <h5 class="card-title">
-                {{candidate.nameFirst}} {{candidate.nameLast}}
+                {{candidate.nameFirst}} <em>{{candidate.nameLast}}</em>
               </h5>
               <p class="card-text">
                 {{candidate.description}}
-              </p>
-              <p class="card-text">
-                {{candidate.ballotEntry}}
               </p>
               <a [routerLink]="['/candidate', candidate.code]" class="card-link">Candidate</a>
               <a [routerLink]="['/assembly', candidate.assembly]" class="card-link">Assembly</a>

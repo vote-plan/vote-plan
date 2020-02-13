@@ -15,9 +15,6 @@ class ProcessAuNtAdminArea(ProcessBase):
     def _load_raw(self, file_path: str):
         return {}
 
-    def _augment(self, result: Dict[str, Any], input_data: Dict[str, Any]) -> Dict[str, Any]:
-        return result
-
     def _parse(self, election_code: str, raw_data) -> Dict[str, Any]:
         result = self._empty_result()
 

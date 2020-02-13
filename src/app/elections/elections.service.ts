@@ -134,22 +134,21 @@ export class ElectionsService {
    * If inconsistent results are returned, then the sort order is undefined.
    */
 
-    // if a's date is after now, and b's date is before now, sort a higher than b
+    // if a's date is after now, and b's date is before now, a comes before b
     if (dateA > dateNow && dateB < dateNow) {
       return -1;
     }
-    // if a's date is before now, and b's date is after now, sort b higher than a
+
+    // if a's date is before now, and b's date is after now, a comes after b
     if (dateA < dateNow && dateB > dateNow) {
-      return -1;
+      return 1;
     }
 
     // if both are in the future, sort upcoming higher
-    if (dateA > dateNow && dateB > dateNow) {
-      if (dateA < dateB) {
-        return -1;
-      } else {
-        return 1;
-      }
+    if (dateA > dateNow && dateB > dateNow && dateA < dateB) {
+      return -1;
+    } else if (dateA > dateNow && dateB > dateNow && dateA >= dateB) {
+      return 1;
     }
 
     // otherwise put more recent dates earlier

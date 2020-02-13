@@ -51,7 +51,49 @@ class ProcessBase:
         raise Exception("Must implement '_parse'.")
 
     def _augment(self, result: Dict[str, Any], input_data: Dict[str, Any]) -> Dict[str, Any]:
-        raise Exception("Must implement '_augment'.")
+        """
+        Augment the result with data from input data file.
+        Additional data is added by referencing items using the `code`.
+        The code cannot be changed, other items can be modified or appended.
+        """
+        # election
+        self._augment_item(
+            result['elections'], input_data['elections'],
+            ['title', 'description', 'institution', 'locationCountry', 'locationAdministrativeAreaName',
+             'locationLocalityName', 'coverageType', 'dateYear', 'dateMonth', 'dateDay'],
+            ['assemblies', 'parties', 'notes'])
+
+        # party
+        self._augment_item(
+            result['parties'], input_data['parties'],
+            ['title', 'description', 'election'],
+            ['candidates', 'notes'])
+
+        # assembly
+        self._augment_item(
+            result['assemblies'], input_data['assemblies'],
+            ['title', 'description', 'election'],
+            ['electorates', 'notes'])
+
+        # electorate
+        self._augment_item(
+            result['assemblies'], input_data['assemblies'],
+            ['title', 'description', 'assembly', 'election'],
+            ['candidates', 'notes'])
+
+        # candidate
+        self._augment_item(
+            result['candidates'], input_data['candidates'],
+            ['nameFirst', 'nameLast', 'description', 'assembly', 'ballotEntry', 'party', 'election', 'electorate'],
+            ['notes'])
+
+        # ballot entry
+        self._augment_item(
+            result['ballotEntries'], input_data['ballotEntries'],
+            ['position', 'name', 'assembly', 'candidate', 'election', 'electorate', 'party', ],
+            ['notes'])
+
+        return result
 
     def _load_input(self, file_path: str) -> Dict[str, Any]:
         return self._read_json(file_path)
@@ -108,3 +150,30 @@ class ProcessBase:
 
         if candidate_code not in party['candidates']:
             party['candidates'].append(candidate_code)
+
+    def _match_code(self, result_code: str, additional_code: str) -> bool:
+        """If no code is specified, then the additional data applies to all items.
+        The code is matched by 'contain', so the code can be a partial code."""
+
+        if not additional_code:
+            return True
+
+        return additional_code in result_code
+
+    def _augment_item(self, result_item, input_data_item, replace_keys, addition_key):
+        for input_item in input_data_item:
+            matching_items = [i for i in result_item if self._match_code(i['code'], input_item['code'])]
+            for key in replace_keys:
+                if key in input_item:
+                    self._augment_replace(matching_items, key, input_item[key])
+            for key in addition_key:
+                if key in input_item:
+                    self._augment_additions(matching_items, key, input_item[key])
+
+    def _augment_replace(self, items: List[Dict[str, Any]], key: str, new_value):
+        for item in items:
+            item[key] = new_value
+
+    def _augment_additions(self, items: List[Dict[str, List]], key: str, new_values: List):
+        for item in items:
+            item[key].extend(new_values)
