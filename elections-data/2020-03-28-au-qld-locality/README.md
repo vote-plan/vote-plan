@@ -13,3 +13,7 @@ LGA list from https://www.business.qld.gov.au/running-business/support-assistanc
 
 LGAQ map - https://www.lgaq.asn.au/lgaq-revamp-theme/map/map2016-v3.html
 Obtained the council urls from the LGAQ map.
+
+
+Candidate information drawn from https://results.elections.qld.gov.au/Events/VoteCardsView?EventID=593&EventType=2
+Accessed 7 March 2020.

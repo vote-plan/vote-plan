@@ -29,6 +29,10 @@ export class PartyDetailComponent implements OnInit {
   candidates$: Observable<Candidate[]>;
 
   displayFilter = '';
+  assembliesMatches$: Observable<Assembly[]>;
+  electoratesMatches$: Observable<Electorate[]>;
+  candidatesMatches$: Observable<Candidate[]>;
+
   assembliesDisplay$: Observable<Assembly[]>;
   electoratesDisplay$: Observable<Electorate[]>;
   candidatesDisplay$: Observable<Candidate[]>;
@@ -66,8 +70,12 @@ export class PartyDetailComponent implements OnInit {
   }
 
   updateDisplay(): void {
-    this.assembliesDisplay$ = this.service.entitiesTitleDisplay(this.assemblies$, this.displayFilter);
-    this.electoratesDisplay$ = this.service.entitiesTitleDisplay(this.electorates$, this.displayFilter);
-    this.candidatesDisplay$ = this.service.entitiesNameDisplay(this.candidates$, this.displayFilter);
+    this.assembliesMatches$ = this.service.entitiesTitleDisplay(this.assemblies$, this.displayFilter);
+    this.electoratesMatches$ = this.service.entitiesTitleDisplay(this.electorates$, this.displayFilter);
+    this.candidatesMatches$ = this.service.entitiesNameDisplay(this.candidates$, this.displayFilter);
+
+    this.assembliesDisplay$ = this.service.entitiesLimit(this.assembliesMatches$);
+    this.electoratesDisplay$ = this.service.entitiesLimit(this.electoratesMatches$);
+    this.candidatesDisplay$ = this.service.entitiesLimit(this.candidatesMatches$);
   }
 }

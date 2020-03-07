@@ -30,6 +30,11 @@ export class ElectionDetailComponent implements OnInit {
   candidates$: Observable<Candidate[]>;
 
   displayFilter = '';
+  assembliesMatches$: Observable<Assembly[]>;
+  partiesMatches$: Observable<Party[]>;
+  electoratesMatches$: Observable<Electorate[]>;
+  candidatesMatches$: Observable<Candidate[]>;
+
   assembliesDisplay$: Observable<Assembly[]>;
   partiesDisplay$: Observable<Party[]>;
   electoratesDisplay$: Observable<Electorate[]>;
@@ -70,10 +75,15 @@ export class ElectionDetailComponent implements OnInit {
   }
 
   updateDisplay(): void {
-    this.assembliesDisplay$ = this.service.entitiesTitleDisplay(this.assemblies$, this.displayFilter);
-    this.partiesDisplay$ = this.service.entitiesTitleDisplay(this.parties$, this.displayFilter);
-    this.electoratesDisplay$ = this.service.entitiesTitleDisplay(this.electorates$, this.displayFilter);
-    this.candidatesDisplay$ = this.service.entitiesNameDisplay(this.candidates$, this.displayFilter);
+    this.assembliesMatches$ = this.service.entitiesTitleDisplay(this.assemblies$, this.displayFilter);
+    this.partiesMatches$ = this.service.entitiesTitleDisplay(this.parties$, this.displayFilter);
+    this.electoratesMatches$ = this.service.entitiesTitleDisplay(this.electorates$, this.displayFilter);
+    this.candidatesMatches$ = this.service.entitiesNameDisplay(this.candidates$, this.displayFilter);
+
+    this.assembliesDisplay$ = this.service.entitiesLimit(this.assembliesMatches$);
+    this.partiesDisplay$ = this.service.entitiesLimit(this.partiesMatches$);
+    this.electoratesDisplay$ = this.service.entitiesLimit(this.electoratesMatches$);
+    this.candidatesDisplay$ = this.service.entitiesLimit(this.candidatesMatches$);
   }
 
 }

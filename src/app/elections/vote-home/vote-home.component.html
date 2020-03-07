@@ -15,6 +15,10 @@
           for the
           <a [routerLink]="['/election', data.election.code]">{{ data.election.title }} Election</a>.
         </p>
+        <p class="lead">
+          <strong>IMPORTANT: Planning your preferences on this site does not constitute submitting a vote.
+            <br>YOU MUST VOTE USING AN OFFICIAL VOTING METHOD.</strong>
+        </p>
 
       </div>
       <div class="col-lg">
@@ -37,10 +41,6 @@
     </div>
     <div class="row">
       <div class="col-lg">
-        <p>Enter the number '1' in the box next to the candidate who is your first choice,
-          and the number '2' in the box next to the candidate who is your second choice,
-          then '3', '4', and so on in the boxes next to the other candidates,
-          in order of your preference.</p>
         <p>Note: Each election may use a different voting method - please check the voting method before voting.</p>
       </div>
     </div>
@@ -53,12 +53,13 @@
 
     <section *ngIf="{
       candidatesDisplay: candidatesDisplay$ | async,
+      candidatesMatches: candidatesMatches$ | async,
       candidates: candidates$ | async
       } as data">
       <h3>
         Candidates
         <small class="text-muted">
-          &ndash; showing {{ data.candidatesDisplay.length }} of {{ data.candidates.length }}
+          &ndash; showing {{ data.candidatesDisplay.length }} of {{ data.candidatesMatches.length }} matches from {{ data.candidates.length }} total
         </small>
       </h3>
       <div class="row mx-1 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">

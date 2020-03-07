@@ -12,7 +12,20 @@
         </p>
         <p>For {{election.coverageType}} {{election.institution}} of {{ electionLocation }}.</p>
         <p>{{election.description}}</p>
-        <p>{{election.notes}}</p>
+        <ul *ngIf="election.notes.length > 0; else elseBlock">
+          <ng-template ngFor let-note [ngForOf]="election.notes">
+            <li *ngIf="note.contentText">
+              <a *ngIf="note.noteType == 'url'" href="{{ note.contentText }}">
+                {{  note.displayText }}
+              </a>
+              <span *ngIf="note.noteType != 'url'">
+          {{  note.displayText }}: {{ note.contentText }}
+        </span>
+            </li>
+          </ng-template>
+        </ul>
+        <ng-template #elseBlock></ng-template>
+
       </div>
       <div class="col-lg">
         <form class="form-inline">
@@ -38,12 +51,13 @@
 
     <section *ngIf="{
       assembliesDisplay: assembliesDisplay$ | async,
+      assembliesMatches: assembliesMatches$ | async,
       assemblies: assemblies$ | async
       } as data">
       <h3>
         Assemblies
         <small class="text-muted">
-          &ndash; showing {{ data.assembliesDisplay.length }} of {{ data.assemblies.length }}
+          &ndash; showing {{ data.assembliesDisplay.length }} of {{ data.assembliesMatches.length }} matches from {{ data.assemblies.length }} total
         </small>
       </h3>
       <div class="row mx-1 row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-3 justify-content-center">
@@ -65,12 +79,13 @@
 
     <section *ngIf="{
       candidatesDisplay: candidatesDisplay$ | async,
+      candidatesMatches: candidatesMatches$ | async,
       candidates: candidates$ | async
       } as data">
       <h3>
         Candidates
         <small class="text-muted">
-          &ndash; showing {{ data.candidatesDisplay.length }} of {{ data.candidates.length }}
+          &ndash; showing {{ data.candidatesDisplay.length }} of {{ data.candidatesMatches.length }} matches from {{ data.candidates.length }} total
         </small>
       </h3>
       <div class="row mx-1 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
@@ -95,12 +110,13 @@
 
     <section *ngIf="{
       electoratesDisplay: electoratesDisplay$ | async,
+      electoratesMatches: electoratesMatches$ | async,
       electorates: electorates$ | async
       } as data">
       <h3>
         Electorates
         <small class="text-muted">
-          &ndash; showing {{ data.electoratesDisplay.length }} of {{ data.electorates.length }}
+          &ndash; showing {{ data.electoratesDisplay.length }} of {{ data.electoratesMatches.length }} matches from {{ data.electorates.length }} total
         </small>
       </h3>
       <div class="row mx-1 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
@@ -124,12 +140,13 @@
 
     <section *ngIf="{
       partiesDisplay: partiesDisplay$ | async,
+      partiesMatches: partiesMatches$ | async,
       parties: parties$ | async
       } as data">
       <h3>
         Parties
         <small class="text-muted">
-          &ndash; showing {{ data.partiesDisplay.length }} of {{ data.parties.length }}
+          &ndash; showing {{ data.partiesDisplay.length }} of {{ data.partiesMatches.length }} matches from {{ data.parties.length }} total
         </small>
       </h3>
       <div class="row mx-1 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">

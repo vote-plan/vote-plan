@@ -377,7 +377,6 @@ export class ElectionsService {
       })),
       map(items => items.sort((a, b) =>
         (a.title ? a.title.toString().toUpperCase() : '').localeCompare(b.title ? b.title.toString().toUpperCase() : ''))),
-      map(items => items.slice(0, this.maxItems)),
     );
   }
 
@@ -396,8 +395,11 @@ export class ElectionsService {
       })),
       map(items => items.sort((a, b) =>
         (a.nameLast ? a.nameLast.toString().toUpperCase() : '').localeCompare(b.nameLast ? b.nameLast.toString().toUpperCase() : ''))),
-      map(items => items.slice(0, this.maxItems)),
     );
+  }
+
+  entitiesLimit<T>(values: Observable<T[]>): Observable<T[]> {
+    return values.pipe(map(items => items.slice(0, this.maxItems)));
   }
 
   /**

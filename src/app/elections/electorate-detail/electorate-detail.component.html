@@ -42,12 +42,13 @@
 
     <section *ngIf="{
       candidatesDisplay: candidatesDisplay$ | async,
+      candidatesMatches: candidatesMatches$ | async,
       candidates: candidates$ | async
       } as data">
       <h3>
         Candidates
         <small class="text-muted">
-          &ndash; showing {{ data.candidatesDisplay.length }} of {{ data.candidates.length }}
+          &ndash; showing {{ data.candidatesDisplay.length }} of {{ data.candidatesMatches.length }} matches from {{ data.candidates.length }} total
         </small>
       </h3>
       <div class="row mx-1 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
@@ -70,12 +71,13 @@
 
     <section *ngIf="{
       partiesDisplay: partiesDisplay$ | async,
+      partiesMatches: partiesMatches$ | async,
       parties: parties$ | async
       } as data">
       <h3>
         Parties
         <small class="text-muted">
-          &ndash; showing {{ data.partiesDisplay.length }} of {{ data.parties.length }}
+          &ndash; showing {{ data.partiesDisplay.length }} of {{ data.partiesMatches.length }} matches from {{ data.parties.length }} total
         </small>
       </h3>
       <div class="row mx-1 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">

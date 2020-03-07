@@ -29,6 +29,7 @@ export class VoteHomeComponent implements OnInit {
   candidates$: Observable<Candidate[]>;
 
   displayFilter = '';
+  candidatesMatches$: Observable<Candidate[]>;
   candidatesDisplay$: Observable<Candidate[]>;
 
   candidates: Candidate[];
@@ -67,9 +68,10 @@ export class VoteHomeComponent implements OnInit {
   }
 
   updateDisplay(): void {
-    this.candidatesDisplay$ = this.service.entitiesNameDisplay(this.candidates$, this.displayFilter)
+    this.candidatesMatches$ = this.service.entitiesNameDisplay(this.candidates$, this.displayFilter)
       .pipe(
         map(items => items.sort((a, b) => a.ballotEntry.localeCompare(b.ballotEntry)))
       );
+    this.candidatesDisplay$ = this.service.entitiesLimit(this.candidatesMatches$);
   }
 }

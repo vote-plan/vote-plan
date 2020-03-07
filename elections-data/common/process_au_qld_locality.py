@@ -1,4 +1,5 @@
 import csv
+import json
 import os
 from typing import Dict, Any
 
@@ -15,7 +16,72 @@ class ProcessAuQldLocality(ProcessBase):
     _assembly_title = 'Legislative Assembly'
 
     def _load_raw(self, file_path: str):
-        return {}
+        result = {
+            'mayors': {
+                'file': os.path.join(
+                    file_path, 'mayor-results.elections.qld.gov.au_Archive [20-03-07 22-46-15].har'),
+                'data': [],
+            },
+            'councillors': {
+                'file': os.path.join(
+                    file_path, 'councillor-results.elections.qld.gov.au_Archive [20-03-07 22-48-46].har'),
+                'data': [],
+            }
+        }
+
+        ballot_order = {}
+
+        for container, details in result.items():
+            raw_data = self._read_json(details['file'])
+            for entry in raw_data['log']['entries']:
+                url = entry['request']['url']
+                if url.endswith('AntiCSRFToken'):
+                    continue
+                elif url.endswith('GetEventInfo'):
+                    data = json.loads(json.loads(entry['response']['content']['text'])['data'])
+                    details['election_info'] = {
+                        'Day': data['Day'],
+                        'EndTime': data['EndTime'],
+                        'EventDate': data['EventDate'],
+                        'EventDateStr': data['EventDateStr'],
+                        'ModifiedTime': data['ModifiedTime'],
+                        'ModifiedTimeStr': data['ModifiedTimeStr'],
+                        'Month': data['Month'],
+                        'StartTime': data['StartTime'],
+                        'Title': data['Title'],
+                        'Week': data['Week'],
+                        'Year': data['Year'],
+                    }
+                elif url.endswith('GetVoteCards'):
+                    data = json.loads(entry['response']['content']['text'])['rows']
+                    for row in data:
+                        electorate_name = row['BoundaryElectorateName']
+                        assembly_name = row['LGAreaElectorateName']
+                        ballot_key = f"{assembly_name}-{electorate_name or 'mayor'}"
+                        if ballot_key not in ballot_order:
+                            ballot_order[ballot_key] = 0
+                        ballot_order[ballot_key] += 1
+                        details['data'].append({
+                            'BoundaryElectorateName': electorate_name,
+                            'BoundaryID': row['BoundaryID'],
+                            'CandidateID': row['CandidateID'],
+                            'CandidateName': row['CandidateName'],
+                            'ContestID': row['ContestID'],
+                            'ContestInfo': row['ContestInfo'],
+                            'EventID': row['EventID'],
+                            'LGAreaElectorateName': assembly_name,
+                            'LGAID': row['LGAID'],
+                            'PartyName': row['PartyName'],
+                            'BallotOrder': ballot_order[ballot_key]
+                        })
+
+                elif url.endswith('GetDropDownList'):
+                    details['drop_down_info'] = json.loads(
+                        json.loads(entry['response']['content']['text'])['data'])
+                else:
+                    raise Exception()
+
+        return result
 
     def _augment(self, result: Dict[str, Any], input_data: Dict[str, Any]) -> Dict[str, Any]:
         """Gather additional information about each council."""
@@ -77,8 +143,6 @@ class ProcessAuQldLocality(ProcessBase):
         return result
 
     def _parse(self, election_code: str, raw_data) -> Dict[str, Any]:
-        # TODO: each local government election is held at the same time.
-        # TODO: once more data is available, generate an assembly per local government, with associated information.
         result = self._empty_result()
 
         result['elections'].append({
@@ -98,22 +162,93 @@ class ProcessAuQldLocality(ProcessBase):
             'notes': [],
         })
 
-        result['assemblies'] = [{
-            'title': self._assembly_title,
-            'description': '',
-            'code': self._create_code(election_code, self._assembly_abbr),
-            'election': election_code,
-            'electorates': [],
-            'notes': [],
-        }]
+        election = result['elections'][0]
 
-        result['parties'].append({
-            'title': 'Independents',
-            'description': '',
-            'code': self._create_code(election_code, self._independents_party),
-            'election': election_code,
-            'candidates': [],
-            'notes': [],
-        })
+        for item in raw_data['councillors']['data'] + raw_data['mayors']['data']:
+            assembly_name = item['LGAreaElectorateName']
+            party_name = item['PartyName']
+            ballot_order = item['BallotOrder']
+            electorate_name = item['BoundaryElectorateName'] or f"{assembly_name} Mayor"
+
+            candidate_names = [i.strip() for i in item['CandidateName'].split(',') if i]
+            name_last = candidate_names[0].title()
+            name_first = candidate_names[1]
+
+            assembly_code = self._create_code(election_code, assembly_name or self._unknown_assembly)
+            electorate_code = self._create_code(assembly_code, electorate_name or self._unknown_electorate)
+            party_code = self._create_code(election_code, party_name or self._unknown_party)
+            ballot_code = self._create_code(electorate_code, ballot_order or self._unknown_ballot_entry)
+            candidate_code = self._create_code(ballot_code, name_last, name_first or '')
+
+            if all(i['code'] != assembly_code for i in result['assemblies']):
+                assembly = {
+                    'title': assembly_name or self._unknown_assembly,
+                    'description': '',
+                    'code': assembly_code,
+                    'election': election_code,
+                    'electorates': [],
+                    'notes': [],
+                }
+                result['assemblies'].append(assembly)
+            else:
+                assembly = next(i for i in result['assemblies'] if i['code'] == assembly_code)
+
+            if all(i['code'] != electorate_code for i in result['electorates']):
+                electorate = {
+                    'title': electorate_name or self._unknown_electorate,
+                    'description': '',
+                    'code': electorate_code,
+                    'election': election_code,
+                    'assembly': assembly_code,
+                    'candidates': [],
+                    'notes': [],
+                }
+                result['electorates'].append(electorate)
+            else:
+                electorate = next(i for i in result['electorates'] if i['code'] == electorate_code)
+
+            if all(i['code'] != ballot_code for i in result['ballotEntries']):
+                result['ballotEntries'].append({
+                    'position': ballot_order,
+                    'name': '',
+                    'code': ballot_code,
+                    'election': election_code,
+                    'assembly': assembly_code,
+                    'electorate': electorate_code,
+                    'candidate': candidate_code,
+                    'party': party_code,
+                    'notes': []
+                })
+
+            if all(i['code'] != party_code for i in result['parties']):
+                party = {
+                    'title': party_name or self._unknown_party,
+                    'description': '',
+                    'code': party_code,
+                    'election': election_code,
+                    'candidates': [],
+                    'notes': []
+                }
+                result['parties'].append(party)
+            else:
+                party = next(i for i in result['parties'] if i['code'] == party_code)
+
+            if all(i['code'] != candidate_code for i in result['candidates']):
+                result['candidates'].append({
+                    'description': '',
+                    'nameLast': (name_last or '').title() or self._unknown_candidate,
+                    'nameFirst': (name_first or '').title(),
+                    'code': candidate_code,
+                    'election': election_code,
+                    'assembly': assembly_code,
+                    'electorate': electorate_code,
+                    'ballotEntry': ballot_code,
+                    'party': party_code,
+                    'notes': []
+                })
+
+            # add the codes to the respective lists
+            self._add_codes(election, assembly, assembly_code, party, party_code,
+                            electorate, electorate_code, candidate_code)
 
         return result

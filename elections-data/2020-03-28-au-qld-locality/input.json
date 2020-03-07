@@ -4,18 +4,18 @@
       "code": "",
       "notes": [
         {
-          "displayText": "Queensland Government - Local government elections",
-          "contentText": "https://www.dlgrma.qld.gov.au/local-government/local-government-elections.html",
+          "displayText": "Electoral Commission Queensland - 2020 Local Government Elections",
+          "contentText": "https://www.ecq.qld.gov.au/elections/election-events/2020-local-government-elections",
+          "noteType": "url"
+        },
+        {
+          "displayText": "ABC - 2020 Queensland Local Government Election Guide",
+          "contentText": "https://www.abc.net.au/news/elections/bcc/2020/guide/preview",
           "noteType": "url"
         },
         {
           "displayText": "Wikipedia - Local government in Queensland",
           "contentText": "https://en.wikipedia.org/wiki/Local_government_in_Queensland",
-          "noteType": "url"
-        },
-        {
-          "displayText": "Electoral Commission Queensland - 2020 Local Government Elections",
-          "contentText": "https://www.ecq.qld.gov.au/elections/election-events/2020-local-government-elections",
           "noteType": "url"
         }
       ]

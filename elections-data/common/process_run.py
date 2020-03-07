@@ -7,6 +7,7 @@ from process_au_nat_country import ProcessAuNatCountry
 from process_au_nt_admin_area import ProcessAuNtAdminArea
 from process_au_qld_admin_area import ProcessAuQldAdminArea
 from process_au_qld_locality import ProcessAuQldLocality
+from process_au_wa_admin_area import ProcessAuWAAdminArea
 
 
 class ProcessRun:
@@ -16,6 +17,7 @@ class ProcessRun:
         'au-qld-locality': ProcessAuQldLocality,
         'au-act-adminarea': ProcessAuActAdminArea,
         'au-nt-adminarea': ProcessAuNtAdminArea,
+        'au-wa-adminarea': ProcessAuWAAdminArea,
     }
     _compact_json = True
 
