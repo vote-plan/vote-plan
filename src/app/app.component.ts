@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Title} from '@angular/platform-browser';
+import {MessageService} from './main/message.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.styl']
 })
 export class AppComponent {
-  title = 'vote-plan';
+  public constructor(
+    private titleService: Title,
+    private messageService: MessageService
+  ) {
+  }
+
+  setTitle(newTitle: string): void {
+    this.titleService.setTitle(newTitle);
+  }
+
+
 }

@@ -1,0 +1,8 @@
+version: 2
+updates:
+  # Maintain dependencies for GitHub Actions
+  # see https://docs.github.com/en/github/administering-a-repository/configuration-options-for-dependency-updates#package-ecosystem
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"

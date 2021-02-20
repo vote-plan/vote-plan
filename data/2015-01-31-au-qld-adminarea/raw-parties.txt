@@ -1,0 +1,32 @@
+Name of Political Party	Australian Labor Party (State of Queensland)
+Abbreviation	Australian Labor Party
+Registered Officer	Anthony Chisholm
+Date of Registration	14 August 1992
+
+Name of Political Party	Queensland Greens
+Abbreviation	The Greens
+Registered Officer	Neil Cotter
+Date of Registration	6 May 1994
+
+Name of Political Party	Family First Party Queensland
+Abbreviation	Family First Party
+Registered Officer	Sally-Anne Vincent
+Date of Registration	12 April 2006
+
+Name of Political Party	Liberal National Party of Queensland
+Abbreviation	LNP
+Registered Officer	Brad Henderson
+Date of Registration	9 September 2008
+
+Name of Political Party	One Nation Queensland Division
+Abbreviation	One Nation
+Registered Officer	James Savage
+Date of Registration	12 August 2011
+
+Name of Political Party	Katter's Australian Party
+Registered Officer	Ray Sawyer
+Date of Registration	22 September 2011
+
+Name of Political Party	Palmer United Party
+Registered Officer	Clive Mensink
+Date of Registration	5 June 2013

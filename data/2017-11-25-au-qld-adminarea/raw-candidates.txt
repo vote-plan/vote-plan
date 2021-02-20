@@ -1,0 +1,823 @@
+Algester
+Top
+ 	LANYON, Darryl	Pauline Hanson's One Nation
+ 	PATTISON, Clinton	LNP
+ 	ENOCH, Leeanne	Australian Labor Party
+ 	O'BRIEN, Patsy	The Greens
+
+
+Aspley
+Top
+ 	MELLISH, Bart	Australian Labor Party
+ 	HANSEN, James	The Greens
+ 	ROSS, Steve
+ 	SKILBECK, Neil	Civil Liberties, Consumer Rights, No-Tolls
+ 	BYRNE, Shaun	Pauline Hanson's One Nation
+ 	DAVIS, Tracy	LNP
+ 	KING, Zachary
+
+
+Bancroft
+Top
+ 	GRANT, Barry
+ 	THOMAS, Kara	LNP
+ 	DEJUN, Simone	The Greens
+ 	WHITING, Chris	Australian Labor Party
+ 	BOULIS, Christopher	Pauline Hanson's One Nation
+
+
+Barron River
+Top
+ 	TROUT, Michael	LNP
+ 	HODGETTS, Andrew
+ 	BOYD, Cameron	The Greens
+ 	CRAWFORD, Craig	Australian Labor Party
+ 	TONKIN, Cheryl
+ 	SCHEBELLA, Andrew	Pauline Hanson's One Nation
+
+
+Bonney
+Top
+ 	O'CONNOR, Sam	LNP
+ 	NIGHTINGALE, Ron
+ 	HOLZBERGER, Rowan	Australian Labor Party
+ 	JAVANMARD, Amin	The Greens
+ 	BUEGGE, Robert
+
+
+Broadwater
+Top
+ 	BALL, Brenden	Pauline Hanson's One Nation
+ 	KWON, Daniel	The Greens
+ 	CRISAFULLI, David	LNP
+ 	FLORI, Peter	Australian Labor Party
+
+
+Buderim
+Top
+ 	MICKELBERG, Brent	LNP
+ 	MACKENZIE, Ken	Australian Labor Party
+ 	DICKSON, Steve	Pauline Hanson's One Nation
+ 	BURTON, Tracy	The Greens
+
+
+Bulimba
+Top
+ 	LE GOULLON, Bernadette
+ 	JELL, Angus
+ 	WARD, Fiona	LNP
+ 	FARMER, Di	Australian Labor Party
+ 	JODELL, Felicity	The Greens
+
+
+Bundaberg
+Top
+ 	CORBETT, Alan
+ 	SMITH, Richard William
+ 	GLASS, Richard
+ 	BUCHANAN, Marianne	The Greens
+ 	DONALDSON, Leanne	Australian Labor Party
+ 	BATT, David	LNP
+ 	TRUSCOTT, Jane	Pauline Hanson's One Nation
+
+
+Bundamba
+Top
+ 	HERBERT, Patrick	LNP
+ 	LIN, Shan-Ju
+ 	JUDD, Trevor
+ 	DUNCAN, Michelle	The Greens
+ 	MILLER, Jo-Ann	Australian Labor Party
+ 	PETERSEN, Patricia
+
+
+Burdekin
+Top
+ 	LAST, Dale	LNP
+ 	COX, Sam	Pauline Hanson's One Nation
+ 	BING, Mathew	The Greens
+ 	BRUNKER, Michael	Australian Labor Party
+
+
+Burleigh
+Top
+ 	HART, Michael	LNP
+ 	BURGOYNE, Peter	The Greens
+ 	HISLOP, Gail	Australian Labor Party
+
+
+Burnett
+Top
+ 	BENNETT, Stephen	LNP
+ 	LYNCH, Ashley	Pauline Hanson's One Nation
+ 	ROBERTS, Tim	The Greens
+ 	HARVEY, Lee	Australian Labor Party
+
+
+Cairns
+Top
+ 	HODGE, Ian	Pauline Hanson's One Nation
+ 	MCDONALD, Aaron	The Greens
+ 	HEALY, Michael	Australian Labor Party
+ 	PYNE, Rob
+ 	MARINO, Sam	LNP
+
+
+Callide
+Top
+ 	BAKER, Jaiben	The Greens
+ 	RADEL, Robbie	Katter's Australian Party
+ 	BLACKWOOD, Darren	Australian Labor Party
+ 	BOYCE, Colin	LNP
+ 	ANDERSON, Sandra
+ 	LOHSE, Sharon	Pauline Hanson's One Nation
+
+
+Caloundra
+Top
+ 	JONES, Rod	Pauline Hanson's One Nation
+ 	HUNT, Jason	Australian Labor Party
+ 	FINCH, Marcus	The Greens
+ 	MCARDLE, Mark	LNP
+
+
+Capalaba
+Top
+ 	TAYLOR, Paul	Pauline Hanson's One Nation
+ 	BROWN, Don	Australian Labor Party
+ 	LEAFE, Cameron	LNP
+ 	LAVENDER, Jason
+ 	SANDERSON, Joshua	The Greens
+
+
+Chatsworth
+Top
+ 	MINNIKIN, Steve	LNP
+ 	KEENE, Paul	Australian Labor Party
+ 	NELSON, Dave	The Greens
+
+
+Clayfield
+Top
+ 	NICHOLLS, Tim	LNP
+ 	OGDEN, Claire	The Greens
+ 	ANTHONY, Philip	Australian Labor Party
+
+
+Condamine
+Top
+ 	HUYBREGTS, Brendon	Australian Labor Party
+ 	TURNBULL, Chris	The Greens
+ 	ASHMAN, Frank	Pauline Hanson's One Nation
+ 	WEIR, Pat	LNP
+ 	HILL, John	Katter's Australian Party
+
+
+Cook
+Top
+ 	JOHNSON, Penny	LNP
+ 	SACKLEY, Jen	Pauline Hanson's One Nation
+ 	MATHEWS, Brynn	The Greens
+ 	RASMUSSEN, Gordon	Katter's Australian Party
+ 	LUI, Cynthia	Australian Labor Party
+
+
+Coomera
+Top
+ 	CRANDON, Michael	LNP
+ 	JOHNSON, Christopher	Australian Labor Party
+ 	PIGDON, Ronald	Pauline Hanson's One Nation
+ 	KERWIN, Tayla	The Greens
+
+
+Cooper
+Top
+ 	WILTSHIRE, Robert
+ 	JONES, Kate	Australian Labor Party
+ 	WALTERS, Reece	The Greens
+ 	SHEARMAN, Robert	LNP
+
+
+Currumbin
+Top
+ 	STUCKEY, Jann	LNP
+ 	SEMPLE, Andrew
+ 	LEADER, Georgi	Australian Labor Party
+ 	WYATT, David	The Greens
+
+
+Everton
+Top
+ 	MANDER, Tim	LNP
+ 	CLINCH, Bridget	The Greens
+ 	GREENE, David	Australian Labor Party
+
+
+Ferny Grove
+Top
+ 	WORLD, Elizabeth	The Greens
+ 	ELSTON, Nick	LNP
+ 	FURNER, Mark	Australian Labor Party
+ 	FOO, Lisa
+
+
+Gaven
+Top
+ 	CRAMP, Sid	LNP
+ 	SCANLON, Meaghan	Australian Labor Party
+ 	SPAIN, Sally	The Greens
+
+
+Gladstone
+Top
+ 	CONAGLEN, Chay	LNP
+ 	BUTCHER, Glenn	Australian Labor Party
+ 	BAKER, Peta	The Greens
+ 	LOHSE, Amy	Pauline Hanson's One Nation
+
+
+Glass House
+Top
+ 	BELL-HENSELIN, Tracey	Pauline Hanson's One Nation
+ 	POWELL, Andrew	LNP
+ 	MUREAU, Sue
+ 	HAMPSTEAD, Brent	Australian Labor Party
+ 	WEBER, Sue	The Greens
+
+
+Greenslopes
+Top
+ 	HUML, Victor	The Greens
+ 	KELLY, Joe	Australian Labor Party
+ 	KAYE, Ian	LNP
+
+
+Gregory
+Top
+ 	WESTON, Norman	The Greens
+ 	MILLAR, Lachlan	LNP
+ 	HIGGINS, Mark	Pauline Hanson's One Nation
+ 	CURRIE, Bruce
+ 	KERRIGAN, Dave	Australian Labor Party
+
+
+Gympie
+Top
+ 	DOBSON, Chelle	Pauline Hanson's One Nation
+ 	MCWILLIAM, Tracey	Australian Labor Party
+ 	KENNEDY-PERRIMAN, Roxanne	The Greens
+ 	PERRETT, Tony	LNP
+ 	REARDON, Donna
+
+
+Hervey Bay
+Top
+ 	CAMERON, Jenni	The Greens
+ 	TANTARI, Adrian	Australian Labor Party
+ 	SORENSEN, Ted	LNP
+ 	HUXHAM, Damian	Pauline Hanson's One Nation
+ 	DEAN, Jannean
+
+
+Hill
+Top
+ 	O'BRIEN, Diana	Australian Labor Party
+ 	QUAGLIATA, Mario	LNP
+ 	KLOOT, Johanna	The Greens
+ 	TUXFORD, Chester Gordon
+ 	KNUTH, Shane	Katter's Australian Party
+ 	WORTH, Stewart
+
+
+Hinchinbrook
+Top
+ 	RAFFLES, Peter
+ 	BELL, Margaret	Pauline Hanson's One Nation
+ 	BURNESS, Lyle	The Greens
+ 	DAMETTO, Nick	Katter's Australian Party
+ 	JACOB, Paul	Australian Labor Party
+ 	CRIPPS, Andrew	LNP
+
+
+Inala
+Top
+ 	PALASZCZUK, Annastacia	Australian Labor Party
+ 	MCFARLANE, Leanne	LNP
+ 	SIDHU, Nav Singh	The Greens
+
+
+Ipswich
+Top
+ 	ROBERTS, Malcolm	Pauline Hanson's One Nation
+ 	CASWELL, Andrew	LNP
+ 	MORRISSEY, Brett	The Greens
+ 	AGGETT, Troy
+ 	HOWARD, Jennifer	Australian Labor Party
+
+
+Ipswich West
+Top
+ 	MADDEN, Jim	Australian Labor Party
+ 	TRUSSELL, Brad	Pauline Hanson's One Nation
+ 	MULLER, Keith	The Greens
+ 	O'NEILL, Anna	LNP
+
+
+Jordan
+Top
+ 	MULLEN, Charis	Australian Labor Party
+ 	PUCCI, Michael	Pauline Hanson's One Nation
+ 	MURRAY, Duncan	LNP
+ 	HODGSON, Steve
+ 	ERVIK, Peter	Civil Liberties, Consumer Rights, No-Tolls
+ 	CUTCLIFFE, Phil
+ 	PURCELL, Steven	The Greens
+
+
+Kawana
+Top
+ 	JESSOP, Michael
+ 	MOSS, Mark	Australian Labor Party
+ 	SPENDLOVE, Annette	The Greens
+ 	DAVEY, Jeremy
+ 	BLEIJIE, Jarrod	LNP
+
+
+Keppel
+Top
+ 	LOTH, Matt	Pauline Hanson's One Nation
+ 	LAUGA, Brittany	Australian Labor Party
+ 	MULLBRICK, Clancy	The Greens
+ 	BLUNDELL, Peter	LNP
+
+
+Kurwongbah
+Top
+ 	HADDOCK, Karen	Pauline Hanson's One Nation
+ 	COOK, Allan	LNP
+ 	DOHERTY, Rachel	The Greens
+ 	KING, Shane	Australian Labor Party
+ 	PROHASKA, Thor
+
+
+Lockyer
+Top
+ 	MCDONALD, Jim	LNP
+ 	SAVAGE, Jim	Pauline Hanson's One Nation
+ 	SIMONS, Ian	The Greens
+ 	LINCOLN, Nicole	Australian Labor Party
+ 	PARR, Tony
+
+
+Logan
+Top
+ 	VICARIO, Gloria	LNP
+ 	JENKINSON, Liam	The Greens
+ 	BANNAN, Scott	Pauline Hanson's One Nation
+ 	COX, Danielle
+ 	POWER, Linus	Australian Labor Party
+ 	MURPHY, Daniel
+
+
+Lytton
+Top
+ 	PEASE, Joan	Australian Labor Party
+ 	STRAHAN, Karren	LNP
+ 	BLACK, Suzanne	Pauline Hanson's One Nation
+ 	AUSTIN, Ken	The Greens
+
+
+Macalister
+Top
+ 	NEHRING, Gabi	The Greens
+ 	MUSGRAVE, Ben	Civil Liberties, Consumer Rights, No-Tolls
+ 	BRADLEY, Greg
+ 	VAN MANEN, Judi	LNP
+ 	JOHNSTON, Hetty
+ 	CLANCY, Janelle
+ 	MCMAHON, Melissa	Australian Labor Party
+
+
+McConnel
+Top
+ 	FORSTER, Jamie	LNP
+ 	DOBINSON, John
+ 	GRACE, Grace	Australian Labor Party
+ 	EMANUEL, Kamala
+ 	LOVEJOY, Kirsten	The Greens
+ 	GILMOUR, Edward
+
+
+Mackay
+Top
+ 	KEIOSKIE, Jeff	Pauline Hanson's One Nation
+ 	McCANN, Martin
+ 	GILBERT, Julieanne	Australian Labor Party
+ 	JENNINGS, Elliot	The Greens
+ 	BATZLOFF, Nicole	LNP
+
+
+Maiwar
+Top
+ 	BERKMAN, Michael	The Greens
+ 	DIAMOND, Anita
+ 	KING, Ali	Australian Labor Party
+ 	EMERSON, Scott	LNP
+
+
+Mansfield
+Top
+ 	WALKER, Ian	LNP
+ 	BELL, Barbara	The Greens
+ 	MCMILLAN, Corrine	Australian Labor Party
+ 	SYMES, Neil	Pauline Hanson's One Nation
+
+
+Maroochydore
+Top
+ 	MCGLONE, Julie	Australian Labor Party
+ 	SIMPSON, Fiona	LNP
+ 	YOUNG, Cam	Pauline Hanson's One Nation
+ 	BRYAR, Daniel	The Greens
+
+
+Maryborough
+Top
+ 	CURRIE, Roger M
+ 	KINGSTON, Richard	LNP
+ 	HANSEN, James	Pauline Hanson's One Nation
+ 	SAUNDERS, Bruce	Australian Labor Party
+ 	ARMSTRONG, Craig	The Greens
+
+
+Mermaid Beach
+Top
+ 	BLUNDELL-THORNTON, Joshua	Australian Labor Party
+ 	HECKE, Mona
+ 	WAINWRIGHT, Helen	The Greens
+ 	ALLPORT, Ric
+ 	BERIC, Saraya
+ 	PEAD, Gary
+ 	STEVENS, Ray	LNP
+
+
+Miller
+Top
+ 	KIPPEN, Belinda	LNP
+ 	STARR, Ted
+ 	BAILEY, Mark	Australian Labor Party
+ 	CLARKE, Deniz	The Greens
+
+
+Mirani
+Top
+ 	LATTER, Kerry	LNP
+ 	ANDREW, Stephen	Pauline Hanson's One Nation
+ 	PEARCE, Jim	Australian Labor Party
+ 	CARLISLE, Christine	The Greens
+
+
+Moggill
+Top
+ 	MCCANE, Lawson	The Greens
+ 	RAYWARD, Amy	Civil Liberties, Consumer Rights, No-Tolls
+ 	JONES, Evan	Australian Labor Party
+ 	ROWAN, Christian	LNP
+
+
+Morayfield
+Top
+ 	SNOW, Jason	LNP
+ 	RYAN, Mark	Australian Labor Party
+ 	JANULEWICZ, Jamie
+ 	BEHRENS, Gavin	The Greens
+ 	HANSEN, Rodney	Pauline Hanson's One Nation
+
+
+Mount Ommaney
+Top
+ 	MULKEARNS, Jenny	The Greens
+ 	SMITH, Tarnya	LNP
+ 	EUGARDE, Ian	Pauline Hanson's One Nation
+ 	PUGH, Jess	Australian Labor Party
+
+
+Mudgeeraba
+Top
+ 	TAYLOR, Paul	Australian Labor Party
+ 	PEAD, Jill
+ 	LIDDELL, Andrew	Pauline Hanson's One Nation
+ 	SHERWOOD, Bill
+ 	DUNCAN, Rod	The Greens
+ 	BATES, Ros	LNP
+
+
+Mulgrave
+Top
+ 	SAMPERI, Karina	LNP
+ 	PITT, Curtis	Australian Labor Party
+ 	BERTUCH, Sue	Pauline Hanson's One Nation
+ 	MURRAY, Carmel	The Greens
+
+
+Mundingburra
+Top
+ 	EASZON, Dennis
+ 	CHARLWOOD, Mal	Pauline Hanson's One Nation
+ 	BROWN, Jenny	The Greens
+ 	ABRAHAM, Mike	Katter's Australian Party
+ 	VIRGO, Geoff
+ 	O'ROURKE, Coralee	Australian Labor Party
+ 	DERLAGEN, Matthew	LNP
+ 	BIRRELL, Alan R
+
+
+Murrumba
+Top
+ 	MILES, Steven	Australian Labor Party
+ 	DARE, Scott	Pauline Hanson's One Nation
+ 	KENNEDY, Jason	The Greens
+ 	GULLEY, Reg	LNP
+
+
+Nanango
+Top
+ 	HARBISON, John	The Greens
+ 	FRECKLINGTON, Deb	LNP
+ 	GRANT, Douglas	Pauline Hanson's One Nation
+ 	RANKIN, Ben	Australian Labor Party
+
+
+Nicklin
+Top
+ 	HUNT, Marty	LNP
+ 	TYRRELL, Mick	The Greens
+ 	FORD, Steven	Pauline Hanson's One Nation
+ 	RADIC, Rachel
+ 	RAETHEL, Justin	Australian Labor Party
+ 	MOORE, Tony R.
+ 	HODGES, Jeffrey	Civil Liberties, Consumer Rights, No-Tolls
+
+
+Ninderry
+Top
+ 	RILEY, Jamila
+ 	WARD, Barry	Pauline Hanson's One Nation
+ 	PURDIE, Dan	LNP
+ 	BRUINSMA, Richard
+ 	ETHERIDGE, Sue	The Greens
+ 	GISSANE, Bill	Australian Labor Party
+
+
+Noosa
+Top
+ 	BOLTON, Sandy
+ 	WHITESIDE, Eve-Marie	Pauline Hanson's One Nation
+ 	BRISTOW, Robin
+ 	ELMES, Glen	LNP
+ 	DENHAM, Mark	Australian Labor Party
+ 	JENKINS, Phillip	The Greens
+ 	WHITE, Aaron
+
+
+Nudgee
+Top
+ 	ACKERMAN, Ell-Leigh	The Greens
+ 	GLAZE, Debbie	LNP
+ 	LINARD, Leanne	Australian Labor Party
+ 	SIMPSON, Anthony
+
+
+Oodgeroo
+Top
+ 	SCOTT, Brad	The Greens
+ 	ROBINSON, Mark	LNP
+ 	AUSTIN, Tony	Australian Labor Party
+
+
+Pine Rivers
+Top
+ 	HOLSWICH, Seath
+ 	KOSENKO, Michael
+ 	BOYD, Nikki	Australian Labor Party
+ 	MARGARITIS, Jack	The Greens
+ 	FRENCH, Greg	Civil Liberties, Consumer Rights, No-Tolls
+ 	WARREN, Peter	Pauline Hanson's One Nation
+ 	THOMPSON, Chris	LNP
+
+
+Pumicestone
+Top
+ 	HOOGWAERTS, Michael	Australian Labor Party
+ 	WILSON, Simone	LNP
+ 	WILLIAMS, Rick
+ 	BURGESS, Jason
+ 	LONGLAND, Tony	The Greens
+ 	FAHEY, Greg	Pauline Hanson's One Nation
+
+
+Redcliffe
+Top
+ 	BOVILL, James	The Greens
+ 	PHILP, Ian
+ 	YOUNG, Graham
+ 	DOOLEY, Kerri-Anne	LNP
+ 	JARVIS, Shayne
+ 	D'ATH, Yvette	Australian Labor Party
+
+
+Redlands
+Top
+ 	KEOGH, David	The Greens
+ 	DOWLING, Peter
+ 	RICHARDS, Kim	Australian Labor Party
+ 	QUICK, Jason	Pauline Hanson's One Nation
+ 	MCEACHAN, Matt	LNP
+
+
+Rockhampton
+Top
+ 	RODGERS, Douglas	LNP
+ 	O'ROURKE, Barry	Australian Labor Party
+ 	STRELOW, Margaret
+ 	ROTHERY, Wade	Pauline Hanson's One Nation
+ 	GIAMARELOS, Kate	The Greens
+
+
+Sandgate
+Top
+ 	HINCHLIFFE, Stirling	Australian Labor Party
+ 	LE ROY, Miree	The Greens
+ 	VAN DER HOEK, Jessie	LNP
+ 	STEPHEN, Matthew	Pauline Hanson's One Nation
+
+
+Scenic Rim
+Top
+ 	GIRARD, Shannon	The Greens
+ 	BUCHAN, Carolyn	Australian Labor Party
+ 	KRAUSE, Jon	LNP
+ 	SMITH, Rod	Pauline Hanson's One Nation
+
+
+South Brisbane
+Top
+ 	BOELE, Karel
+ 	TRAD, Jackie	Australian Labor Party
+ 	MURRAY, Cameron
+ 	MACMAHON, Amy	The Greens
+ 	KELLY, Karagh-Mae
+ 	QUINN, Simon	LNP
+ 	JORDAN, Frank
+
+
+Southern Downs
+Top
+ 	LISTER, James	LNP
+ 	RICHTERS, Joel	Australian Labor Party
+ 	MACKENZIE, Rob
+ 	COYNE, Joshua	Pauline Hanson's One Nation
+ 	NAUSS, Jay
+ 	VAN GEUNS, Antonia	The Greens
+
+
+Southport
+Top
+ 	LE PLASTRIER, Michelle	The Greens
+ 	MOLHOEK, Rob	LNP
+ 	FLORI, Rick
+ 	JOUBERT, Johan	Civil Liberties, Consumer Rights, No-Tolls
+ 	SEARLE, Judy	Australian Labor Party
+
+
+Springwood
+Top
+ 	TAYLOR, John	Civil Liberties, Consumer Rights, No-Tolls
+ 	DE BRENNI, Mick	Australian Labor Party
+ 	TALTY, Julie	LNP
+ 	COTTER, Neil	The Greens
+
+
+Stafford
+Top
+ 	LYNHAM, Anthony	Australian Labor Party
+ 	SANGJITPHUN, Ed	LNP
+ 	MEYER, John	The Greens
+
+
+Stretton
+Top
+ 	HOLLEY, Shane	Pauline Hanson's One Nation
+ 	NANDAULA, Anisa	The Greens
+ 	REDDY, Shyamal
+ 	OSTAPOVITCH, Freya	LNP
+ 	PEGG, Duncan	Australian Labor Party
+
+
+Surfers Paradise
+Top
+ 	WALKER, Tony	Australian Labor Party
+ 	LANGBROEK, John-Paul	LNP
+ 	BAKER-PEARCE, Tylere
+ 	TURNER, Scott	The Greens
+ 	MANLEY, Chris
+
+
+Theodore
+Top
+ 	BOOTHMAN, Mark	LNP
+ 	MENI, Tina	The Greens
+ 	STANTON, Luz	Australian Labor Party
+ 	LANE, Darrell	Pauline Hanson's One Nation
+
+
+Thuringowa
+Top
+ 	RUBENACH, Mike	The Greens
+ 	HARPER, Aaron	Australian Labor Party
+ 	MARTINEZ, Nick	LNP
+ 	LANE, Stephen
+ 	THORNTON, Mark	Pauline Hanson's One Nation
+ 	FOX, Terry	Katter's Australian Party
+
+
+Toohey
+Top
+ 	SHORTEN, Anthony	LNP
+ 	ZHANG, Guansheng (Victor)	Pauline Hanson's One Nation
+ 	RUSSO, Peter	Australian Labor Party
+ 	KING, Gordon	The Greens
+
+
+Toowoomba North
+Top
+ 	CHIDLEY, Emmeline	The Greens
+ 	WILSON, Paul	Pauline Hanson's One Nation
+ 	TOWNSEND, Josie
+ 	WATTS, Trevor	LNP
+ 	SHINE, Kerry	Australian Labor Party
+
+
+Toowoomba South
+Top
+ 	SCAMP, Jeremy	Pauline Hanson's One Nation
+ 	KRAUSE, Susan	Australian Labor Party
+ 	JANETZKI, David	LNP
+ 	BERRY, Rob
+ 	NELLIGAN, Alyce	The Greens
+
+
+Townsville
+Top
+ 	COLLINS, Lindy
+ 	STEWART, Scott	Australian Labor Party
+ 	RYAN, Rebecca	The Greens
+ 	SCOTT, Casie	LNP
+ 	EVANS, Allan	Pauline Hanson's One Nation
+
+
+Traeger
+Top
+ 	KATTER, Robbie	Katter's Australian Party
+ 	BIRD, Ronald	LNP
+ 	SCRIVEN, Craig
+ 	ISAACS, Sarah
+ 	SLADE, Danielle	Australian Labor Party
+ 	RELPH, Peter	The Greens
+
+
+Warrego
+Top
+ 	MAZLIN, Ian	The Greens
+ 	LEAHY, Ann	LNP
+ 	BAMBERRY, Sandra
+ 	O'BRIEN, Mark	Australian Labor Party
+ 	LOUGHNAN, Rob	Katter's Australian Party
+ 	STONE, Mark
+
+
+Waterford
+Top
+ 	WESTGUARD, Felicity	LNP
+ 	McKENZIE McKINNON, Lee
+ 	MILLER, Kim	Pauline Hanson's One Nation
+ 	FENTIMAN, Shannon	Australian Labor Party
+ 	PETERSEN, Kirsty	The Greens
+
+
+Whitsunday
+Top
+ 	SKIPPEN, Noel	Pauline Hanson's One Nation
+ 	COSTIGAN, Jason	LNP
+ 	LINDENBERG, Imogen	The Greens
+ 	VAN BLARCOM, Dan
+ 	WHITNEY, Jenny	Katter's Australian Party
+ 	TAHA, Bronwyn	Australian Labor Party
+
+
+Woodridge
+Top
+ 	DICK, Cameron	Australian Labor Party
+ 	RICE, Jacob	The Greens
+ 	ROOMS, Michael	LNP
+ 	PALMER, Trevor

@@ -1,27 +1,26 @@
-# VotePlan
+# Vote Plan
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
+Vote plan helps you prepare your vote by making it easier to deal with unwieldy ballot papers.
 
-## Development server
+[![CircleCI](https://circleci.com/gh/vote-plan/vote-plan/tree/master.svg?style=svg)](https://circleci.com/gh/vote-plan/vote-plan/tree/master)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Overview of [Vote Plan](https://www.voteplan.org)
 
-## Code scaffolding
+THis website provides a way to pre-plan votes before going to vote.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This is helpful because it can be difficult to take the time to decipher a ballot paper in a busy voting place.
 
-## Build
+Preparing your vote beforehand takes the guess work out of filling out the ballot paper.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+THis website tries to be un-biased and not nudge people on how they should vote. It is only concerned with making voting easier.
 
-## Running unit tests
+The website supports creating voting plans for more than one election.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Project and development
 
-## Running end-to-end tests
+See the [local development](docs/local-development.md) document for information about how to modify and build this project, along with project structure details.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+See the [features](docs/features.md) document for information about the current and intended project features.
 
-## Further help
+The [election data](docs/data.md) document describes the data structure and how to add new elections.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

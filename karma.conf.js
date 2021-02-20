@@ -28,8 +28,8 @@ module.exports = function (config) {
       dir: require('path').join(__dirname, './coverage/vote-plan'),
       subdir: '.',
       reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
+        {type: 'html'},
+        {type: 'text-summary'}
       ]
     },
     reporters: ['progress', 'kjhtml'],
@@ -39,6 +39,16 @@ module.exports = function (config) {
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false,
-    restartOnFileChange: true
+    restartOnFileChange: true,
+    customLaunchers: {
+      ChromeHeadlessCustom: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-gpu']
+      },
+      FirefoxHeadlessCustom: {
+        base: 'Firefox',
+        flags: ['-headless']
+      }
+    }
   });
 };

@@ -1,0 +1,27 @@
+Name of Political Party	Australian Labor Party (State of Queensland)
+Abbreviation	Australian Labor Party
+Registered Officer	Evan Moorhead
+Date of Registration	14 August 1992
+
+Name of Political Party	Queensland Greens
+Abbreviation	The Greens
+Registered Officer	Katherine Dall
+Date of Registration	6 May 1994
+
+Name of Political Party	Liberal National Party of Queensland
+Abbreviation	LNP
+Registered Officer	Michael O'Dwyer
+Date of Registration	9 September 2008
+
+Name of Political Party	Pauline Hanson's One Nation Queensland Division
+Abbreviation	Pauline Hanson's One Nation
+Registered Officer	Pauline Hanson
+Date of Registration	12 August 2011
+
+Name of Political Party	Katter's Australian Party
+Registered Officer	Thomas Harris
+Date of Registration	22 September 2011
+
+Name of Political Party	Civil Liberties, Consumer Rights, No-Tolls
+Registered Officer	Jeffrey Hodges
+Date of Registration	23 October 2015
