@@ -36,8 +36,17 @@ jobs:
       - name: Prepare application for Github Pages
         run: npm run build:gh-pages
 
+      - name: Import GPG key
+        # https://github.com/crazy-max/ghaction-import-gpg
+        uses: crazy-max/ghaction-import-gpg@v3
+        with:
+          gpg-private-key: ${{ secrets.DEPLOY_GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.DEPLOY_GPG_PASSPHRASE }}
+          git-user-signingkey: true
+          git-commit-gpgsign: true
+
       - name: Deploy to GitHub Pages
-        # see https://github.com/crazy-max/ghaction-github-pages
+        # https://github.com/crazy-max/ghaction-github-pages
         if: success()
         uses: crazy-max/ghaction-github-pages@v2
         with:

@@ -1,3 +1,180 @@
 <div class="container">
-  <h2>Home</h2>
+  <h2>Vote Plan</h2>
+
+  <p class="lead">Vote plan helps you prepare your vote by making it easier to deal with unwieldy ballot papers.</p>
+
+  <h3>Find an election</h3>
+
+  <form class="form-inline">
+    <div class="form-group mr-2 mb-2">
+      <label class="sr-only" for="electionSearchText">Find an election by name</label>
+      <input type="text" class="form-control" id="electionSearchText"
+             placeholder="Find an election by name">
+    </div>
+
+    <div class="form-group mr-2 mb-2">
+      <label class="sr-only" for="electionSearchLocation">Location</label>
+      <select class="custom-select" id="electionSearchLocation">
+        <option selected disabled value="">Select location...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+
+    <div class="form-group hidden mb-2">
+      <div class="input-group">
+        <input name="datepicker"
+               class="form-control"
+               ngbDatepicker
+               #datepicker="ngbDatepicker"
+               [autoClose]="'outside'"
+               (dateSelect)="onDateSelection($event)"
+               [displayMonths]="2"
+               [dayTemplate]="t"
+               outsideDays="hidden"
+               [startDate]="fromDate!"
+               [footerTemplate]="footerTemplate"
+               tabindex="-1">
+        <ng-template #t let-date let-focused="focused">
+        <span class="custom-day"
+              [class.focused]="focused"
+              [class.range]="isRange(date)"
+              [class.faded]="isHovered(date) || isInside(date)"
+              (mouseenter)="hoveredDate = date"
+              (mouseleave)="hoveredDate = null">
+          {{ date.day }}
+        </span>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="form-group mr-2 mb-2">
+      <label class="sr-only" for="electionSearchDateStart">Location</label>
+      <div class="input-group">
+        <input #dpFromDate
+               class="form-control" placeholder="Start date as yyyy-mm-dd"
+               name="dpFromDate" id="electionSearchDateStart"
+               [value]="formatter.format(fromDate)"
+               (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button">
+            <fa-icon [icon]="faCalendar"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group mr-2 mb-2">
+      <div class="input-group">
+        <input #dpToDate
+               class="form-control" placeholder="End date as yyyy-mm-dd"
+               name="dpToDate" id="electionSearchDateEnd"
+               [value]="formatter.format(toDate)"
+               (input)="toDate = validateInput(toDate, dpToDate.value)"
+               (focus)="datepicker.toggle()" (blur)="datepicker.toggle()">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button">
+            <fa-icon [icon]="faCalendar"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary mr-2 mb-2" type="submit" id="electionSearchButton">Search</button>
+    <button class="btn btn-secondary mb-2" type="submit" id="electionClearButton">Clear</button>
+
+  </form>
+
+  <ng-template #footerTemplate>
+    <hr class="my-0">
+    <button class="btn btn-primary btn-sm m-2 float-left" (click)="fromDate = today; datepicker.close()">Today</button>
+
+    <button class="btn btn-secondary btn-sm m-2 float-right" (click)="datepicker.close()">Close</button>
+    <button class="btn btn-secondary btn-sm m-2 float-right"
+            (click)="fromDate = null;toDate = null; datepicker.close()">Clear
+    </button>
+  </ng-template>
+
+  <hr/>
+
+  <h3>Upcoming Elections</h3>
+
+  <div class="row row-cols-1 row-cols-md-3">
+    <div class="col mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><a [routerLink]="['/election', 1, 'prepare']">Election 1</a></h5>
+          <p class="card-text">Held yyyy-mm-dd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><a [routerLink]="['/election', 2, 'prepare']">Election 2</a></h5>
+          <p class="card-text">Held yyyy-mm-dd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><a [routerLink]="['/election', 3, 'prepare']">Election 3</a></h5>
+          <p class="card-text">Held yyyy-mm-dd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><a [routerLink]="['/election', 4, 'prepare']">Election 4</a></h5>
+          <p class="card-text">Held yyyy-mm-dd.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
+  <h3>Past Elections</h3>
+
+
+  <div class="row row-cols-1 row-cols-md-3">
+    <div class="col mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><a [routerLink]="['/election', 1, 'results']">Election 1</a></h5>
+          <p class="card-text">Held yyyy-mm-dd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><a [routerLink]="['/election', 2, 'results']">Election 2</a></h5>
+          <p class="card-text">Held yyyy-mm-dd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><a [routerLink]="['/election', 3, 'results']">Election 3</a></h5>
+          <p class="card-text">Held yyyy-mm-dd.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><a [routerLink]="['/election', 4, 'results']">Election 4</a></h5>
+          <p class="card-text">Held yyyy-mm-dd.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
 </div>
