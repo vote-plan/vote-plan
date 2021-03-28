@@ -1,21 +1,7 @@
-<app-app-navbar></app-app-navbar>
-<app-app-notification aria-live="polite" aria-atomic="true"></app-app-notification>
+<app-nav-bar></app-nav-bar>
+
 <main role="main">
   <router-outlet></router-outlet>
 </main>
 
-<footer class="footer mt-auto py-3">
-  <div class="container">
-    <span class="text-muted">
-      Vote Plan
-      &middot;
-      <a routerLink="/about">Contact</a>
-      &middot;
-      <a routerLink="/about">Privacy</a>
-      &middot;
-      <a routerLink="/about">Terms</a>
-      &middot;
-      <a routerLink="/about">Disclaimer</a>
-    </span>
-  </div>
-</footer>
+<app-nav-footer></app-nav-footer>

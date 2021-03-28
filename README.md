@@ -2,25 +2,21 @@
 
 Vote plan helps you prepare your vote by making it easier to deal with unwieldy ballot papers.
 
-[![CircleCI](https://circleci.com/gh/vote-plan/vote-plan/tree/master.svg?style=svg)](https://circleci.com/gh/vote-plan/vote-plan/tree/master)
+[![github actions build status](https://github.com/vote-plan/vote-plan/actions/workflows/build.yml/badge.svg)](https://github.com/vote-plan/vote-plan/actions)
+[![github actions code analysis status](https://github.com/vote-plan/vote-plan/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/vote-plan/vote-plan/actions)
 
 ## Overview of [Vote Plan](https://www.voteplan.org)
 
-THis website provides a way to pre-plan votes before going to vote.
+This website provides a way to pre-plan votes before going to vote.
 
 This is helpful because it can be difficult to take the time to decipher a ballot paper in a busy voting place.
 
 Preparing your vote beforehand takes the guess work out of filling out the ballot paper.
 
-THis website tries to be un-biased and not nudge people on how they should vote. It is only concerned with making voting easier.
+This website tries to be un-biased.
 
-The website supports creating voting plans for more than one election.
+At the moment it has only elections in Australia.
 
-## Project and development
+## Work in progress
 
-See the [local development](read/local-development.md) document for information about how to modify and build this project, along with project structure details.
-
-See the [features](read/features.md) document for information about the current and intended project features.
-
-The [election data](elections-data/README.md) document describes the data structure and how to add new elections.
-
+This website is a work in progress.

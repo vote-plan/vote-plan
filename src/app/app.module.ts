@@ -1,57 +1,50 @@
-import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PageNotFoundComponent } from './main/page-not-found/page-not-found.component';
-import { AboutComponent } from './main/about/about.component';
-import { ElectionsModule } from './elections/elections.module';
+
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HttpClientModule } from '@angular/common/http';
-import { AppNavbarComponent } from './shared/app-navbar/app-navbar.component';
-import { AppBreadcrumbComponent } from './shared/app-breadcrumb/app-breadcrumb.component';
-import { NewsComponent } from './main/news/news.component';
-import { HttpInterceptorProviders } from './http-interceptors';
-import { HttpErrorHandlerService } from './http-error-handler.service';
-import { MessageService } from './message.service';
-import { HttpRequestCacheMapService, RequestCacheService } from './http-request-cache.service';
-import { AppNotificationComponent } from './shared/app-notification/app-notification.component';
-import { MomentModule } from 'ngx-moment';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HelpComponent } from './main/help/help.component';
+import { NavFooterComponent } from './nav-footer/nav-footer.component';
+import { AboutComponent } from './about/about.component';
+import { HelpComponent } from './help/help.component';
+import { NewsComponent } from './news/news.component';
+import { ElectionPrepareComponent } from './election-prepare/election-prepare.component';
+import { ElectionResultsComponent } from './election-results/election-results.component';
+import { ElectorateResultsComponent } from './electorate-results/electorate-results.component';
+import { ElectoratePrepareComponent } from './electorate-prepare/electorate-prepare.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
+    NavBarComponent,
+    NotFoundComponent,
+    HomeComponent,
+    NavFooterComponent,
     AboutComponent,
-    AppNavbarComponent,
-    AppBreadcrumbComponent,
-    NewsComponent,
-    AppNotificationComponent,
     HelpComponent,
+    NewsComponent,
+    ElectionPrepareComponent,
+    ElectionResultsComponent,
+    ElectorateResultsComponent,
+    ElectoratePrepareComponent,
   ],
   imports: [
     BrowserModule,
-    NgbModule,
-    FontAwesomeModule,
-    HttpClientModule,
-    ElectionsModule,
-    MomentModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    LayoutModule,
+    NgbModule,
+    FontAwesomeModule,
   ],
-  providers: [
-    Title,
-    HttpErrorHandlerService,
-    MessageService,
-    {provide: RequestCacheService, useClass: HttpRequestCacheMapService},
-    HttpInterceptorProviders,
-  ],
-  bootstrap: [
-    AppComponent,
-  ]
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
