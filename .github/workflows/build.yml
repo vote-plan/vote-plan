@@ -38,7 +38,7 @@ jobs:
 
       - name: Import GPG key
         # https://github.com/crazy-max/ghaction-import-gpg
-        uses: crazy-max/ghaction-import-gpg@v3
+        uses: crazy-max/ghaction-import-gpg@v4
         with:
           gpg-private-key: ${{ secrets.DEPLOY_GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.DEPLOY_GPG_PASSPHRASE }}
