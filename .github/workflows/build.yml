@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 14.x
+          - 16.x
 
     steps:
       - name: Checkout code
@@ -29,6 +29,15 @@ jobs:
         # https://docs.npmjs.com/cli/v6/commands/npm-ci
         # https://github.com/bahmutov/npm-install
         uses: bahmutov/npm-install@v1
+
+      - name: Run Angular tests
+        run: npm run test:ci
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: npm run build
+          start: npm start
 
       - name: Build application in production mode
         run: npm run build:prod
