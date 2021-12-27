@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ElectionPrepareComponent } from './election-prepare.component';
+import {AppRoutingModule} from '../app-routing.module';
 
 describe('ElectionPrepareComponent', () => {
   let component: ElectionPrepareComponent;
@@ -8,7 +9,7 @@ describe('ElectionPrepareComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ElectionPrepareComponent ]
+      declarations: [ ElectionPrepareComponent ], imports: [AppRoutingModule]
     })
     .compileComponents();
   });

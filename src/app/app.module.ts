@@ -9,7 +9,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavFooterComponent } from './nav-footer/nav-footer.component';
 import { AboutComponent } from './about/about.component';
@@ -19,6 +19,7 @@ import { ElectionPrepareComponent } from './election-prepare/election-prepare.co
 import { ElectionResultsComponent } from './election-results/election-results.component';
 import { ElectorateResultsComponent } from './electorate-results/electorate-results.component';
 import { ElectoratePrepareComponent } from './electorate-prepare/electorate-prepare.component';
+import {ElectionsModule} from './elections/elections.module';
 
 
 @NgModule({
@@ -43,8 +44,10 @@ import { ElectoratePrepareComponent } from './electorate-prepare/electorate-prep
     LayoutModule,
     NgbModule,
     FontAwesomeModule,
+    ElectionsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
