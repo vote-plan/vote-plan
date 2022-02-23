@@ -1,53 +1,40 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {LayoutModule} from '@angular/cdk/layout';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { HomeComponent } from './home/home.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LayoutModule } from '@angular/cdk/layout';
-import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NavFooterComponent } from './nav-footer/nav-footer.component';
-import { AboutComponent } from './about/about.component';
-import { HelpComponent } from './help/help.component';
-import { NewsComponent } from './news/news.component';
-import { ElectionPrepareComponent } from './election-prepare/election-prepare.component';
-import { ElectionResultsComponent } from './election-results/election-results.component';
-import { ElectorateResultsComponent } from './electorate-results/electorate-results.component';
-import { ElectoratePrepareComponent } from './electorate-prepare/electorate-prepare.component';
 import {ElectionsModule} from './elections/elections.module';
+import {InformationModule} from './information/information.module';
+import {ResultsModule} from './results/results.module';
+import {LayoutModule as AppLayoutModule} from './layout/layout.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent,
-    NotFoundComponent,
-    HomeComponent,
-    NavFooterComponent,
-    AboutComponent,
-    HelpComponent,
-    NewsComponent,
-    ElectionPrepareComponent,
-    ElectionResultsComponent,
-    ElectorateResultsComponent,
-    ElectoratePrepareComponent,
   ],
   imports: [
+    // angular and dependency imports
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
     NgbModule,
     FontAwesomeModule,
-    ElectionsModule
+    // app imports
+    AppLayoutModule,
+    InformationModule,
+    ElectionsModule,
+    ResultsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent,
+  ]
 })
 export class AppModule {
 }

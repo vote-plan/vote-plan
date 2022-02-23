@@ -1,31 +1,28 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import {HomeComponent} from './home/home.component';
-import {NotFoundComponent} from './not-found/not-found.component';
-import {AboutComponent} from './about/about.component';
-import {NewsComponent} from './news/news.component';
-import {HelpComponent} from './help/help.component';
-import {ElectionPrepareComponent} from './election-prepare/election-prepare.component';
-import {ElectionResultsComponent} from './election-results/election-results.component';
-import {ElectoratePrepareComponent} from './electorate-prepare/electorate-prepare.component';
-import {ElectorateResultsComponent} from './electorate-results/electorate-results.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+
+import {NotFoundComponent} from './information/not-found/not-found.component';
+import {AboutComponent} from './information/about/about.component';
+import {NewsComponent} from './information/news/news.component';
+import {HelpComponent} from './information/help/help.component';
 
 
 const routes: Routes = [
+  {path: '', redirectTo: '/elections', pathMatch: 'full'},
   {path: 'about', component: AboutComponent},
   {path: 'news', component: NewsComponent},
   {path: 'help', component: HelpComponent},
-  {path: 'election/:id/prepare', component: ElectionPrepareComponent},
-  {path: 'election/:id/results', component: ElectionResultsComponent},
-  {path: 'electorate/:id/prepare', component: ElectoratePrepareComponent},
-  {path: 'electorate/:id/results', component: ElectorateResultsComponent},
-  {path: 'home', component: HomeComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'elections', loadChildren: () => import('./elections/elections.module').then(m => m.ElectionsModule)},
   {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {enableTracing: true, anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled'}),
+  ],
+  exports: [
+    RouterModule,
+  ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
