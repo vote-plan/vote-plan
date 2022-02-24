@@ -2,10 +2,11 @@
 
   <div class="alert alert-warning" role="alert">
     <fa-icon [icon]="faWarning"></fa-icon>
-    <b>TODO</b>: search, breadcrumbs
+    <b>TODO</b>: election info, search, list electorates (with which assembly)
   </div>
 
   <app-nav-breadcrumb></app-nav-breadcrumb>
-  <h4 class="display-6">Past Elections</h4>
-  <app-elections-list [elections]="elections"></app-elections-list>
+  <h3 class="display-5">Assembly Results</h3>
+  <pre><code>{{assembly | json}}</code></pre>
+
 </section>

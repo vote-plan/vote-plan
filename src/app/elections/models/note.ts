@@ -1,19 +1,31 @@
 /**
  * Additional information.
  */
-export interface Note {
+export interface NoteContract {
+  display: string;
+  content: string;
+  category: string;
+}
+
+export class NoteModel {
   /**
    * The text to display for this note.
    */
-  displayText: string;
+  display: string;
 
   /**
    * The content / url / internal string for this note.
    */
-  contentText: string;
+  content: string;
 
   /**
    * The type of this note, helps determine how to render this note.
    */
-  noteType: string;
+  category: string;
+
+  constructor(contract: NoteContract) {
+    this.display = contract?.display;
+    this.content = contract?.content;
+    this.category = contract?.category;
+  }
 }

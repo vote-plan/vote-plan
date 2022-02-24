@@ -1,0 +1,30 @@
+<section class="container-fluid">
+
+  <div class="alert alert-warning" role="alert">
+    <fa-icon [icon]="faWarning"></fa-icon>
+    <b>TODO</b>: election info, search, list electorates (with which assembly)
+  </div>
+
+  <app-nav-breadcrumb></app-nav-breadcrumb>
+  <h3 class="display-5">Election</h3>
+  <p>
+    <a [routerLink]="['.', 'parties']">Parties</a>
+    &nbsp;
+    <a [routerLink]="['.', 'candidates']">Candidates</a>
+    &nbsp;
+    <a [routerLink]="['.', 'assembly', 'assembly-1', 'plan']">Assembly plan</a>
+    &nbsp;
+    <a [routerLink]="['.', 'assembly', 'assembly-1', 'results']">Assembly results</a>
+    &nbsp;
+    <a [routerLink]="['.', 'electorate', 'electorate-1', 'plan']">Electorate plan</a>
+    &nbsp;
+    <a [routerLink]="['.', 'electorate', 'electorate-1', 'results']">Electorate results</a>
+  </p>
+  <pre><code>{{election | json}}</code></pre>
+
+  <h3 class="fw-light">Electorates</h3>
+
+  <ul *ngFor="let electorate of electorates">
+    <li>{{ electorate | json}}</li>
+  </ul>
+</section>

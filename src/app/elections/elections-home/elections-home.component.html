@@ -1,4 +1,10 @@
 <section class="py-2 text-center container">
+
+  <div class="alert alert-warning" role="alert">
+    <fa-icon [icon]="faWarning"></fa-icon>
+    <b>TODO</b>: search
+  </div>
+
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1 class="display-4 fw-light">Vote Plan</h1>
@@ -19,120 +25,10 @@
 
 <section class="container-fluid">
   <h4 class="display-6">Upcoming Elections</h4>
-  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3 g-lg-4 mx-lg-1">
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" class="stretched-link">[Australian Federal Parliament]</a></h5>
-          <h6 class="card-subtitle mb-2 text-muted">Tuesday, 20 March 2020</h6>
-          <p class="card-text">A national election to be held in 3 weeks.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" class="stretched-link">[Queensland Parliament]</a></h5>
-          <h6 class="card-subtitle mb-2 text-muted">[Saturday, 1 December 2020]</h6>
-          <p class="card-text">A [state] election to be held in [4 months].</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" class="stretched-link">Brisbane City Council</a></h5>
-          <h6 class="card-subtitle mb-2 text-muted">Saturday, 10 February 2021</h6>
-          <p class="card-text">A local election to be held in 1 year.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" class="stretched-link">[Australian Federal Parliament]</a></h5>
-          <h6 class="card-subtitle mb-2 text-muted">Tuesday, 20 March 2020</h6>
-          <p class="card-text">A national election to be held in 3 weeks.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" class="stretched-link">[Queensland Parliament]</a></h5>
-          <h6 class="card-subtitle mb-2 text-muted">[Saturday, 1 December 2020]</h6>
-          <p class="card-text">A [state] election to be held in [4 months].</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" class="stretched-link">Brisbane City Council</a></h5>
-          <h6 class="card-subtitle mb-2 text-muted">Saturday, 10 February 2021</h6>
-          <p class="card-text">A local election to be held in 1 year.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-elections-list [elections]="electionsUpcoming"></app-elections-list>
 </section>
 
 <section class="container-fluid">
   <h4 class="display-6">Past Elections</h4>
-  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3 g-lg-4 mx-lg-1">
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" class="stretched-link">[Australian Federal Parliament]</a></h5>
-          <h6 class="card-subtitle mb-2 text-muted">Tuesday, 20 March 2020</h6>
-          <p class="card-text">A national election that was held 3 weeks ago.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" class="stretched-link">[Queensland Parliament]</a></h5>
-          <h6 class="card-subtitle mb-2 text-muted">[Saturday, 1 December 2020]</h6>
-          <p class="card-text">A [state] election that was held [4 months ago].</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" class="stretched-link">Brisbane City Council</a></h5>
-          <h6 class="card-subtitle mb-2 text-muted">Saturday, 10 February 2021</h6>
-          <p class="card-text">A local election that was be held in 1 year.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" class="stretched-link">[Australian Federal Parliament]</a></h5>
-          <h6 class="card-subtitle mb-2 text-muted">Tuesday, 20 March 2020</h6>
-          <p class="card-text">A national election that was held 3 weeks ago.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" class="stretched-link">[Queensland Parliament]</a></h5>
-          <h6 class="card-subtitle mb-2 text-muted">[Saturday, 1 December 2020]</h6>
-          <p class="card-text">A [state] election that was held [4 months ago].</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" class="stretched-link">Brisbane City Council</a></h5>
-          <h6 class="card-subtitle mb-2 text-muted">Saturday, 10 February 2021</h6>
-          <p class="card-text">A local election that was held 1 year ago.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-elections-list [elections]="electionsPast"></app-elections-list>
 </section>

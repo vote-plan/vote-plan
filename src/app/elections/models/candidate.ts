@@ -1,9 +1,20 @@
-import {Note} from './note';
+import {NoteContract, NoteModel} from './note';
+import {PartyContract, PartyModel} from './party';
 
 /**
  * One of the people running for a position in an assembly.
  */
-export interface Candidate {
+export interface CandidateContract {
+  code: string;
+  honorific: string;
+  nameFirst: string;
+  nameLast: string;
+  party: PartyContract;
+  notes: NoteContract[];
+}
+
+
+export class CandidateModel {
 
   /**
    * The unique code.
@@ -27,8 +38,19 @@ export interface Candidate {
    */
   nameLast: string;
 
+  party: PartyModel;
+
   /**
    * Additional information.
    */
-  notes: Note[];
+  notes: NoteModel[];
+
+  constructor(contract: CandidateContract) {
+    this.code = contract?.code;
+    this.honorific = contract?.honorific;
+    this.nameFirst = contract?.nameFirst;
+    this.nameLast = contract?.nameLast;
+    this.party = new PartyModel(contract?.party);
+    this.notes = contract?.notes?.map(i => new NoteModel(i)) ?? [];
+  }
 }

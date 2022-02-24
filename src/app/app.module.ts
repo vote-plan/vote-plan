@@ -12,6 +12,7 @@ import {ElectionsModule} from './elections/elections.module';
 import {InformationModule} from './information/information.module';
 import {ResultsModule} from './results/results.module';
 import {LayoutModule as AppLayoutModule} from './layout/layout.module';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import {LayoutModule as AppLayoutModule} from './layout/layout.module';
   imports: [
     // angular and dependency imports
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,

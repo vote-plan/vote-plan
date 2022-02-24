@@ -1,69 +1,12 @@
-<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3 g-lg-4 mx-lg-1"
-     *ngFor="let election of elections">
-  <div class="col">
+<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3 g-lg-4 mx-lg-1">
+  <div class="col" *ngFor="let election of elections">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title"><a href="#" class="stretched-link">{{election.title}}</a></h5>
+        <h5 class="card-title">
+          <a [routerLink]="['/elections', election.code]" class="stretched-link">{{election.title}}</a>
+        </h5>
         <h6 class="card-subtitle mb-2 text-muted">{{election.getLongDate()}}</h6>
         <p class="card-text">A {{election.locationDescription}} election {{getElectionDateDiffDisplay(election)}}.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3 g-lg-4 mx-lg-1">
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"><a href="#" class="stretched-link">[Australian Federal Parliament]</a></h5>
-        <h6 class="card-subtitle mb-2 text-muted">Tuesday, 20 March 2020</h6>
-        <p class="card-text">A national election that was held 3 weeks ago.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"><a href="#" class="stretched-link">[Queensland Parliament]</a></h5>
-        <h6 class="card-subtitle mb-2 text-muted">[Saturday, 1 December 2020]</h6>
-        <p class="card-text">A [state] election that was held [4 months ago].</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"><a href="#" class="stretched-link">Brisbane City Council</a></h5>
-        <h6 class="card-subtitle mb-2 text-muted">Saturday, 10 February 2021</h6>
-        <p class="card-text">A local election that was be held in 1 year.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"><a href="#" class="stretched-link">[Australian Federal Parliament]</a></h5>
-        <h6 class="card-subtitle mb-2 text-muted">Tuesday, 20 March 2020</h6>
-        <p class="card-text">A national election that was held 3 weeks ago.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"><a href="#" class="stretched-link">[Queensland Parliament]</a></h5>
-        <h6 class="card-subtitle mb-2 text-muted">[Saturday, 1 December 2020]</h6>
-        <p class="card-text">A [state] election that was held [4 months ago].</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"><a href="#" class="stretched-link">Brisbane City Council</a></h5>
-        <h6 class="card-subtitle mb-2 text-muted">Saturday, 10 February 2021</h6>
-        <p class="card-text">A local election that was held 1 year ago.</p>
       </div>
     </div>
   </div>

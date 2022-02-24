@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ElectionsService} from '../elections.service';
-import {Observable} from 'rxjs';
-import {ElectionContract} from '../models/election';
+import {take} from 'rxjs';
+import {ElectionModel} from '../models/election';
+import {faExclamation} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-elections-home',
@@ -9,13 +10,17 @@ import {ElectionContract} from '../models/election';
   styleUrls: ['./elections-home.component.css']
 })
 export class ElectionsHomeComponent implements OnInit {
-  elections$!: Observable<ElectionContract[]>;
+  faWarning = faExclamation;
+
+  electionsUpcoming: ElectionModel[] = [];
+  electionsPast: ElectionModel[] = [];
 
   constructor(private service: ElectionsService) {
   }
 
   ngOnInit(): void {
-    this.elections$ = this.service.getElections();
+    this.service.getElectionsUpcoming().pipe(take(10)).subscribe(x => this.electionsUpcoming = x);
+    this.service.getElectionsPast().pipe(take(10)).subscribe(x => this.electionsPast = x);
   }
 
 }

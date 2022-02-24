@@ -1,6 +1,6 @@
 import {AssemblyContract, AssemblyModel} from './assembly';
-import {Party} from './party';
-import {Note} from './note';
+import {PartyContract, PartyModel} from './party';
+import {NoteContract, NoteModel} from './note';
 import {DateTime} from 'luxon';
 
 
@@ -19,9 +19,9 @@ export interface ElectionContract {
   dateDay: number | null;
   dateTimeZone: string | null;
 
-  assemblies: any[] | null;
-  parties: any[] | null;
-  notes: any[] | null;
+  assemblies: AssemblyContract[];
+  parties: PartyContract[] | null;
+  notes: NoteContract[] | null;
 }
 
 /**
@@ -101,31 +101,31 @@ export class ElectionModel {
    * The parties putting forward candidates in this election.
    * Includes independent candidates in a catch-all party.
    */
-  parties: Party[];
+  parties: PartyModel[];
 
   /**
    * Additional information.
    */
-  notes: Note[];
+  notes: NoteModel[];
 
   constructor(contract: ElectionContract) {
-    this.code = contract.code;
+    this.code = contract?.code;
 
-    this.title = contract.title;
+    this.title = contract?.title;
 
-    this.locationCountry = contract.locationCountry;
-    this.locationAdministrativeAreaName = contract.locationAdministrativeAreaName;
-    this.locationLocalityName = contract.locationLocalityName;
-    this.locationDescription = contract.locationDescription;
+    this.locationCountry = contract?.locationCountry;
+    this.locationAdministrativeAreaName = contract?.locationAdministrativeAreaName;
+    this.locationLocalityName = contract?.locationLocalityName;
+    this.locationDescription = contract?.locationDescription;
 
-    this.dateYear = contract.dateYear;
-    this.dateMonth = contract.dateMonth;
-    this.dateDay = contract.dateDay;
-    this.dateTimeZone = contract.dateTimeZone;
+    this.dateYear = contract?.dateYear;
+    this.dateMonth = contract?.dateMonth;
+    this.dateDay = contract?.dateDay;
+    this.dateTimeZone = contract?.dateTimeZone;
 
-    this.assemblies = contract.assemblies ?? [];
-    this.parties = contract.parties ?? [];
-    this.notes = contract.notes ?? [];
+    this.assemblies = contract?.assemblies?.map(i => new AssemblyModel(i)) ?? [];
+    this.parties = contract?.parties?.map(i => new PartyModel(i)) ?? [];
+    this.notes = contract?.notes?.map(i => new NoteModel(i)) ?? [];
   }
 
   getDate(): DateTime {
@@ -141,10 +141,7 @@ export class ElectionModel {
   }
 
   getDisplayDiffFromNow(): string {
-    const date = this.getDate();
-    const now = DateTime.now();
-    const diff = date.diff(now, ['years', 'months', 'days']);
-    return diff.toHuman({listStyle: 'long'});
+    return this.getDate().toRelativeCalendar() ?? '';
   }
 }
 

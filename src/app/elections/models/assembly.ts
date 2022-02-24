@@ -1,11 +1,13 @@
-import {Electorate} from './electorate';
-import {Note} from './note';
+import {ElectorateContract, ElectorateModel} from './electorate';
+import {NoteContract, NoteModel} from './note';
+import {BallotContract, BallotModel} from './ballot';
 
 export interface AssemblyContract {
   code: string;
   title: string;
-  electorates: any[] | null;
-  notes: any[] | null;
+  electorates: ElectorateContract[] | null;
+  ballots: BallotContract[] | null;
+  notes: NoteContract[] | null;
 }
 
 /**
@@ -25,17 +27,27 @@ export class AssemblyModel {
   /**
    * The electorates that contribute members to this assembly.
    */
-  electorates: Electorate[];
+  electorates: ElectorateModel[];
+
+  /**
+   * The sections of a ballot or separate ballot papers.
+   * Each section might be a separate vote or it might be an option to choose to make one vote.
+   * For example, an Australian Federal Election has one section for the Electorate.
+   * For example, New Zealand National Elections have two sections -
+   *    the Assembly (cote for one Party) and the Electorate (vote for one candidate).
+   */
+  ballots: BallotModel[];
 
   /**
    * Additional information.
    */
-  notes: Note[];
+  notes: NoteModel[];
 
   constructor(contract: AssemblyContract) {
-    this.code = contract.code;
-    this.title = contract.title;
-    this.electorates = contract.electorates ?? [];
-    this.notes = contract.notes ?? [];
+    this.code = contract?.code;
+    this.title = contract?.title;
+    this.electorates = contract?.electorates?.map(i => new ElectorateModel(i)) ?? [];
+    this.ballots = contract?.ballots?.map(i => new BallotModel(i)) ?? [];
+    this.notes = contract?.notes?.map(i => new NoteModel(i)) ?? [];
   }
 }

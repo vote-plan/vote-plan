@@ -2,10 +2,11 @@
 
   <div class="alert alert-warning" role="alert">
     <fa-icon [icon]="faWarning"></fa-icon>
-    <b>TODO</b>: search, breadcrumbs
+    <b>TODO</b>:
   </div>
 
   <app-nav-breadcrumb></app-nav-breadcrumb>
-  <h4 class="display-6">Past Elections</h4>
-  <app-elections-list [elections]="elections"></app-elections-list>
+  <h3 class="display-5">Electorate Plan</h3>
+  <pre><code>{{electorate | json}}</code></pre>
+
 </section>
