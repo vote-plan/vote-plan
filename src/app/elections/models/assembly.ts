@@ -1,13 +1,12 @@
-import {ElectorateContract, ElectorateModel} from './electorate';
 import {NoteContract, NoteModel} from './note';
-import {BallotContract, BallotModel} from './ballot';
 
 export interface AssemblyContract {
   code: string;
   title: string;
-  electorates: ElectorateContract[] | null;
-  ballots: BallotContract[] | null;
-  notes: NoteContract[] | null;
+  electionCode: string;
+  electorateCodes: string[];
+  ballotCodes: string[];
+  notes: NoteContract[] | undefined;
 }
 
 /**
@@ -25,9 +24,14 @@ export class AssemblyModel {
   title: string;
 
   /**
+   * Election code.
+   */
+  electionCode: string;
+
+  /**
    * The electorates that contribute members to this assembly.
    */
-  electorates: ElectorateModel[];
+  electorateCodes: string[];
 
   /**
    * The sections of a ballot or separate ballot papers.
@@ -36,7 +40,7 @@ export class AssemblyModel {
    * For example, New Zealand National Elections have two sections -
    *    the Assembly (cote for one Party) and the Electorate (vote for one candidate).
    */
-  ballots: BallotModel[];
+  ballotCodes: string[];
 
   /**
    * Additional information.
@@ -46,8 +50,13 @@ export class AssemblyModel {
   constructor(contract: AssemblyContract) {
     this.code = contract?.code;
     this.title = contract?.title;
-    this.electorates = contract?.electorates?.map(i => new ElectorateModel(i)) ?? [];
-    this.ballots = contract?.ballots?.map(i => new BallotModel(i)) ?? [];
+    this.electionCode = contract?.electionCode;
+    this.electorateCodes = contract?.electorateCodes ?? [];
+    this.ballotCodes = contract?.ballotCodes ?? [];
     this.notes = contract?.notes?.map(i => new NoteModel(i)) ?? [];
+  }
+
+  getElectorateCount(): number {
+    return this.electorateCodes.length;
   }
 }

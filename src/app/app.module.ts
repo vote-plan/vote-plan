@@ -10,7 +10,6 @@ import {AppComponent} from './app.component';
 
 import {ElectionsModule} from './elections/elections.module';
 import {InformationModule} from './information/information.module';
-import {ResultsModule} from './results/results.module';
 import {LayoutModule as AppLayoutModule} from './layout/layout.module';
 import {HttpClientModule} from '@angular/common/http';
 
@@ -32,7 +31,6 @@ import {HttpClientModule} from '@angular/common/http';
     AppLayoutModule,
     InformationModule,
     ElectionsModule,
-    ResultsModule,
   ],
   bootstrap: [
     AppComponent,

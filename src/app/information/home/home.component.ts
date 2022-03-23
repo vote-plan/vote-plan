@@ -9,19 +9,16 @@ import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 })
 export class HomeComponent implements OnInit {
   faCalendar = faCalendar;
-  hoveredDate: NgbDate | null = null;
+  hoveredDate: NgbDate | undefined = undefined;
 
-  fromDate: NgbDate | null;
-  toDate: NgbDate | null;
+  fromDate: NgbDate | undefined = undefined;
+  toDate: NgbDate | undefined = undefined;
 
   today = this.calendar.getToday();
 
   constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     //this.fromDate = calendar.getToday();
     //this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
-
-    this.fromDate = null;
-    this.toDate = null;
   }
 
   ngOnInit(): void {
@@ -33,7 +30,6 @@ export class HomeComponent implements OnInit {
     } else if (this.fromDate && !this.toDate && date && date.after(this.fromDate)) {
       this.toDate = date;
     } else {
-      this.toDate = null;
       this.fromDate = date;
     }
   }
@@ -50,9 +46,12 @@ export class HomeComponent implements OnInit {
     return date.equals(this.fromDate) || (this.toDate && date.equals(this.toDate)) || this.isInside(date) || this.isHovered(date);
   }
 
-  validateInput(currentValue: NgbDate | null, input: string): NgbDate | null {
+  validateInput(currentValue: NgbDate | undefined, input: string): NgbDate | undefined {
     const parsed = this.formatter.parse(input);
-    return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
+    if (!parsed || !this.calendar.isValid(NgbDate.from(parsed))){
+      return currentValue;
+    }
+    return NgbDate.from(parsed) ?? undefined;
   }
 
 

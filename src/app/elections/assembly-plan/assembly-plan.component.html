@@ -1,12 +1,11 @@
 <section class="container-fluid">
-
-  <div class="alert alert-warning" role="alert">
-    <fa-icon [icon]="faWarning"></fa-icon>
-    <b>TODO</b>: election info, search, list electorates (with which assembly)
-  </div>
-
-  <app-nav-breadcrumb></app-nav-breadcrumb>
-  <h3 class="display-5">Assembly Plan</h3>
+  <h3 class="display-5">Plan your vote for the {{assembly?.title}}</h3>
+  <p class="lead">
+    In
+    {{election?.locationDescription}}
+    election for the
+    <a [routerLink]="['/elections', election?.code]">{{election?.title}}</a>.
+  </p>
   <pre><code>{{assembly | json}}</code></pre>
 
 </section>

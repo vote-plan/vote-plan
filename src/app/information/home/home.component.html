@@ -42,7 +42,7 @@
               [class.range]="isRange(date)"
               [class.faded]="isHovered(date) || isInside(date)"
               (mouseenter)="hoveredDate = date"
-              (mouseleave)="hoveredDate = null">
+              (mouseleave)="hoveredDate = undefined">
           {{ date.day }}
         </span>
         </ng-template>
@@ -92,7 +92,7 @@
 
     <button class="btn btn-secondary btn-sm m-2 float-right" (click)="datepicker.close()">Close</button>
     <button class="btn btn-secondary btn-sm m-2 float-right"
-            (click)="fromDate = null;toDate = null; datepicker.close()">Clear
+            (click)="fromDate = undefined;toDate = undefined; datepicker.close()">Clear
     </button>
   </ng-template>
 

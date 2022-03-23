@@ -14,17 +14,18 @@ import {AssemblyResultsComponent} from './assembly-results/assembly-results.comp
 
 
 const routes: Routes = [
-  {path: '', component: ElectionsHomeComponent},
+  {path: '', redirectTo: 'elections', pathMatch: 'full'},
+  {path: 'elections', component: ElectionsHomeComponent},
   {path: 'upcoming', component: ElectionsUpcomingComponent},
   {path: 'past', component: ElectionsPastComponent},
 
-  {path: ':electionCode', component: ElectionComponent},
-  {path: ':electionCode/parties', component: PartiesComponent},
-  {path: ':electionCode/candidates', component: CandidatesComponent},
-  {path: ':electionCode/electorate/:electorateCode/plan', component: ElectoratePlanComponent},
-  {path: ':electionCode/electorate/:electorateCode/results', component: ElectorateResultsComponent},
-  {path: ':electionCode/assembly/:assemblyCode/plan', component: AssemblyPlanComponent},
-  {path: ':electionCode/assembly/:assemblyCode/results', component: AssemblyResultsComponent},
+  {path: 'elections/:electionCode', component: ElectionComponent},
+  {path: 'elections/:electionCode/parties', component: PartiesComponent},
+  {path: 'elections/:electionCode/candidates', component: CandidatesComponent},
+  {path: 'electorates/:electorateCode/plan', component: ElectoratePlanComponent},
+  {path: 'electorates/:electorateCode/results', component: ElectorateResultsComponent},
+  {path: 'assemblies/:assemblyCode/plan', component: AssemblyPlanComponent},
+  {path: 'assemblies/:assemblyCode/results', component: AssemblyResultsComponent},
 ];
 
 @NgModule({

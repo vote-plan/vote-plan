@@ -34,8 +34,8 @@ export class PartyModel {
    * The type of party group.
    * Options are:
    * - 'named' - a named party with endorsed candidates
-   * - 'unnamed' - a group of candidates not part of a party, but with a party vote box
-   * - 'ungrouped' - a set of candidates not part of a party and with no party vote box
+   * - 'not-named' - a group of candidates not part of a party, but with a party vote box
+   * - 'not-grouped' - a set of candidates not part of a party and with no party vote box
    */
   category: string;
 
@@ -50,5 +50,31 @@ export class PartyModel {
     this.candidates = contract?.candidates?.map(i => new CandidateModel(i)) ?? [];
     this.category = contract?.category;
     this.notes = contract?.notes?.map(i => new NoteModel(i)) ?? [];
+  }
+
+  getCategoryText(){
+    switch (this.category) {
+      case 'named':
+        return 'Party';
+      case 'not-named':
+        return 'Group';
+      case 'not-grouped':
+        return 'Independent';
+      default:
+        return '';
+    }
+  }
+
+  getDivisionCount(): number {
+    return this.notes
+      .filter(n => n.category == "raw-info" && n.display == "division name")
+      .length;
+  }
+
+  getStateShortNames(): string[] {
+    return this.notes
+      .filter(n => n.category == "raw-info" && n.display == "state short name")
+      .map(n => n.content)
+      .sort();
   }
 }

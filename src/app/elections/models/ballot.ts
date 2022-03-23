@@ -1,13 +1,19 @@
 import {NoteContract, NoteModel} from './note';
-import {ResultContract, ResultModel} from './result';
 
 export interface BallotContract {
+  code: string;
   category: string;
   groupCandidatesByParty: boolean;
   orderMethod: string;
-  orderPartyCodes: string[];
-  orderCandidateCodes: string[];
-  results: ResultContract[];
+
+  electionCode: string;
+  assemblyCode: string;
+  electorateCode: string;
+
+  partyCodes: string[];
+  candidateCodes: string[];
+  resultCodes: string[];
+
   notes: NoteContract[];
 }
 
@@ -15,6 +21,8 @@ export interface BallotContract {
  * The definition for a ballot paper used in an election.
  */
 export class BallotModel {
+
+  code: string;
 
   /**
    * The category of ballot.
@@ -37,6 +45,10 @@ export class BallotModel {
 
   // ballots that show candidates grouped by party need two sets of orderings: party and candidate
 
+  electionCode: string;
+  assemblyCode: string;
+  electorateCode: string;
+
   /**
    * The party codes on this ballot.
    * They might be in order depending on orderMethod.
@@ -47,12 +59,12 @@ export class BallotModel {
    * The candidate codes on this ballot.
    * They might be in order depending on orderMethod.
    */
-  CandidateCodes: string[];
+  candidateCodes: string[];
 
   /**
    * The ballot results.
    */
-  results: ResultModel[]
+  resultCodes: string[];
 
   /**
    * Additional information.
@@ -60,12 +72,19 @@ export class BallotModel {
   notes: NoteModel[];
 
   constructor(contract: BallotContract) {
+    this.code = contract?.code;
     this.category = contract?.category;
     this.groupCandidatesByParty = contract?.groupCandidatesByParty;
     this.orderMethod = contract?.orderMethod;
-    this.partyCodes = contract?.orderPartyCodes;
-    this.CandidateCodes = contract?.orderCandidateCodes;
-    this.results = contract?.results?.map(i => new ResultModel(i)) ?? [];
+
+    this.electionCode = contract?.electionCode;
+    this.assemblyCode = contract?.assemblyCode;
+    this.electorateCode = contract?.electorateCode;
+
+    this.partyCodes = contract?.partyCodes;
+    this.candidateCodes = contract?.candidateCodes;
+    this.resultCodes = contract?.resultCodes ?? [];
+
     this.notes = contract?.notes?.map(i => new NoteModel(i)) ?? [];
   }
 }

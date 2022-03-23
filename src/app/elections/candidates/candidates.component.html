@@ -1,12 +1,33 @@
 <section class="container-fluid">
+  <h3 class="display-5">Candidates</h3>
+  <p class="lead">
+    In
+    {{election?.locationDescription}}
+    election for the
+    <a [routerLink]="['/elections', election?.code]">{{election?.title}}</a>.
+  </p>
 
-  <div class="alert alert-warning" role="alert">
-    <fa-icon [icon]="faWarning"></fa-icon>
-    <b>TODO</b>: election info, search, list electorates (with which assembly)
+  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3 g-lg-4 mx-lg-1">
+    <div class="col" *ngFor="let candidate of candidates">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{candidate.title}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            <span>{{candidate.getPartyShort()}}</span>
+            <span *ngIf="candidate.getIsIncumbent()">
+              &nbsp;Sitting member
+            </span>
+          </h6>
+          <p class="card-text">{{candidate.getStateShortName()}}</p>
+          <p class="card-text">{{candidate.getDivisionName()}}</p>
+          <p class="card-text">{{candidate.getPartyLong()}}</p>
+          <p class="card-text">{{candidate.getBallotPlace()}}</p>
+          <p class="card-text">{{candidate.getOccupation()}}</p>
+<!--          <p class="card-text">{{candidate | json}}</p>-->
+        </div>
+      </div>
+    </div>
   </div>
 
-  <app-nav-breadcrumb></app-nav-breadcrumb>
-  <h3 class="display-5">Candidates</h3>
-  <pre><code>{{candidates | json}}</code></pre>
 
 </section>

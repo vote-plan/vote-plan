@@ -12,26 +12,26 @@
     <div class="collapse navbar-collapse" [ngbCollapse]="isMenuCollapsed " id="navbarVotePlan">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/elections']" routerLinkActive="active" #rlaElections="routerLinkActive"
-             (click)="isMenuCollapsed = true" [attr.aria-current]="rlaElections.isActive ? 'page' : null">
+          <a class="nav-link" [routerLink]="'/elections'" routerLinkActive="active" #rlaElections="routerLinkActive"
+             (click)="isMenuCollapsed = true" [attr.aria-current]="rlaElections.isActive ? 'page' : undefined">
             Elections
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/about']" routerLinkActive="active" #rlaAbout="routerLinkActive"
-             (click)="isMenuCollapsed = true" [attr.aria-current]="rlaAbout.isActive ? 'page' : null">
+             (click)="isMenuCollapsed = true" [attr.aria-current]="rlaAbout.isActive ? 'page' : undefined">
             About
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/news']" routerLinkActive="active" #rlaNews="routerLinkActive"
-             (click)="isMenuCollapsed = true" [attr.aria-current]="rlaNews.isActive ? 'page' : null">
+             (click)="isMenuCollapsed = true" [attr.aria-current]="rlaNews.isActive ? 'page' : undefined">
             News
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/help']" routerLinkActive="active" #rlaHelp="routerLinkActive"
-             (click)="isMenuCollapsed = true" [attr.aria-current]="rlaHelp.isActive ? 'page' : null">
+             (click)="isMenuCollapsed = true" [attr.aria-current]="rlaHelp.isActive ? 'page' : undefined">
             Help
           </a>
         </li>

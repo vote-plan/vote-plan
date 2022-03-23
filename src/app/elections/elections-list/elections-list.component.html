@@ -1,9 +1,9 @@
-<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3 g-lg-4 mx-lg-1">
+<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3 g-lg-4 mx-lg-1" *ngIf="elections.length > 0">
   <div class="col" *ngFor="let election of elections">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">
-          <a [routerLink]="['/elections', election.code]" class="stretched-link">{{election.title}}</a>
+          <a [routerLink]="['/', 'elections', election.code]" class="stretched-link">{{election.title}}</a>
         </h5>
         <h6 class="card-subtitle mb-2 text-muted">{{election.getLongDate()}}</h6>
         <p class="card-text">A {{election.locationDescription}} election {{getElectionDateDiffDisplay(election)}}.</p>

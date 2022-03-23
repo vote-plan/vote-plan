@@ -8,11 +8,10 @@ import {HelpComponent} from './information/help/help.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/elections', pathMatch: 'full'},
   {path: 'about', component: AboutComponent},
   {path: 'news', component: NewsComponent},
   {path: 'help', component: HelpComponent},
-  {path: 'elections', loadChildren: () => import('./elections/elections.module').then(m => m.ElectionsModule)},
+  {path: '', loadChildren: () => import('./elections/elections.module').then(m => m.ElectionsModule)},
   {path: '**', component: NotFoundComponent}
 ];
 

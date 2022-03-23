@@ -4,6 +4,7 @@ import {ElectionsService} from '../elections.service';
 import {take} from 'rxjs';
 import {PartyModel} from '../models/party';
 import {ActivatedRoute} from '@angular/router';
+import {ElectionModel} from '../models/election';
 
 @Component({
   selector: 'app-parties',
@@ -13,14 +14,16 @@ import {ActivatedRoute} from '@angular/router';
 export class PartiesComponent implements OnInit {
   faWarning = faExclamation;
   parties: PartyModel[] = [];
+  election: ElectionModel | undefined;
 
   constructor(private service: ElectionsService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
-    const electionCode = routeParams.get('electionCode');
-    this.service.getParties(electionCode).pipe(take(10)).subscribe(x => this.parties = x);
+    const electionCode = routeParams.get('electionCode') ?? undefined;
+    this.service.getElection(electionCode).subscribe(i => this.election = i);
+    this.service.getParties(electionCode).subscribe(i => this.parties = i);
   }
 
 }

@@ -19,8 +19,12 @@ export class ElectionsHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getElectionsUpcoming().pipe(take(10)).subscribe(x => this.electionsUpcoming = x);
-    this.service.getElectionsPast().pipe(take(10)).subscribe(x => this.electionsPast = x);
+    this.service.getElectionsUpcoming()
+      .pipe(take(10))
+      .subscribe(x => this.electionsUpcoming = x);
+    this.service.getElectionsPast()
+      .pipe(take(10))
+      .subscribe(x => this.electionsPast = x);
   }
 
 }

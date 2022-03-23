@@ -1,10 +1,5 @@
 <section class="py-2 text-center container">
 
-  <div class="alert alert-warning" role="alert">
-    <fa-icon [icon]="faWarning"></fa-icon>
-    <b>TODO</b>: search
-  </div>
-
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1 class="display-4 fw-light">Vote Plan</h1>
@@ -12,10 +7,10 @@
         Prepare your vote before election day.
       </p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <a [routerLink]="['/elections/upcoming']" class="btn btn-primary btn-lg px-4 gap-3">
+        <a [routerLink]="['/upcoming']" class="btn btn-primary btn-lg px-4 gap-3">
           Plan your vote
         </a>
-        <a [routerLink]="['/elections/past']" class="btn btn-outline-secondary btn-lg px-4">
+        <a [routerLink]="['/past']" class="btn btn-outline-secondary btn-lg px-4">
           Explore election results
         </a>
       </div>
@@ -24,11 +19,11 @@
 </section>
 
 <section class="container-fluid">
-  <h4 class="display-6">Upcoming Elections</h4>
+  <h4 class="display-6" *ngIf="electionsUpcoming.length > 0">Upcoming Elections</h4>
   <app-elections-list [elections]="electionsUpcoming"></app-elections-list>
 </section>
 
 <section class="container-fluid">
-  <h4 class="display-6">Past Elections</h4>
+  <h4 class="display-6" *ngIf="electionsPast.length > 0">Past Elections</h4>
   <app-elections-list [elections]="electionsPast"></app-elections-list>
 </section>

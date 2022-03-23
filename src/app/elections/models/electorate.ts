@@ -1,14 +1,17 @@
-import {CandidateContract, CandidateModel} from './candidate';
 import {NoteContract, NoteModel} from './note';
-import {BallotContract, BallotModel} from './ballot';
 
 
 export interface ElectorateContract {
   code: string;
   title: string;
-  candidates: CandidateContract[] | null;
-  ballots: BallotContract[] | null;
-  notes: NoteContract[] | null;
+
+  candidate_codes: string[];
+  ballot_codes: string[];
+
+  election_code: string;
+  assembly_code: string;
+
+  notes: NoteContract[] | undefined;
 }
 
 /**
@@ -31,9 +34,12 @@ export class ElectorateModel {
   /**
    * These are the candidates running in this electorate.
    */
-  candidates: CandidateModel[];
+  candidate_codes: string[];
 
-  ballots: BallotModel[];
+  ballot_codes: string[];
+
+  election_code: string;
+  assembly_code: string;
 
   /**
    * Additional information.
@@ -43,8 +49,18 @@ export class ElectorateModel {
   constructor(contract: ElectorateContract) {
     this.code = contract?.code;
     this.title = contract?.title;
-    this.candidates = contract?.candidates?.map(i => new CandidateModel(i)) ?? [];
-    this.ballots = contract?.ballots?.map(i => new BallotModel(i)) ?? [];
+    this.candidate_codes = contract?.candidate_codes ?? [];
+    this.ballot_codes = contract?.ballot_codes ?? [];
+    this.election_code = contract?.election_code;
+    this.assembly_code = contract?.assembly_code;
     this.notes = contract?.notes?.map(i => new NoteModel(i)) ?? [];
+  }
+
+  getCandidateCount(): number {
+    return this.candidate_codes.length;
+  }
+
+  getStateShortName(): string | undefined {
+    return this.notes.find(n => n.category == "raw-info" && n.display == "state short name")?.content;
   }
 }

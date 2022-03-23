@@ -1,30 +1,70 @@
 <section class="container-fluid">
 
-  <div class="alert alert-warning" role="alert">
-    <fa-icon [icon]="faWarning"></fa-icon>
-    <b>TODO</b>: election info, search, list electorates (with which assembly)
+  <h3 class="display-5">{{election?.title}}</h3>
+  <p class="lead">
+    A
+    {{election?.locationDescription}}
+    election held on
+    {{election?.getLongDate()}}
+    ({{election?.getDisplayDiffFromNow()}}).
+  </p>
+
+
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/elections', election?.code, 'parties']">Parties</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/elections', election?.code, 'candidates']">Candidates</a>
+    </li>
+  </ul>
+
+  <h4 class="display-6 my-3">Assemblies</h4>
+
+  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3 g-lg-4 mx-lg-1">
+    <div class="col" *ngFor="let assembly of assemblies">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{assembly.title}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted"></h6>
+          <p class="card-text">
+            With {{assembly.getElectorateCount()}} electorates.
+          </p>
+          <a [routerLink]="['/', 'assemblies', assembly.code, 'plan']" class="card-link">Plan your vote</a>
+          <a [routerLink]="['/', 'assemblies', assembly.code, 'results']" class="card-link">Explore results</a>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <app-nav-breadcrumb></app-nav-breadcrumb>
-  <h3 class="display-5">Election</h3>
-  <p>
-    <a [routerLink]="['.', 'parties']">Parties</a>
-    &nbsp;
-    <a [routerLink]="['.', 'candidates']">Candidates</a>
-    &nbsp;
-    <a [routerLink]="['.', 'assembly', 'assembly-1', 'plan']">Assembly plan</a>
-    &nbsp;
-    <a [routerLink]="['.', 'assembly', 'assembly-1', 'results']">Assembly results</a>
-    &nbsp;
-    <a [routerLink]="['.', 'electorate', 'electorate-1', 'plan']">Electorate plan</a>
-    &nbsp;
-    <a [routerLink]="['.', 'electorate', 'electorate-1', 'results']">Electorate results</a>
-  </p>
-  <pre><code>{{election | json}}</code></pre>
+  <h4 class="display-6 my-3">Electorates</h4>
 
-  <h3 class="fw-light">Electorates</h3>
+  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3 g-lg-4 mx-lg-1">
+    <div class="col" *ngFor="let electorate of electorates">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{electorate.title}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            {{electorate.getStateShortName()}}
+            {{getElectorateAssembly(electorate.assembly_code)?.title}}
+          </h6>
+          <p class="card-text">
+            With {{electorate.getCandidateCount()}} candidates.
+          </p>
+          <a [routerLink]="['/', 'electorates', electorate.code, 'plan']" class="card-link">Plan your vote</a>
+          <a [routerLink]="['/', 'electorates', electorate.code, 'results']" class="card-link">Explore results</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <ul *ngFor="let electorate of electorates">
-    <li>{{ electorate | json}}</li>
+  <h5 class="fw-light my-3">Learn more</h5>
+
+  <ul class="nav nav-pills">
+    <li class="nav-item" *ngFor="let info of election?.getInfo()">
+      <a class="nav-link" href="{{info.content}}">{{info.display}}</a>
+    </li>
   </ul>
+
+
 </section>

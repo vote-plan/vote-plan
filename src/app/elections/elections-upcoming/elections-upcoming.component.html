@@ -1,11 +1,5 @@
 <section class="container-fluid">
-
-  <div class="alert alert-warning" role="alert">
-    <fa-icon [icon]="faWarning"></fa-icon>
-    <b>TODO</b>: search, breadcrumbs
-  </div>
-
-  <app-nav-breadcrumb></app-nav-breadcrumb>
   <h4 class="display-6">Upcoming Elections</h4>
   <app-elections-list [elections]="elections"></app-elections-list>
+  <p class="lead" *ngIf="elections.length < 1">No elections available.</p>
 </section>
