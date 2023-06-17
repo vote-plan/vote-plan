@@ -1,5 +1,7 @@
 # Vote Plan
 
+> Archived. Have a look at the [Anotherbyte org](https://github.com/anotherbyte-net) for similar projects.
+
 Vote plan helps you prepare your vote by making it easier to deal with unwieldy ballot papers.
 
 [![github actions build status](https://github.com/vote-plan/vote-plan/actions/workflows/build.yml/badge.svg)](https://github.com/vote-plan/vote-plan/actions)
